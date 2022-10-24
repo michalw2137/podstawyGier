@@ -8,6 +8,7 @@ TagManager:
   - obstacle
   - body
   - food
+  - map
   layers:
   - Default
   - TransparentFX
@@ -19,6 +20,7 @@ TagManager:
   - 
   - 
   - 
+  - test10
   - 
   - 
   - 
@@ -28,8 +30,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - test20
   - 
   - 
   - 
@@ -42,9 +43,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: test3
+    uniqueID: 3739405867
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: background
     uniqueID: 99384771
+    locked: 0
+  - name: test2
+    uniqueID: 3641927047
+    locked: 0
+  - name: test4
+    uniqueID: 3521203551
     locked: 0

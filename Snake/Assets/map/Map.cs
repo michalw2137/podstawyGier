@@ -9,7 +9,7 @@ public class Map : MonoBehaviour
     List<GameObject> stationaryWalls;
     List<GameObject> movingWalls;
 
-    [SerializeField] int startingWalls = 1;
+    [SerializeField] int startingWalls = 0;
 
     [SerializeField] public Vector2Int size;
 
@@ -59,10 +59,10 @@ public class Map : MonoBehaviour
 
 
     public void spawnRandomWall() {
-        GameObject wall = Instantiate(this.wall);
-        wall.transform.position = validPosition();  
-        Debug.Log($"spawned wall at {wall.transform.position}");
-        movingWalls.Add(wall);
+        // GameObject wall = Instantiate(this.wall);
+        // wall.transform.position = validPosition();  
+        // Debug.Log($"spawned wall at {wall.transform.position}");
+        // movingWalls.Add(wall);
 
     }
 

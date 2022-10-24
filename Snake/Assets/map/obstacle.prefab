@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3624316356860779889}
   - component: {fileID: 4259091862848723717}
   - component: {fileID: 3244162609709640154}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: obstacle
   m_TagString: obstacle
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 796246890748396060}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.40662405, y: 0.1012136, z: -0.0551445}
-  m_LocalScale: {x: 18, y: 18, z: 18}
+  m_LocalScale: {x: 18, y: 18, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 99384771
-  m_SortingLayer: 1
+  m_SortingLayerID: -653040249
+  m_SortingLayer: 2
   m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: a0aaa90815f021a459342a489b3b238e, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}

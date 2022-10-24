@@ -34,7 +34,7 @@ public class Snake : MonoBehaviour
     void Start() {
         isMoving = true;
         toSpawn = false;
-        transform.position = position;
+        position = transform.position;
         body.Add(this.gameObject);
     }
 
@@ -112,10 +112,15 @@ public class Snake : MonoBehaviour
         if (other.tag == "body") {
             StartCoroutine(Death());        
         }
+        if (other.tag == "map") {
+            Debug.Log("touched map");
+            StartCoroutine(Death());        
+        }
         if (other.tag == "food") {
             Map.instance.spawnRandomWall();
             toSpawn = true;
         }
+
     }
  
 

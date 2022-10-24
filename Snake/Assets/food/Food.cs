@@ -11,10 +11,12 @@ public class Food : MonoBehaviour
     }
 
     void Start() {
-        spawn();
+        //spawn();
     }
 
     void spawn() {
+        SpriteRenderer sr = this.GetComponent<SpriteRenderer>();
+
         Vector3 position = new Vector3(0, 0, 0);
         int step = Snake.instance.step;
         int width = Map.instance.size.x / 2;
@@ -54,6 +56,8 @@ public class Food : MonoBehaviour
         } else if (other.tag == "body") {
             spawn();
         } else if (other.tag == "obstacle") {
+            spawn();   
+        } else if (other.tag == "map") {
             spawn();   
         }
     }
