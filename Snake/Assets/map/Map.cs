@@ -16,7 +16,6 @@ public class Map : MonoBehaviour
     private float time = 0;
     [SerializeField] private float delay = 2f;
 
-
     public static Map instance;
 
     void Awake() {
@@ -27,30 +26,32 @@ public class Map : MonoBehaviour
 
     void Start()
     {
-        void spawnStationaryWall(Vector2 position) {
-            GameObject temp = Instantiate(wall);
-            temp.transform.position = position;  
-            stationaryWalls.Add(temp);
-        }
-
-        void spawnRow(int level) {
-            for (int i = -size.x/2; i <= size.x/2; i++) {
-                spawnStationaryWall(new Vector2(i, level));
-            }
-        }
-
-        void spawnColumn(int level) {
-            for (int i = -size.y/2; i <= size.y/2; i++) {
-                spawnStationaryWall(new Vector2(level, i));
-            }
-        }
+        int step = Snake.instance.step;
 
         spawnRow(-size.y/2);
         spawnRow(size.y/2);
         
         spawnColumn(-size.x/2);
         spawnColumn(size.x/2);
-     
+
+        void spawnRow(int level) {
+            for (int i = -size.x/2; i <= size.x/2; i+= step) {
+                spawnStationaryWall(new Vector2(i, level));
+            }
+        }
+
+        void spawnStationaryWall(Vector2 position) {
+            GameObject temp = Instantiate(wall);
+            temp.transform.position = position;  
+            stationaryWalls.Add(temp);
+        }
+
+        void spawnColumn(int level) {
+            for (int i = -size.y/2; i <= size.y/2; i+= step) {
+                spawnStationaryWall(new Vector2(level, i));
+            }
+        }
+
         for (int i = 0; i < startingWalls; i ++) {
             spawnRandomWall();       
         }
@@ -60,14 +61,17 @@ public class Map : MonoBehaviour
     public void spawnRandomWall() {
         GameObject wall = Instantiate(this.wall);
         wall.transform.position = validPosition();  
+        Debug.Log($"spawned wall at {wall.transform.position}");
         movingWalls.Add(wall);
+
     }
 
     Vector3 validPosition() {
         Vector3 position = new Vector3(0, 0, 0);
+        int step = Snake.instance.step;
         do {
-            position.x = Random.Range(-size.x/2 + 1, size.x/2 - 1);
-            position.y = Random.Range(-size.y/2 + 1, size.y/2 - 1);
+            position.x = Random.Range(-size.x/2/step + 1, size.x/2/step - 1) * step;
+            position.y = Random.Range(-size.y/2/step + 1, size.y/2/step - 1) * step;
         } while (!validate(position));
 
         bool validate(Vector3 vector) {

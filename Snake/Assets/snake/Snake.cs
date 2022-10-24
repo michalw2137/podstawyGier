@@ -11,6 +11,8 @@ public class Snake : MonoBehaviour
     Vector2 previoursDirection;
 
     [SerializeField] GameObject segment;
+    [SerializeField] public int step;
+
     List<GameObject> body;
 
     bool toSpawn;
@@ -26,6 +28,7 @@ public class Snake : MonoBehaviour
         previoursDirection = Vector2.right;
 
         body = new List<GameObject>();
+        step = 20;
     }
 
     void Start() {
@@ -81,8 +84,8 @@ public class Snake : MonoBehaviour
         updateBody();
 
         void moveHead() {
-            this.position.x += this.direction.x;
-            this.position.y += this.direction.y;
+            this.position.x += this.direction.x * step;
+            this.position.y += this.direction.y * step;
 
             this.transform.position = position;
 

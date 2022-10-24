@@ -16,9 +16,14 @@ public class Food : MonoBehaviour
 
     void spawn() {
         Vector3 position = new Vector3(0, 0, 0);
+        int step = Snake.instance.step;
+        int width = Map.instance.size.x / 2;
+        int height = Map.instance.size.y / 2;
         do {
-            position.x = Random.Range(-Map.instance.size.x/2 + 1, Map.instance.size.x/2 - 1);
-            position.y = Random.Range(-Map.instance.size.y/2 + 1, Map.instance.size.y/2 - 1);
+            position.x = Random.Range(-width/step + 1, width/step - 1) * step;
+            position.y = Random.Range(-height/step + 1, height/step - 1) * step;
+            Debug.Log($"validating food at {position}");
+
         } while (!validate(position));
         
         bool validate(Vector3 vector) {
@@ -32,6 +37,7 @@ public class Food : MonoBehaviour
         }
 
         this.transform.position = position;
+        Debug.Log($"spawned food at {position}");
     }
 
     public bool touches(Vector3 position) {
