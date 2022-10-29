@@ -26,7 +26,7 @@ public class Map : MonoBehaviour
 
     void Start()
     {
-        int step = Snake.instance.step;
+        int step = Snake.instance.Step;
 
         spawnRow(-size.y/2);
         spawnRow(size.y/2);
@@ -68,7 +68,7 @@ public class Map : MonoBehaviour
 
     Vector3 validPosition() {
         Vector3 position = new Vector3(0, 0, 0);
-        int step = Snake.instance.step;
+        int step = Snake.instance.Step;
         do {
             position.x = Random.Range(-size.x/2/step + 1, size.x/2/step - 1) * step;
             position.y = Random.Range(-size.y/2/step + 1, size.y/2/step - 1) * step;

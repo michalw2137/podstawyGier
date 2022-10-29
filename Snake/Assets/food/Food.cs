@@ -18,7 +18,7 @@ public class Food : MonoBehaviour
         SpriteRenderer sr = this.GetComponent<SpriteRenderer>();
 
         Vector3 position = new Vector3(0, 0, 0);
-        int step = Snake.instance.step;
+        int step = Snake.instance.Step;
         int width = Map.instance.size.x / 2;
         int height = Map.instance.size.y / 2;
         do {
