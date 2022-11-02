@@ -28,33 +28,7 @@ public class Map : MonoBehaviour
     {
         int step = Snake.instance.Step;
 
-        spawnRow(-size.y/2);
-        spawnRow(size.y/2);
-        
-        spawnColumn(-size.x/2);
-        spawnColumn(size.x/2);
 
-        void spawnRow(int level) {
-            for (int i = -size.x/2; i <= size.x/2; i+= step) {
-                spawnStationaryWall(new Vector2(i, level));
-            }
-        }
-
-        void spawnStationaryWall(Vector2 position) {
-            GameObject temp = Instantiate(wall);
-            temp.transform.position = position;  
-            stationaryWalls.Add(temp);
-        }
-
-        void spawnColumn(int level) {
-            for (int i = -size.y/2; i <= size.y/2; i+= step) {
-                spawnStationaryWall(new Vector2(level, i));
-            }
-        }
-
-        for (int i = 0; i < startingWalls; i ++) {
-            spawnRandomWall();       
-        }
     }
 
 
