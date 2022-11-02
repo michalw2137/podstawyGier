@@ -21,16 +21,12 @@ public class Score : MonoBehaviour
     {
         highscore_ = PlayerPrefs.GetInt("highscore", 0);
 
-        scoreText.text = score_.ToString();
+        scoreText.text = $"dirt stored: {eatingDirt.instance.dirtCount}";
         highscoreText.text = $"high score: {highscore_}";
     }
 
-    public void addPoints(int number) {
-        score_ += number;
-        scoreText.text = score_.ToString();
-        if (score_ > highscore_) {
-            PlayerPrefs.SetInt("highscore", score_);
-        }
+    public void updateText() {
+        scoreText.text = $"dirt stored: {eatingDirt.instance.dirtCount}";
 
     }
    

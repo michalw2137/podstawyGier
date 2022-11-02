@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 121548558594047068}
   m_Layer: 0
   m_Name: dirtParticle
-  m_TagString: Untagged
+  m_TagString: dirt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: fafe18497543a1745951c2f51427401f,
     type: 3}
-  m_Color: {r: 0.9056604, g: 0.78427446, b: 0.4989676, a: 0.5019608}
+  m_Color: {r: 0.9056604, g: 0.78427446, b: 0.5019608, a: 0.5019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -147,3 +147,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10ce4a1bf3c8ab244bf2f783b6cdda72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultColor: {r: 0.7830189, g: 0.62115735, b: 0.23268957, a: 0.49019608}
+  deletedColor: {r: 0, g: 0, b: 0, a: 0}

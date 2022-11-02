@@ -133,7 +133,6 @@ public class Snake : MonoBehaviour
 
         body.Add(tempObject);
 
-        Score.instance.addPoints(1);
     }
 
 
@@ -203,6 +202,9 @@ public class Snake : MonoBehaviour
         return false;
     }
 
+    public Vector3 getLastSegmentPosition() {
+        return body[body.Count - 1].transform.position;
+    }
     
 
    

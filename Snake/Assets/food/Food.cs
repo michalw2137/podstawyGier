@@ -24,7 +24,7 @@ public class Food : MonoBehaviour
         do {
             position.x = Random.Range(-width/step + 1, width/step - 1) * step;
             position.y = Random.Range(-height/step + 1, height/step - 1) * step;
-            Debug.Log($"validating food at {position}");
+            //Debug.Log($"validating food at {position}");
 
         } while (!validate(position));
         
@@ -39,7 +39,7 @@ public class Food : MonoBehaviour
         }
 
         this.transform.position = position;
-        Debug.Log($"spawned food at {position}");
+        //Debug.Log($"spawned food at {position}");
     }
 
     public bool touches(Vector3 position) {
