@@ -9,6 +9,8 @@ TagManager:
   - body
   - food
   - map
+  - ass
+  - dirt
   layers:
   - Default
   - TransparentFX

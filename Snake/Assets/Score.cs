@@ -5,11 +5,7 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    public Text scoreText;
-    public Text highscoreText;
-
-    public int score_ = 0;
-    private int highscore_ = 0;
+    public Text dirtCollected;
 
     public static Score instance;
 
@@ -19,15 +15,11 @@ public class Score : MonoBehaviour
 
     void Start()
     {
-        highscore_ = PlayerPrefs.GetInt("highscore", 0);
-
-        scoreText.text = $"dirt stored: {eatingDirt.instance.dirtCount}";
-        highscoreText.text = $"high score: {highscore_}";
+        dirtCollected.text = $"dirt stored: {Ass.instance.dirtCount}";
     }
 
     public void updateText() {
-        scoreText.text = $"dirt stored: {eatingDirt.instance.dirtCount}";
-
+        dirtCollected.text = $"dirt stored: {Ass.instance.dirtCount}";
     }
    
 }

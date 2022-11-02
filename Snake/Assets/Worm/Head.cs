@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Snake : MonoBehaviour
+public class Head : MonoBehaviour
 {
     [SerializeField]
     public int Step;
@@ -28,7 +28,7 @@ public class Snake : MonoBehaviour
     bool toSpawn;
     public bool isMoving;
 
-    public static Snake instance;
+    public static Head instance;
 
     void Start()
     {
@@ -152,7 +152,6 @@ public class Snake : MonoBehaviour
         }
         if (other.tag == "food")
         {
-            Map.instance.spawnRandomWall();
             toSpawn = true;
         }
 
