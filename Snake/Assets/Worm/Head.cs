@@ -6,24 +6,23 @@ using UnityEngine.SceneManagement;
 public class Head : MonoBehaviour
 {
     [SerializeField]
-    public int Step;
+    public float Speed = 1000.0f;
 
-    /** Value which defines space between body segments*/
+    /** Value which defines space between body segments */
     [SerializeField]
-    public float SegmentSize;
+    public float SegmentSpace = 0.2f;
 
-    /** Sensitivity of how much snake will rotate on holding buttons*/
+    /** Sensitivity of how much snake will rotate on holding buttons */
     [SerializeField]
-    public float RotationSensivity;
+    public float RotationSensivity = 120.0f;
 
     [SerializeField]
     public GameObject Segment;
 
-    List<GameObject> body;
+    List<GameObject> Body;
 
-    /** Sensitivity of how much snake will rotate on holding buttons*/
-    private float DirectionAngle;
-    private Vector3 Position;
+    /** Value to count whether space between segments is enough */
+    float SpaceCounter = 0.0f;
 
     bool toSpawn;
     public bool isMoving;
@@ -32,107 +31,101 @@ public class Head : MonoBehaviour
 
     void Start()
     {
+        // Components check
+        if (!GetComponent<PathMarker>())
+        {
+            gameObject.AddComponent<PathMarker>();
+        }
+        if (!GetComponent<Rigidbody2D>())
+        {
+            gameObject.AddComponent<Rigidbody2D>();
+            GetComponent<Rigidbody2D>().gravityScale = 0.0f;
+        }
+
+        Body.Add(gameObject);
+
         isMoving = true;
         toSpawn = false;
-        Position = transform.position;
-        body.Add(this.gameObject);
     }
 
     void Awake()
     {
         instance = this;
-        Position = new Vector3(0, 0, 0);
-        DirectionAngle = 0.0f;
 
-        body = new List<GameObject>();
+        Body = new List<GameObject>();
     }
 
-    void Update()
+    /** Update velocity and rotation*/
+    void WormMovement()
     {
-        void readControls() 
+        if (Input.GetAxis("Horizontal") != 0.0f)
         {
-            if (Input.GetAxis("Horizontal") == 0.0f)
-            {
-                return;
-            }
-            else if (Input.GetAxis("Horizontal") < 0.0f)
-            {
-                DirectionAngle += RotationSensivity * Time.deltaTime;
-                DirectionAngle -= DirectionAngle > 180.0f ? 360.0f : 0.0f;
-                return;
-            }
-            else if (Input.GetAxis("Horizontal") > 0.0f)
-            {
-                DirectionAngle -= RotationSensivity * Time.deltaTime;
-                DirectionAngle += DirectionAngle < -180.0f ? 360.0f : 0.0f;
-                return;
-            }
+            GetComponent<Rigidbody2D>().velocity = Body[0].transform.right * Speed * Time.deltaTime;
+            Body[0].transform.Rotate(new Vector3(0, 0, -RotationSensivity * Time.deltaTime * Input.GetAxis("Horizontal")));
         }
 
-        readControls();        
+        if (Body.Count > 1)
+        {
+            // Body path following
+            for (int i = 1; i < Body.Count; ++i)
+            {
+                PathMarker pathMarker = Body[i - 1].GetComponent<PathMarker>();
+                Body[i].transform.position = pathMarker.markers[0].Position;
+                Body[i].transform.rotation = pathMarker.markers[0].Rotation;
+                pathMarker.markers.RemoveAt(0);
+            }
+        }
+    }
+
+    /** Spawn body segment*/
+    private void Grow()
+    {
+        //Path marker activation
+        PathMarker pathMarker = Body[Body.Count - 1].GetComponent<PathMarker>();
+
+        if (SpaceCounter == 0.0f)
+        {
+            pathMarker.ClearMarkers();
+        }
+
+        SpaceCounter += Time.deltaTime;
+
+        if (SpaceCounter > SegmentSpace)
+        {
+            GameObject temp = Instantiate(Segment, pathMarker.markers[0].Position, pathMarker.markers[0].Rotation);
+            // Check components
+            if (!temp.GetComponent<PathMarker>())
+            {
+                temp.AddComponent<PathMarker>();
+            }
+            if (!temp.GetComponent<Rigidbody2D>())
+            {
+                temp.AddComponent<Rigidbody2D>();
+                temp.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
+            }
+
+            Body.Add(temp);
+            temp.GetComponent<PathMarker>().ClearMarkers();
+            SpaceCounter = 0.0f;
+            toSpawn = false;
+        }
     }
 
     void FixedUpdate() 
     { // order is critical! spawn > update body > move head
         if (!isMoving)
         {
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             return;
         }
 
         if (toSpawn)
         {
-            grow();
-            toSpawn = false;
+            Grow();
         }
-        
-        void updateBody() 
-        {
-            for (int i = 1; i < body.Count; ++i) 
-            {
-                UpdateSegment(i, body[i - 1].transform.position.x, body[i - 1].transform.position.y);
-            }
-        }
-        updateBody();
 
         /** Head movement */
-        void Move()
-        {
-            Position.x += Mathf.Cos(Mathf.Deg2Rad * DirectionAngle) * Step;
-            Position.y += Mathf.Sin(Mathf.Deg2Rad * DirectionAngle) * Step;
-            transform.rotation = Quaternion.Euler(0.0f, 0.0f, DirectionAngle);
-            transform.position = Position;
-        }
-
-        Move();
-    }
-
-    /** Update position and rotation of body segments */
-    void UpdateSegment(int i, float xin, float yin)
-    {
-        float dx = xin - body[i].transform.position.x;
-        float dy = yin - body[i].transform.position.y;
-        float angle = Mathf.Atan2(dy, dx);
-        Vector2 pos;
-        pos.x = xin - Mathf.Cos(angle) * SegmentSize;
-        pos.y = yin - Mathf.Sin(angle) * SegmentSize;
-        body[i].transform.position = pos;
-        body[i].transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle);
-    }
-
-
-
-    private void grow() 
-    {
-        GameObject tempObject = Instantiate(Segment);
-        Vector3 tempPos = Vector3.zero;
-
-        tempPos.x = Mathf.Cos(Mathf.Deg2Rad * DirectionAngle) * SegmentSize;
-        tempPos.y = Mathf.Sin(Mathf.Deg2Rad * DirectionAngle) * SegmentSize;
-
-        tempObject.transform.position = body[body.Count - 1].transform.position - tempPos;
-
-        body.Add(tempObject);
-
+        WormMovement();
     }
 
 
@@ -181,7 +174,7 @@ public class Head : MonoBehaviour
 
     public bool touches(Vector3 point) 
     {
-        foreach (GameObject segment in body) 
+        foreach (GameObject segment in Body) 
         {
             if (segment.transform.position == point) 
             {
@@ -192,17 +185,17 @@ public class Head : MonoBehaviour
     }
 
     public bool closeToHead(Vector3 point, int distance) {
-        if (System.Math.Abs(Position.x - point.x) <= distance) {
+        if (System.Math.Abs(Body[0].transform.position.x - point.x) <= distance) {
             return true;                
         }
-        if (System.Math.Abs(Position.y - point.y) <= distance) {
+        if (System.Math.Abs(Body[0].transform.position.y - point.y) <= distance) {
             return true;                
         }
         return false;
     }
 
     public Vector3 getLastSegmentPosition() {
-        return body[body.Count - 1].transform.position;
+        return Body[Body.Count - 1].transform.position;
     }
     
 

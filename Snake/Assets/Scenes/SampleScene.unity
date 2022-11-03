@@ -946,8 +946,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea85446d25bec8b439d49e2e54861e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Step: 10
-  SegmentSize: 20
+  Speed: 1000
+  SegmentSpace: 0.2
   RotationSensivity: 120
   Segment: {fileID: 1716257088121490837, guid: d74e8517b046a4440a06abbe2f626558, type: 3}
   isMoving: 0
@@ -980,6 +980,7 @@ GameObject:
   - component: {fileID: 1716257088354412433}
   - component: {fileID: 1716257088354412439}
   - component: {fileID: 1716257088354412440}
+  - component: {fileID: 1716257088354412441}
   m_Layer: 0
   m_Name: Head
   m_TagString: head
@@ -1024,3 +1025,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1716257088354412441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716257088354412438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10eba5e376d8a0b4b8b7b760eb37c9f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
