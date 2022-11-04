@@ -19,7 +19,9 @@ public class Ass : MonoBehaviour
 
     void Update()
     {
-        transform.position = Head.instance.getLastSegmentPosition();
+        transform.position = Head.instance.getLastSegmentPosition().position;
+        transform.rotation = Head.instance.getLastSegmentPosition().rotation;
+
     }
 
     void OnTriggerEnter2D(Collider2D other) 

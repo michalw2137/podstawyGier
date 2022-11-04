@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -86,6 +87,7 @@ public class Head : MonoBehaviour
         if (SpaceCounter == 0.0f)
         {
             pathMarker.ClearMarkers();
+
         }
 
         SpaceCounter += Time.deltaTime;
@@ -113,6 +115,15 @@ public class Head : MonoBehaviour
 
     void FixedUpdate() 
     { // order is critical! spawn > update body > move head
+
+        //DEBUGGING ! WARNING - SHIT CODE AHEAD
+        if(Body.Count < 5) {
+            Grow();
+        }
+
+
+        //DEBUGGING ! WARNING - SHIT CODE BEFORE
+
         if (!isMoving)
         {
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -136,7 +147,7 @@ public class Head : MonoBehaviour
         }
         if (other.tag == "body")
         {
-            StartCoroutine(Death());        
+            //StartCoroutine(Death());        
         }
         if (other.tag == "map")
         {
@@ -172,30 +183,8 @@ public class Head : MonoBehaviour
     
     }
 
-    public bool touches(Vector3 point) 
-    {
-        foreach (GameObject segment in Body) 
-        {
-            if (segment.transform.position == point) 
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public bool closeToHead(Vector3 point, int distance) {
-        if (System.Math.Abs(Body[0].transform.position.x - point.x) <= distance) {
-            return true;                
-        }
-        if (System.Math.Abs(Body[0].transform.position.y - point.y) <= distance) {
-            return true;                
-        }
-        return false;
-    }
-
-    public Vector3 getLastSegmentPosition() {
-        return Body[Body.Count - 1].transform.position;
+    public Transform getLastSegmentPosition() {
+        return Body[Body.Count - 1].transform;
     }
     
 
