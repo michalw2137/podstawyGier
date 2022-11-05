@@ -28,5 +28,7 @@ public class PathMarker : MonoBehaviour
     {
         markers.Clear();
         markers.Add(new Marker(transform.position, transform.rotation));
+        Debug.Log("clearing markers");
+
     }
 }

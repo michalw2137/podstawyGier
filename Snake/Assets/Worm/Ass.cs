@@ -19,7 +19,7 @@ public class Ass : MonoBehaviour
 
     void Update()
     {
-        transform.position = Head.instance.getLastSegmentPosition();
+
     }
 
     void OnTriggerEnter2D(Collider2D other) 
@@ -31,6 +31,12 @@ public class Ass : MonoBehaviour
     {
         dirtCount += count;
         Score.instance.updateText();
+    }
+
+    public void setTransform(Transform transform) 
+    {
+        this.transform.position = transform.position;
+        this.transform.rotation = transform.rotation;
     }
 
 }
