@@ -9,12 +9,15 @@ public class DirtParticle : MonoBehaviour
 
     [SerializeField] public Color deletedColor = new Color(0, 0, 0, 0); 
 
+    [SerializeField] public Color respawnedColor = new Color(0, 0, 0, 0); 
+
     private SpriteRenderer sr;
 
     void Awake()
     {
         sr = this.GetComponent<SpriteRenderer>();
         sr.color = defaultColor;
+        this.tag = "deafaultDirt";
     }
 
     void Update()
@@ -39,7 +42,8 @@ public class DirtParticle : MonoBehaviour
             if(sr.color == deletedColor 
             && Input.GetKey(KeyCode.Space)
             ) {
-                sr.color = defaultColor;
+                sr.color = respawnedColor;
+                this.tag = "respawnedDirt";
                 Ass.instance.changeDirtCount(-1);
             } 
         } 
@@ -47,6 +51,7 @@ public class DirtParticle : MonoBehaviour
         if (other.tag == "head") {
             if (sr.color == defaultColor) {
                 sr.color = deletedColor;
+                this.tag = "eatenDirt";
                 Ass.instance.changeDirtCount(1);
             } 
         } 

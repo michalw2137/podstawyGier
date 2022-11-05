@@ -12,6 +12,9 @@ TagManager:
   - ass
   - dirt
   - initial
+  - respawnedDirt
+  - eatenDirt
+  - defaultDirt
   layers:
   - Default
   - TransparentFX
