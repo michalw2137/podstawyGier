@@ -13,21 +13,21 @@ public class Food : MonoBehaviour
 
     void Start() 
     {
-        spawn();
+        Spawn();
     }
 
     void OnTriggerEnter2D(Collider2D other) 
     {
-        if (other.tag == "head") {
-            //Debug.Log("spawning food...");
-            spawn();
+        if (other.tag == "initial") {
+            Debug.Log("spawning food...");
+            Spawn();
         } 
         if (other.tag == "body") {
-            spawn();
+            Spawn();
         }
     }
 
-    void spawn() 
+    public void Spawn() 
     {
         Vector2 start = DirtSpawner.instance.start;
         Vector2 end = DirtSpawner.instance.end;

@@ -414,7 +414,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1019702200}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -921,7 +921,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 99384771
   m_SortingLayer: 1
-  m_SortingOrder: 10
+  m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: 07ed61fe4d5563a45a152a5dfd28d84f, type: 3}
   m_Color: {r: 0.9647059, g: 0.6156863, b: 0.8, a: 1}
   m_FlipX: 0
@@ -945,10 +945,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea85446d25bec8b439d49e2e54861e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1000
-  SegmentSpace: 0.2
-  RotationSensivity: 120
+  MoveSpeed: 150
+  BodySpeed: 10
+  SteerSpeed: 180
   Segment: {fileID: 1716257088121490837, guid: d74e8517b046a4440a06abbe2f626558, type: 3}
+  FirstSegment: {fileID: 0}
+  SecondSegment: {fileID: 0}
+  Gap: 7
   isMoving: 0
 --- !u!4 &1716257088354412435
 Transform:
@@ -958,7 +961,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1716257088354412438}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.7, y: -25, z: 0}
+  m_LocalPosition: {x: -29.2, y: -25, z: 0}
   m_LocalScale: {x: 17.61, y: 17.61, z: 17.61}
   m_ConstrainProportionsScale: 1
   m_Children:
