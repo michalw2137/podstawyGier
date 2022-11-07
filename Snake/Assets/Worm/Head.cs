@@ -120,6 +120,10 @@ public class Head : MonoBehaviour
             Food.instance.Spawn();
             Grow();
         }
+        if (other.tag == "respawnedDirt")
+        {
+            isMoving = false;
+        }
 
     }
  
