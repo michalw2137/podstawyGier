@@ -45,11 +45,15 @@ public class DirtParticle : MonoBehaviour
                 sr.color = respawnedColor;
                 this.tag = "respawnedDirt";
                 Ass.instance.changeDirtCount(-1);
+
+                DirtDetector.instance.addParticle(this);       
             } 
         } 
 
         if (other.tag == "head") {
             if (sr.color == defaultColor) {
+                //Debug.Log($"touched HEAD");
+
                 sr.color = deletedColor;
                 this.tag = "eatenDirt";
                 Ass.instance.changeDirtCount(1);
@@ -57,7 +61,10 @@ public class DirtParticle : MonoBehaviour
         } 
     }
 
-
+    public void resetColor()
+    {
+        sr.color = defaultColor;
+    }
 
 
 }

@@ -39,7 +39,7 @@ public class Head : MonoBehaviour
 
     void Start()
     {
-        isMoving = false;
+        isMoving = true;
 
         Grow();
         Grow();
@@ -56,7 +56,7 @@ public class Head : MonoBehaviour
 
 
     /** Spawn body segment*/
-    private void Grow()
+    public void Grow()
     {
         // Instantiate body instance and
         // add it to the list
@@ -69,9 +69,7 @@ public class Head : MonoBehaviour
     // https://www.youtube.com/watch?v=WZpdtNOisvA
     void Update() 
     { 
-        if(Input.anyKey) {
-            isMoving = true;
-        }
+
         if(!isMoving) {
             return;
         }
@@ -112,17 +110,18 @@ public class Head : MonoBehaviour
         if (other.tag == "body")
         {
             // TODO: i dont think i works properly all the time
-            Debug.Log("DEATH");
-            StartCoroutine(Death());        
+            //Debug.Log("DEATH");
+           // StartCoroutine(Death());        
         }
-        if (other.tag == "food")
-        {
-            Food.instance.Spawn();
-            Grow();
-        }
+        // if (other.tag == "food")
+        // {
+        //     Food.instance.Spawn();
+        //     Grow();
+        // }
         if (other.tag == "respawnedDirt")
         {
-            isMoving = false;
+            //Debug.Log("DEATH");
+            //StartCoroutine(Death());        
         }
 
     }
@@ -130,14 +129,13 @@ public class Head : MonoBehaviour
 
     IEnumerator Death()
     {
-    
         //do stuff
         Debug.Log("death"); 
 
         isMoving = false;
 
         //wait for enter to be pressed
-        while(!Input.GetKeyDown(KeyCode.Return))
+        while(!Input.anyKey)
         {
             yield return null;
         }
