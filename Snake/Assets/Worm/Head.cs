@@ -24,6 +24,11 @@ public class Head : MonoBehaviour
     [SerializeField]
     public int Gap = 10;
 
+    [SerializeField]
+    public Sprite tailSprite;
+
+    [SerializeField]
+    public Sprite bodySprite;
 
     private List<GameObject> Body;
     private List<Vector3> PositionsHistory;
@@ -98,8 +103,14 @@ public class Head : MonoBehaviour
             //body.transform.Rotate(Vector3.right * 90);
             body.transform.Rotate(Vector3.up * 90);
 
+            Body[index].GetComponent<SpriteRenderer>().sprite = bodySprite;
+
             index++;
         }
+
+        Body[index-1].GetComponent<SpriteRenderer>().flipX = true;
+        Body[index-1].GetComponent<SpriteRenderer>().sprite = tailSprite;
+
         // Update dirt spawner's position
         Ass.instance.setTransform(Body.Last().transform);
 
