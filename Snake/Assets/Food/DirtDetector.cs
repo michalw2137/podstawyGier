@@ -20,7 +20,7 @@ public class DirtDetector : MonoBehaviour
     public float clearingRadius = 150.0f;
 
     [SerializeField]
-    public Color unripeColor = new Color(0, 255, 0, 255);
+    public Color unripeColor = new Color(85, 255, 0, 255);
 
 
     [SerializeField]
@@ -61,6 +61,7 @@ public class DirtDetector : MonoBehaviour
             ripeness += Time.deltaTime;
 
             currentColor.r = ripeness / ripingTreshold;
+            currentColor.g += ripeness / ripingTreshold / 16.0f;
             //Debug.Log(currentColor.b);
 
             Food.instance.setColor(currentColor);
@@ -70,6 +71,9 @@ public class DirtDetector : MonoBehaviour
 
         if(ripeness >= ripingTreshold)
         {
+            currentColor.g = 1;
+            Food.instance.setColor(currentColor);
+
             foreach(DirtParticle particle in nearbyDirtParticles)
             {
                 particle.resetColor();
