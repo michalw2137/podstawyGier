@@ -63,8 +63,10 @@ public class Head : MonoBehaviour
     /** Spawn body segment*/
     public void Grow()
     {
+        
         // Instantiate body instance and
         // add it to the list
+        Ass.instance.updateCap(Body.Count);
         GameObject body = Instantiate(Segment);
         Body.Add(body);
     }
@@ -156,11 +158,6 @@ public class Head : MonoBehaviour
 
         SceneManager.LoadScene(0);
     
-    }
-
-    public int getSize()
-    {
-        return Body.Count;
     }
 
 }

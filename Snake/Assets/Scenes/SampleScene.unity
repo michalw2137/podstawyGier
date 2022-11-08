@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9edce129f82528a4e8ead53b8efef9a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dirtCapMultiplier: 100
+  dirtCapMultiplier: 9
 --- !u!58 &1019702202
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -15,11 +15,11 @@ public class Score : MonoBehaviour
 
     void Start()
     {
-        dirtCollected.text = $"dirt stored: {Ass.instance.dirtCount}";
+        updateText();
     }
 
     public void updateText() {
-        dirtCollected.text = $"dirt stored: {Ass.instance.dirtCount}";
+        dirtCollected.text = $"dirt stored: {Ass.instance.dirtCount} / {Ass.instance.getMaxCapacity()}";
     }
    
 }

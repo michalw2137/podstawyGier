@@ -41,11 +41,10 @@ public class DirtParticle : MonoBehaviour
         if (other.tag == "ass") {
             if(sr.color == deletedColor 
             && Input.GetKey(KeyCode.Space)
+            && Ass.instance.canChangeDirtCount(-1)
             ) {
                 sr.color = respawnedColor;
                 this.tag = "respawnedDirt";
-                Ass.instance.changeDirtCount(-1);
-
                 DirtDetector.instance.addParticle(this);       
             } 
         } 
@@ -56,7 +55,12 @@ public class DirtParticle : MonoBehaviour
 
                 sr.color = deletedColor;
                 this.tag = "eatenDirt";
-                Ass.instance.changeDirtCount(1);
+
+                if(!Input.GetKey(KeyCode.Space)) 
+                {
+                    Ass.instance.canChangeDirtCount(1);
+                }
+
             } 
         } 
     }
