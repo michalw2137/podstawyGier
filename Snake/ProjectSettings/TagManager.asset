@@ -16,6 +16,7 @@ TagManager:
   - respawnedDirt
   - deafaultDirt
   - dirtDetection
+  - Gravity
   layers:
   - Default
   - TransparentFX
