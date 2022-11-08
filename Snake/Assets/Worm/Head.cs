@@ -34,6 +34,8 @@ public class Head : MonoBehaviour
     private List<Vector3> PositionsHistory;
 
     public bool isMoving;
+    private bool isJumping = false;
+    private float fallDir = 0;
 
     void Awake()
     {
@@ -85,8 +87,11 @@ public class Head : MonoBehaviour
         transform.position += transform.right * MoveSpeed * Time.deltaTime;
 
         // Steer
-        float steerDirection = Input.GetAxis("Horizontal"); // Returns value -1, 0, or 1
-        transform.Rotate(Vector3.back * steerDirection * SteerSpeed * Time.deltaTime);
+        if (!isJumping)
+        {
+            float steerDirection = Input.GetAxis("Horizontal"); // Returns value -1, 0, or 1
+            transform.Rotate(Vector3.back * steerDirection * SteerSpeed * Time.deltaTime);
+        }
 
         // Store position history
         PositionsHistory.Insert(0, transform.position);
@@ -115,11 +120,11 @@ public class Head : MonoBehaviour
 
         // Update dirt spawner's position
         Ass.instance.setTransform(Body.Last().transform);
-
     }
 
 
-    void OnTriggerEnter2D(Collider2D other) {
+    void OnTriggerEnter2D(Collider2D other)
+    {
         if (other.tag == "body")
         {
             // TODO: i dont think i works properly all the time
@@ -136,9 +141,36 @@ public class Head : MonoBehaviour
             //Debug.Log("DEATH");
             //StartCoroutine(Death());        
         }
-
+        if (other.tag == "Gravity")
+        {
+            if (transform.rotation.w > transform.rotation.z)
+            {
+                fallDir = 0.5f;
+            }
+            else
+            {
+                fallDir = -0.5f;
+            }
+            isJumping = true;
+        }
     }
- 
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.tag == "Gravity")
+        {
+            transform.Rotate(Vector3.back * fallDir * SteerSpeed * Time.deltaTime);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Gravity")
+        {
+            isJumping = false;
+        }
+    }
+
 
     IEnumerator Death()
     {
