@@ -8,12 +8,18 @@ public class Ass : MonoBehaviour
 
     public int dirtCount {get; set;}
 
+    [SerializeField]
+    public int dirtCapMultiplier = 100;
+
+    private int dirtCap;
+
     void Awake() {
         instance = this;
     }
 
     void Start()
     {
+        dirtCap = dirtCapMultiplier * Head.instance.getSize();
         dirtCount = 0;
     }
 
@@ -29,7 +35,8 @@ public class Ass : MonoBehaviour
 
     public void changeDirtCount(int count) 
     {
-        dirtCount += count;
+        if(dirtCount < dirtCap)
+            dirtCount += count;
         Score.instance.updateText();
     }
 

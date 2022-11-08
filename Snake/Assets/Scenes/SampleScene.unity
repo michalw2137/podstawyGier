@@ -370,6 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9edce129f82528a4e8ead53b8efef9a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dirtCapMultiplier: 100
 --- !u!58 &1019702202
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -383,9 +384,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.27, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.2528129
 --- !u!50 &1019702203
 Rigidbody2D:
   serializedVersion: 4
@@ -1013,9 +1014,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 99384771
   m_SortingLayer: 1
-  m_SortingOrder: 11
-  m_Sprite: {fileID: 21300000, guid: 07ed61fe4d5563a45a152a5dfd28d84f, type: 3}
-  m_Color: {r: 0.9647059, g: 0.6156863, b: 0.8, a: 1}
+  m_SortingOrder: 50
+  m_Sprite: {fileID: 21300000, guid: 454ff1336f5893f46aba74cb54afe2a6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1041,7 +1042,9 @@ MonoBehaviour:
   BodySpeed: 20
   SteerSpeed: 180
   Segment: {fileID: 1716257088121490837, guid: d74e8517b046a4440a06abbe2f626558, type: 3}
-  Gap: 7
+  Gap: 30
+  tailSprite: {fileID: 21300000, guid: d69bd618af97fc34e8989fd6316ab674, type: 3}
+  bodySprite: {fileID: 21300000, guid: 4e8694a3c6a20e144a7f1ba43254b226, type: 3}
   isMoving: 0
 --- !u!4 &1716257088354412435
 Transform:
@@ -1052,7 +1055,7 @@ Transform:
   m_GameObject: {fileID: 1716257088354412438}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -29.2, y: -25, z: 0}
-  m_LocalScale: {x: 17.61, y: 17.61, z: 17.61}
+  m_LocalScale: {x: 40, y: 40, z: 40}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1019702206}
@@ -1114,9 +1117,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.15570575, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.23298442
 --- !u!114 &1716257088354412441
 MonoBehaviour:
   m_ObjectHideFlags: 0

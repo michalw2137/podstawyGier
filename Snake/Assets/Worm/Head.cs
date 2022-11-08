@@ -158,4 +158,9 @@ public class Head : MonoBehaviour
     
     }
 
+    public int getSize()
+    {
+        return Body.Count;
+    }
+
 }
