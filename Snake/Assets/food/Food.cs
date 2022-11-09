@@ -31,6 +31,9 @@ public class Food : MonoBehaviour
         if (other.tag == "head") {
             if(DirtDetector.instance.isRipe()){
                 Head.instance.Grow();
+                Head.instance.Grow();
+                Head.instance.Grow();
+
                 Spawn();
                 DirtDetector.instance.reset();
             }

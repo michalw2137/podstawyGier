@@ -68,9 +68,23 @@ public class Head : MonoBehaviour
         
         // Instantiate body instance and
         // add it to the list
-        Ass.instance.updateCap(Body.Count);
         GameObject body = Instantiate(Segment);
+
+        if(Body.Count == 0 ) {
+            body.transform.position = this.transform.position;
+        } else {
+            body.transform.position = Body.Last().transform.position;
+        }
+
+        if(Body.Count < 5) {
+           body.tag = "initial";
+        }
+
         Body.Add(body);
+
+
+        Ass.instance.updateCap(Body.Count);
+
     }
 
 
@@ -139,8 +153,8 @@ public class Head : MonoBehaviour
         if (other.tag == "body")
         {
             // TODO: i dont think i works properly all the time
-            //Debug.Log("DEATH");
-           // StartCoroutine(Death());        
+            Debug.Log("DEATH");
+            StartCoroutine(Death());        
         }
         // if (other.tag == "food")
         // {
