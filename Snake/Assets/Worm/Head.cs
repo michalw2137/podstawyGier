@@ -76,7 +76,7 @@ public class Head : MonoBehaviour
 
     // code stolen from : 
     // https://www.youtube.com/watch?v=WZpdtNOisvA
-    void Update() 
+    void FixedUpdate() 
     { 
 
         if(!isMoving) {
@@ -98,8 +98,12 @@ public class Head : MonoBehaviour
 
         // Move body parts
         int index = 0;
+        
+        int tempGap = (int) (Gap / Time.deltaTime / 100);
+        //Debug.Log($"gap = {tempGap}, max = {PositionsHistory.Count}, deltaTime = {Time.deltaTime}");
+
         foreach (GameObject body in Body) {
-            Vector3 point = PositionsHistory[Mathf.Clamp(index * Gap, 0, PositionsHistory.Count - 1)];
+            Vector3 point = PositionsHistory[Mathf.Clamp(index * tempGap, 0, PositionsHistory.Count - 1)];
 
             // Move body towards the point along the snakes path
             Vector3 moveDirection = point - body.transform.position;
@@ -110,14 +114,21 @@ public class Head : MonoBehaviour
             //body.transform.Rotate(Vector3.right * 90);
             body.transform.Rotate(Vector3.up * 90);
 
-            Body[index].GetComponent<SpriteRenderer>().sprite = bodySprite;
+
+            if(index != Body.Count - 1) {
+                Body[index].GetComponent<SpriteRenderer>().sprite = bodySprite;
+
+            } else 
+            {
+                Body[index].GetComponent<SpriteRenderer>().flipX = true;
+                Body[index].GetComponent<SpriteRenderer>().sprite = tailSprite;
+
+            }
 
             index++;
         }
 
-        Body[index-1].GetComponent<SpriteRenderer>().flipX = true;
-        Body[index-1].GetComponent<SpriteRenderer>().sprite = tailSprite;
-
+        
         // Update dirt spawner's position
         Ass.instance.setTransform(Body.Last().transform);
     }
