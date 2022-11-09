@@ -22,7 +22,7 @@ public class DirtParticle : MonoBehaviour
 
     void Update()
     {
-
+        //Debug.Log($"fire: {Input.GetAxis("Fire1")}");
     }
 
     void OnTriggerEnter2D(Collider2D other) 
@@ -37,15 +37,17 @@ public class DirtParticle : MonoBehaviour
         //         sr.color = Color.blue;
         //     }
         // } 
+        
 
         if (other.tag == "ass") {
             if(sr.color == deletedColor 
-            && Input.GetKey(KeyCode.Space)
+            && Input.GetAxis("Fire1") == 1
             && Ass.instance.canChangeDirtCount(-1)
             ) {
                 sr.color = respawnedColor;
                 this.tag = "respawnedDirt";
                 DirtDetector.instance.addParticle(this);       
+                
             } 
         } 
 
@@ -55,9 +57,8 @@ public class DirtParticle : MonoBehaviour
 
                 sr.color = deletedColor;
                 this.tag = "eatenDirt";
-
-                if(!Input.GetKey(KeyCode.Space)) 
-                {
+                
+                if(Input.GetAxis("Fire1") == 0) {
                     Ass.instance.canChangeDirtCount(1);
                 }
 

@@ -1293,7 +1293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nearbyDirt: 0
   dirtRequired: 75
-  ripingTreshold: 8
+  maxRipeness: 5
   detectionRadius: 70
   clearingRadius: 150
   unripeColor: {r: 0, g: 0.33333334, b: 0, a: 255}

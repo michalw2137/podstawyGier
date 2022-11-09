@@ -11,7 +11,7 @@ public class DirtDetector : MonoBehaviour
     public int dirtRequired = 150;
 
     [SerializeField]
-    public float ripingTreshold = 5.0f;
+    public float maxRipeness = 5.0f;
 
     [SerializeField]
     public float detectionRadius = 100.0f;
@@ -57,11 +57,11 @@ public class DirtDetector : MonoBehaviour
         // if(nearbyDirt>0)
         //     Debug.Log($"nearby dirt: {nearbyDirt}");
 
-        if(nearbyDirt >= dirtRequired && ripeness < ripingTreshold) {
+        if(nearbyDirt >= dirtRequired && ripeness < maxRipeness) {
             ripeness += Time.deltaTime;
 
-            currentColor.r = ripeness / ripingTreshold;
-            currentColor.g += ripeness / ripingTreshold / 16.0f;
+            currentColor.r = ripeness / maxRipeness;
+            currentColor.g += ripeness / maxRipeness / 16.0f;
             //Debug.Log(currentColor.b);
 
             Food.instance.setColor(currentColor);
@@ -69,7 +69,7 @@ public class DirtDetector : MonoBehaviour
             Debug.Log($"ripeness: {ripeness}");
         }
 
-        if(ripeness >= ripingTreshold)
+        if(ripeness >= maxRipeness)
         {
             currentColor.g = 1;
             Food.instance.setColor(currentColor);
@@ -92,7 +92,7 @@ public class DirtDetector : MonoBehaviour
 
     public bool isRipe()
     {
-        return (ripeness>ripingTreshold);
+        return (ripeness>maxRipeness);
     }
 
     public void changeNearbyDirt(int delta)
