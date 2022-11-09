@@ -334,7 +334,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 752353877}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5294, y: 186.3833, z: 0}
+  m_LocalPosition: {x: 0.5294, y: 297, z: 0}
   m_LocalScale: {x: 875.27185, y: 186.84714, z: 200}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -420,7 +420,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -281, y: 152}
+  m_AnchoredPosition: {x: -281, y: 233}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &900043656
@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   start: {x: -500, y: -280}
-  end: {x: 500, y: 150}
+  end: {x: 500, y: 250}
   dirtSize: 10
   dirtParticle: {fileID: 8189657484937228441, guid: fac9a6a2107044c4ab4992ee53332e3e,
     type: 3}
@@ -718,7 +718,7 @@ PrefabInstance:
     - target: {fileID: 8189657484937228443, guid: fac9a6a2107044c4ab4992ee53332e3e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -280
+      value: 255
       objectReference: {fileID: 0}
     - target: {fileID: 8189657484937228443, guid: fac9a6a2107044c4ab4992ee53332e3e,
         type: 3}
@@ -1104,7 +1104,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 502c880454b76c849b926183168b3c8c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.99912596, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1122,8 +1122,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1541818034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.8289, y: 36.3738, z: 0}
-  m_LocalScale: {x: 83.63871, y: 72.08973, z: 0}
+  m_LocalPosition: {x: -3.8289, y: 104.8, z: 0}
+  m_LocalScale: {x: 83.63871, y: 92.3, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1817469774}
