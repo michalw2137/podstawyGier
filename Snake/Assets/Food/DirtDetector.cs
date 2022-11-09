@@ -60,20 +60,14 @@ public class DirtDetector : MonoBehaviour
         if(nearbyDirt >= dirtRequired && ripeness < maxRipeness) {
             ripeness += Time.deltaTime;
 
-            currentColor.r = ripeness / maxRipeness;
-            currentColor.g += ripeness / maxRipeness / 16.0f;
-            //Debug.Log(currentColor.b);
+            adjustColor();
 
             Food.instance.setColor(currentColor);
 
-            Debug.Log($"ripeness: {ripeness}");
         }
 
         if(ripeness >= maxRipeness)
         {
-            currentColor.g = 1;
-            Food.instance.setColor(currentColor);
-
             foreach(DirtParticle particle in nearbyDirtParticles)
             {
                 particle.resetColor();
@@ -86,7 +80,7 @@ public class DirtDetector : MonoBehaviour
     {
         if (other.tag == "respawnedDirt") {
             nearbyDirt++;
-            Debug.Log($"nearbyDirt: {nearbyDirt}");
+           // Debug.Log($"nearbyDirt: {nearbyDirt}");
         }
     }
 
@@ -130,6 +124,23 @@ public class DirtDetector : MonoBehaviour
         }
     }
 
+    private void adjustColor()
+    {
+        float finalCoeff = ripeness / maxRipeness;
+        float startCoeff = 1 - finalCoeff;
+
+        // Debug.Log($"start coeff: {startCoeff}");
+        // Debug.Log($"final coeff: {finalCoeff}");
+
+        Color startTemp = startCoeff * this.unripeColor;
+        Color finalTemp = finalCoeff * this.ripeColor;
+
+        // Debug.Log($"start Color: {startTemp}");
+        // Debug.Log($"final Color: {finalCoeff}");
+
+        this.currentColor = startTemp + finalTemp;
+
+    }
     public void reset()
     {
         nearbyDirt = 0;

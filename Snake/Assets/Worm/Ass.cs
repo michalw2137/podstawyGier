@@ -65,7 +65,7 @@ public class Ass : MonoBehaviour
     public void updateCap(int size)
     {
         dirtCap = dirtCapMultiplier * size;
-        Debug.Log($"current cup = {dirtCap}");
+        //Debug.Log($"current cup = {dirtCap}");
     }
 
     public int getMaxCapacity()

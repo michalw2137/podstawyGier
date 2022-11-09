@@ -35,7 +35,7 @@ public class Food : MonoBehaviour
                 DirtDetector.instance.reset();
             }
             else {
-                Debug.Log("isnt ripe");
+               // Debug.Log("isnt ripe");
             }
         }
     }
