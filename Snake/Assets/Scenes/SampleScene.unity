@@ -1562,7 +1562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 150
   BodySpeed: 20
-  SteerSpeed: 180
+  SteerSpeed: 240
   Segment: {fileID: 1716257088121490837, guid: d74e8517b046a4440a06abbe2f626558, type: 3}
   Gap: 9
   tailSprite: {fileID: 21300000, guid: d69bd618af97fc34e8989fd6316ab674, type: 3}
