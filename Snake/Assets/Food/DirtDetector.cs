@@ -60,8 +60,8 @@ public class DirtDetector : MonoBehaviour
         if(nearbyDirt >= dirtRequired && ripeness < ripingTreshold) {
             ripeness += Time.deltaTime;
 
-            currentColor.r = ripeness / ripingTreshold / 16.0f;
-            currentColor.g += ripeness / ripingTreshold;
+            currentColor.r = ripeness / ripingTreshold;
+            currentColor.g += ripeness / ripingTreshold / 16.0f;
             //Debug.Log(currentColor.b);
 
             Food.instance.setColor(currentColor);
