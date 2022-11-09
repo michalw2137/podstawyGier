@@ -52,8 +52,8 @@ public class Food : MonoBehaviour
       
         Vector3 position = new Vector3(0, 0, 0);
 
-        position.x = Random.Range(start.x + 50, end.x - 50); 
-        position.y = Random.Range(start.y + 50, end.y - 50); 
+        position.x = Random.Range(start.x + 150, end.x - 150); 
+        position.y = Random.Range(start.y + 150, end.y - 150); 
         // Debug.Log($"X range: {start.x} {end.x}");
         // Debug.Log($"Y range: {start.y} {end.y}");
 
