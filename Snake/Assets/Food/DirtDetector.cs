@@ -58,9 +58,9 @@ public class DirtDetector : MonoBehaviour
         //     Debug.Log($"nearby dirt: {nearbyDirt}");
 
         if(nearbyDirt >= dirtRequired && ripeness < maxRipeness) {
-            ripeness += Time.deltaTime;
-
-            adjustColor();
+            //ripeness += Time.deltaTime;
+            ripeness = maxRipeness;
+            //adjustColor();
 
             Food.instance.setColor(currentColor);
 
@@ -76,22 +76,24 @@ public class DirtDetector : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other) 
-    {
-        if (other.tag == "respawnedDirt") {
-            nearbyDirt++;
-           // Debug.Log($"nearbyDirt: {nearbyDirt}");
-        }
-    }
-
     public bool isRipe()
     {
-        return (ripeness>maxRipeness);
+        return (ripeness >= maxRipeness);
     }
 
     public void changeNearbyDirt(int delta)
     {
         nearbyDirt += delta;
+
+        if(nearbyDirt >= dirtRequired * 3 / 3.0f) {
+            Food.instance.setSprite(3);
+        } else if (nearbyDirt >= dirtRequired * 2 / 3.0f) {
+            Food.instance.setSprite(2);
+        } else if (nearbyDirt >= dirtRequired * 1 / 3.0f) {
+            Food.instance.setSprite(1);
+        }  else {
+            Food.instance.setSprite(0);
+        }
     }
 
     public bool isInside(Vector3 coords, float radius)
@@ -119,7 +121,7 @@ public class DirtDetector : MonoBehaviour
 
             if(isInside(particle.transform.position, detectionRadius))
             {
-                nearbyDirt ++;
+                changeNearbyDirt(1);
             }
         }
     }
