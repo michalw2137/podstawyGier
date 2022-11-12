@@ -35,6 +35,7 @@ public class DirtDetector : MonoBehaviour
 
     private List<DirtParticle> nearbyDirtParticles;
 
+    private Food food;
 
     void Awake()
     {
@@ -44,8 +45,11 @@ public class DirtDetector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        food = transform.parent.GetComponent<Food>();
+
         currentColor = unripeColor;
-        Food.instance.setColor(currentColor);
+
+        food.setColor(currentColor);
 
         nearbyDirtParticles = new List<DirtParticle>();
     }
@@ -62,7 +66,7 @@ public class DirtDetector : MonoBehaviour
             ripeness = maxRipeness;
             //adjustColor();
 
-            Food.instance.setColor(currentColor);
+            food.setColor(currentColor);
 
         }
 
@@ -86,13 +90,13 @@ public class DirtDetector : MonoBehaviour
         nearbyDirt += delta;
 
         if(nearbyDirt >= dirtRequired * 3 / 3.0f) {
-            Food.instance.setSprite(3);
+            food.setSprite(3);
         } else if (nearbyDirt >= dirtRequired * 2 / 3.0f) {
-            Food.instance.setSprite(2);
+            food.setSprite(2);
         } else if (nearbyDirt >= dirtRequired * 1 / 3.0f) {
-            Food.instance.setSprite(1);
+            food.setSprite(1);
         }  else {
-            Food.instance.setSprite(0);
+            food.setSprite(0);
         }
     }
 
@@ -147,7 +151,6 @@ public class DirtDetector : MonoBehaviour
     {
         nearbyDirt = 0;
         ripeness = 0;
-
-        
+        nearbyDirtParticles.Clear();
     }
 }

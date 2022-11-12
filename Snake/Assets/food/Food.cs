@@ -20,6 +20,8 @@ public class Food : MonoBehaviour
     [SerializeField]
     public Sprite seed3;
 
+    private DirtDetector dirtDetector;
+
     void Awake()
     {
         instance = this;
@@ -28,6 +30,8 @@ public class Food : MonoBehaviour
 
     void Start() 
     {
+        dirtDetector = transform.GetChild(0).GetComponent<DirtDetector>();
+
         Spawn();
     }
 
@@ -42,13 +46,12 @@ public class Food : MonoBehaviour
         // }
         if (other.tag == "head") {
             Debug.Log("collision with head");
-            if(DirtDetector.instance.isRipe()){
+            if(dirtDetector.isRipe()){
                 Head.instance.Grow();
                 Head.instance.Grow();
                 Head.instance.Grow();
 
                 Spawn();
-                DirtDetector.instance.reset();
             }
             else {
                // Debug.Log("isnt ripe");
@@ -59,7 +62,8 @@ public class Food : MonoBehaviour
     public void Spawn() 
     {
         sr.sprite = seed0;
-        sr.color = DirtDetector.instance.unripeColor;
+        sr.color = dirtDetector.unripeColor;
+        dirtDetector.reset();
 
         Vector2 start = DirtSpawner.instance.start;
         Vector2 end = DirtSpawner.instance.end;

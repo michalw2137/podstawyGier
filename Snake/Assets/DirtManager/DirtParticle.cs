@@ -46,7 +46,7 @@ public class DirtParticle : MonoBehaviour
             ) {
                 sr.color = respawnedColor;
                 this.tag = "respawnedDirt";
-                DirtDetector.instance.addParticle(this);       
+                FoodManager.instance.addParticle(this);       
                 
             } 
         } 
