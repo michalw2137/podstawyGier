@@ -142,7 +142,6 @@ public class Head : MonoBehaviour
             index++;
         }
 
-        
         // Update dirt spawner's position
         Ass.instance.setTransform(Body.Last().transform);
     }
@@ -166,9 +165,9 @@ public class Head : MonoBehaviour
             //Debug.Log("DEATH");
             //StartCoroutine(Death());        
         }
-        if (other.tag == "Gravity")
+        if (other.tag == "GravityHorizontal")
         {
-            if (transform.rotation.w > transform.rotation.z)
+            if (Mathf.Abs(transform.rotation.w) > Mathf.Abs(transform.rotation.z))
             {
                 fallDir = 0.5f;
             }
@@ -176,21 +175,44 @@ public class Head : MonoBehaviour
             {
                 fallDir = -0.5f;
             }
+            if (transform.rotation.z < 0.0f)
+            {
+                fallDir *= -1.0f;
+            }
+            isJumping = true;
+        }
+
+
+        if (other.tag == "GravityVertical")
+        {
+            if (transform.rotation.z < 0.0f)
+            {
+                fallDir = 0.5f;
+            }
+            else
+            {
+                fallDir = -0.5f;
+            }
+            if (Mathf.Abs(transform.rotation.w) < Mathf.Abs(transform.rotation.z))
+            {
+                fallDir *= -1.0f;
+            }
             isJumping = true;
         }
     }
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Gravity")
+        if (other.tag == "GravityHorizontal" || other.tag == "GravityVertical")
         {
             transform.Rotate(Vector3.back * fallDir * SteerSpeed * Time.deltaTime);
+            isJumping = true; // Added to prevent bug while changing gravity areas
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Gravity")
+        if (other.tag == "GravityHorizontal" || other.tag == "GravityVertical")
         {
             isJumping = false;
         }

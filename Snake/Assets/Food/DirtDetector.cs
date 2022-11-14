@@ -35,6 +35,7 @@ public class DirtDetector : MonoBehaviour
 
     private List<DirtParticle> nearbyDirtParticles;
 
+    private Food food;
 
     void Awake()
     {
@@ -44,8 +45,11 @@ public class DirtDetector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        food = transform.parent.GetComponent<Food>();
+
         currentColor = unripeColor;
-        Food.instance.setColor(currentColor);
+
+        food.setColor(currentColor);
 
         nearbyDirtParticles = new List<DirtParticle>();
     }
@@ -58,11 +62,11 @@ public class DirtDetector : MonoBehaviour
         //     Debug.Log($"nearby dirt: {nearbyDirt}");
 
         if(nearbyDirt >= dirtRequired && ripeness < maxRipeness) {
-            ripeness += Time.deltaTime;
+            //ripeness += Time.deltaTime;
+            ripeness = maxRipeness;
+            //adjustColor();
 
-            adjustColor();
-
-            Food.instance.setColor(currentColor);
+            food.setColor(currentColor);
 
         }
 
@@ -76,22 +80,24 @@ public class DirtDetector : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other) 
-    {
-        if (other.tag == "respawnedDirt") {
-            nearbyDirt++;
-           // Debug.Log($"nearbyDirt: {nearbyDirt}");
-        }
-    }
-
     public bool isRipe()
     {
-        return (ripeness>maxRipeness);
+        return (ripeness >= maxRipeness);
     }
 
     public void changeNearbyDirt(int delta)
     {
         nearbyDirt += delta;
+
+        if(nearbyDirt >= dirtRequired * 3 / 3.0f) {
+            food.setSprite(3);
+        } else if (nearbyDirt >= dirtRequired * 2 / 3.0f) {
+            food.setSprite(2);
+        } else if (nearbyDirt >= dirtRequired * 1 / 3.0f) {
+            food.setSprite(1);
+        }  else {
+            food.setSprite(0);
+        }
     }
 
     public bool isInside(Vector3 coords, float radius)
@@ -119,7 +125,7 @@ public class DirtDetector : MonoBehaviour
 
             if(isInside(particle.transform.position, detectionRadius))
             {
-                nearbyDirt ++;
+                changeNearbyDirt(1);
             }
         }
     }
@@ -145,7 +151,6 @@ public class DirtDetector : MonoBehaviour
     {
         nearbyDirt = 0;
         ripeness = 0;
-
-        
+        nearbyDirtParticles.Clear();
     }
 }
