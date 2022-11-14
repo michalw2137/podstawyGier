@@ -11,27 +11,10 @@ public class DirtDetector : MonoBehaviour
     public int dirtRequired = 150;
 
     [SerializeField]
-    public float maxRipeness = 5.0f;
-
-    [SerializeField]
     public float detectionRadius = 100.0f;
 
     [SerializeField]
     public float clearingRadius = 150.0f;
-
-    [SerializeField]
-    public Color unripeColor = new Color(85, 255, 0, 255);
-
-
-    [SerializeField]
-    public Color ripeColor = new Color(255, 255, 0, 255);
-
-    [SerializeField]
-    public Color currentColor;
-
-    public static float ripeness = 0.0f;
-
-    public static DirtDetector instance;
 
     private List<DirtParticle> nearbyDirtParticles;
 
@@ -39,65 +22,55 @@ public class DirtDetector : MonoBehaviour
 
     void Awake()
     {
-        instance = this;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         food = transform.parent.GetComponent<Food>();
-
-        currentColor = unripeColor;
-
-        food.setColor(currentColor);
-
+        
         nearbyDirtParticles = new List<DirtParticle>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        // if(nearbyDirt>0)
-        //     Debug.Log($"nearby dirt: {nearbyDirt}");
-
-        if(nearbyDirt >= dirtRequired && ripeness < maxRipeness) {
-            //ripeness += Time.deltaTime;
-            ripeness = maxRipeness;
-            //adjustColor();
-
-            food.setColor(currentColor);
-
-        }
-
-        if(ripeness >= maxRipeness)
-        {
-            foreach(DirtParticle particle in nearbyDirtParticles)
-            {
-                particle.resetColor();
-            }
-            nearbyDirtParticles.Clear();
-        }
-    }
-
-    public bool isRipe()
-    {
-        return (ripeness >= maxRipeness);
     }
 
     public void changeNearbyDirt(int delta)
     {
         nearbyDirt += delta;
 
-        if(nearbyDirt >= dirtRequired * 3 / 3.0f) {
+        if(nearbyDirt >= dirtRequired) 
+        {
             food.setSprite(3);
-        } else if (nearbyDirt >= dirtRequired * 2 / 3.0f) {
+            food.setRipe(true);
+            reset();
+        } else if (nearbyDirt >= dirtRequired * 2 / 3.0f) 
+        {
             food.setSprite(2);
-        } else if (nearbyDirt >= dirtRequired * 1 / 3.0f) {
+        } else if (nearbyDirt >= dirtRequired * 1 / 3.0f) 
+        {
             food.setSprite(1);
-        }  else {
+        }  else 
+        {
             food.setSprite(0);
         }
+
+
+    }
+
+    public void reset()
+    {
+        foreach(DirtParticle particle in nearbyDirtParticles)
+        {
+            particle.resetColor();
+        }
+
+        nearbyDirt = 0;
+        nearbyDirtParticles.Clear();
     }
 
     public bool isInside(Vector3 coords, float radius)
@@ -130,27 +103,22 @@ public class DirtDetector : MonoBehaviour
         }
     }
 
-    private void adjustColor()
-    {
-        float finalCoeff = ripeness / maxRipeness;
-        float startCoeff = 1 - finalCoeff;
+    // private void adjustColor()
+    // {
+    //     float finalCoeff = ripeness / maxRipeness;
+    //     float startCoeff = 1 - finalCoeff;
 
-        // Debug.Log($"start coeff: {startCoeff}");
-        // Debug.Log($"final coeff: {finalCoeff}");
+    //     // Debug.Log($"start coeff: {startCoeff}");
+    //     // Debug.Log($"final coeff: {finalCoeff}");
 
-        Color startTemp = startCoeff * this.unripeColor;
-        Color finalTemp = finalCoeff * this.ripeColor;
+    //     Color startTemp = startCoeff * this.unripeColor;
+    //     Color finalTemp = finalCoeff * this.ripeColor;
 
-        // Debug.Log($"start Color: {startTemp}");
-        // Debug.Log($"final Color: {finalCoeff}");
+    //     // Debug.Log($"start Color: {startTemp}");
+    //     // Debug.Log($"final Color: {finalCoeff}");
 
-        this.currentColor = startTemp + finalTemp;
+    //     this.currentColor = startTemp + finalTemp;
+    // }
 
-    }
-    public void reset()
-    {
-        nearbyDirt = 0;
-        ripeness = 0;
-        nearbyDirtParticles.Clear();
-    }
+
 }

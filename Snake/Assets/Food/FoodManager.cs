@@ -8,6 +8,12 @@ public class FoodManager : MonoBehaviour
     [SerializeField]
     public List<GameObject> allFood = new List<GameObject>();
 
+    [SerializeField]
+    public Vector2 biggerCords;
+
+    [SerializeField]
+    public Vector2 smallerCords;
+
     public static FoodManager instance;
 
     void Awake()

@@ -22,6 +22,8 @@ public class Food : MonoBehaviour
 
     private DirtDetector dirtDetector;
 
+    private bool isRipe = false;
+
     void Awake()
     {
         instance = this;
@@ -37,16 +39,9 @@ public class Food : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other) 
     {
-        // if (other.tag == "initial") {
-        //     Debug.Log("spawning food...");
-        //     Spawn();
-        // } 
-        // if (other.tag == "body") {
-        //     Spawn();
-        // }
         if (other.tag == "head") {
             Debug.Log("collision with head");
-            if(dirtDetector.isRipe()){
+            if(isRipe){
                 Head.instance.Grow();
                 Head.instance.Grow();
                 Head.instance.Grow();
@@ -54,24 +49,23 @@ public class Food : MonoBehaviour
                 Spawn();
             }
             else {
-               // Debug.Log("isnt ripe");
+                Debug.Log("isnt ripe");
             }
         }
     }
 
     public void Spawn() 
     {
-        sr.sprite = seed0;
-        sr.color = dirtDetector.unripeColor;
-        dirtDetector.reset();
+        isRipe = false;
+        setSprite(0);
 
-        Vector2 start = DirtSpawner.instance.start;
-        Vector2 end = DirtSpawner.instance.end;
+        Vector2 start = FoodManager.instance.smallerCords;
+        Vector2 end = FoodManager.instance.biggerCords;
       
         Vector3 position = new Vector3(0, 0, 0);
 
-        position.x = Random.Range(start.x + 150, end.x - 150); 
-        position.y = Random.Range(start.y + 150, end.y - 150); 
+        position.x = Random.Range(start.x, end.x); 
+        position.y = Random.Range(start.y, end.y); 
         // Debug.Log($"X range: {start.x} {end.x}");
         // Debug.Log($"Y range: {start.y} {end.y}");
 
@@ -80,13 +74,18 @@ public class Food : MonoBehaviour
         this.transform.position = position;
     }
 
-    public void setColor(Color color)
+    public void setRipe(bool ripe)
     {
-        sr.color = color;
+        isRipe = ripe;
     }
 
     public void setSprite(int growStage)
     {
+        if(isRipe)
+        {
+            sr.sprite = seed3;
+            return;
+        }
         //Debug.Log($"setting food sprite to seed{growStage}");
         switch(growStage)
         {
