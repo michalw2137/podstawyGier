@@ -37,15 +37,6 @@ public class Head : MonoBehaviour
     private bool isJumping = false;
     private float fallDir = 0;
 
-    public Transform particleL;
-
-    private ParticleSystem psL;
-
-    public Transform particleR;
-
-    private ParticleSystem psR;
-
-
     void Awake()
     {
         instance = this;
@@ -68,8 +59,7 @@ public class Head : MonoBehaviour
             segment.tag = "initial";
         }
 
-        psL = particleL.GetComponent<ParticleSystem>();
-        psR = particleR.GetComponent<ParticleSystem>();
+        
     }
 
 
@@ -248,14 +238,6 @@ public class Head : MonoBehaviour
 
         SceneManager.LoadScene(0);
     
-    }
-
-    public void setParticles(bool value)
-    {
-        var emissionL = psL.emission;
-        var emissionR = psR.emission;
-        emissionL.enabled = !value;
-        emissionR.enabled = !value;
     }
 
 }

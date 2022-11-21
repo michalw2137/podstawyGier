@@ -54,17 +54,19 @@ public class DirtParticle : MonoBehaviour
         if (other.tag == "head") {
             if (sr.color == defaultColor) {
                 //Debug.Log($"touched HEAD");
-                Head.instance.setParticles(true);
                 sr.color = deletedColor;
                 this.tag = "eatenDirt";
                 
                 if(Input.GetAxis("Fire1") == 0) {
                     Ass.instance.canChangeDirtCount(1);
-                    Head.instance.setParticles(false);
+                    ParticleManager.instance.particling(false);
 
+                } else {
+                    ParticleManager.instance.particling(true);
                 }
+
             } else {
-                Head.instance.setParticles(true);
+                ParticleManager.instance.particling(true);
             }      
         } 
     }

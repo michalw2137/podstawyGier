@@ -40,7 +40,7 @@ public class Food : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) 
     {
         if (other.tag == "head") {
-            Debug.Log("collision with head");
+            //Debug.Log("collision with head");
             if(isRipe){
                 Head.instance.Grow();
                 Head.instance.Grow();
@@ -49,7 +49,7 @@ public class Food : MonoBehaviour
                 Spawn();
             }
             else {
-                Debug.Log("isnt ripe");
+                //Debug.Log("isnt ripe");
             }
         }
     }
