@@ -5,18 +5,31 @@ using UnityEngine;
 public class DirtParticle : MonoBehaviour
 {
     //[SerializeField] public Color defaultColor = new Color(231, 200, 128, 128); 
-    [SerializeField] public Color defaultColor = new Color(116, 62, 31, 128); 
-
-    [SerializeField] public Color deletedColor = new Color(0, 0, 0, 0); 
-
-    [SerializeField] public Color respawnedColor = new Color(0, 0, 0, 0); 
-
     private SpriteRenderer sr;
+
+    Type type;
+    Status status;
 
     void Awake()
     {
         sr = this.GetComponent<SpriteRenderer>();
-        sr.color = defaultColor;
+        //type = new Type();
+        int rnd = Random.Range(0, 3);
+        Debug.Log($"random int = {rnd}");
+
+        switch(rnd) {
+            case 1:
+                type = TypeDry.instance;
+                break;
+            case 0:
+                type = TypeNormal.instance;
+                break;
+            case 2:
+                type = TypeWet.instance;
+                break;
+        }
+        Debug.Log($"Type = {type}");
+        sr.color = type.defaultColor;
         this.tag = "deafaultDirt";
     }
 
@@ -40,22 +53,23 @@ public class DirtParticle : MonoBehaviour
         
 
         if (other.tag == "ass") {
-            if(sr.color == deletedColor 
+            if(status == Status.eaten
             && Input.GetAxis("Fire1") == 1
             && Ass.instance.canChangeDirtCount(-1)
             ) {
-                sr.color = respawnedColor;
-                this.tag = "respawnedDirt";
+                status = Status.fertilizer;
+                updateColor();
+                
                 FoodManager.instance.addParticle(this);       
                 
             } 
         } 
 
         if (other.tag == "head") {
-            if (sr.color == defaultColor) {
+            if (status == Status.eatable) {
                 //Debug.Log($"touched HEAD");
-                sr.color = deletedColor;
-                this.tag = "eatenDirt";
+                status = Status.eaten;
+                updateColor();
                 
                 if(Input.GetAxis("Fire1") == 0) {
                     Ass.instance.canChangeDirtCount(1);
@@ -71,9 +85,14 @@ public class DirtParticle : MonoBehaviour
         } 
     }
 
+    private void updateColor() 
+    {
+        sr.color = type.GetColor(status);
+    }
+
     public void resetColor()
     {
-        sr.color = defaultColor;
+        sr.color =  type.defaultColor;
     }
 
 
