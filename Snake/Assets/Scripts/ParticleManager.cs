@@ -22,10 +22,6 @@ public class ParticleManager : MonoBehaviour
 
 
     public void setParticling(bool active) {
-        // TODO: fix
-        return;
-        // 
-
         if (active == isParticling) {
             return;
         }
