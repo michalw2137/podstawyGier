@@ -13,6 +13,10 @@ public class TypeNormal : Type
         type = Types.normal;
     }
 
+    override public string ToString() {
+        return "Normal dirt";
+    }
+
     // Update is called once per frame
     void Update()
     {

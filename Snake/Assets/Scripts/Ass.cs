@@ -13,46 +13,56 @@ public class Ass : MonoBehaviour
 
     private int dirtCap;
 
+    public Type storedType {get; set;}
+
     void Awake() {
         instance = this;
-    }
-
-    void Start()
-    {
         dirtCount = 0;
-    }
-
-    void Update()
-    {
 
     }
 
-    void OnTriggerEnter2D(Collider2D other) 
-    {
+    public void respawnParticle(DirtParticle dp) {
+        if (dp.status != Status.eaten) {
+            return;
+        }
+        if(dirtCount <= 0) {
+            return;
+        }
         
+        dirtCount --;
+        Score.instance.updateText();
+
+        dp.setType(this.storedType);
+        dp.setStatus(Status.fertilizer);
+
+        FoodManager.instance.addParticle(dp);      
     }
 
-    public bool canChangeDirtCount(int count) 
-    {
-        if (dirtCount == 0 && count < 0)
-        {
-            //Debug.Log($"FALSE dirtCount = {dirtCount}, count = {count}");
-            return false;
+    public void eatParticle(DirtParticle dp) {
+        if (dp.status != Status.eatable) {
+            ParticleManager.instance.setParticling(false);
+            return;
         }
 
-        if (dirtCount == dirtCap && count > 0)
-        {
-            //Debug.Log($"FALSE dirtCount = {dirtCount}, count = {count}");
+        dp.setStatus(Status.eaten);
 
-            return false;
+        if (dirtCount == 0) {
+            this.storedType = dp.type;
         }
+        if (dp.type != storedType) {
+            ParticleManager.instance.setParticling(false);
+            return;
+        }
+        if (dirtCount >= dirtCap) {
+            ParticleManager.instance.setParticling(false);
+            return;
+        } 
 
-        //Debug.Log($"TRUE dirtCount = {dirtCount}, count = {count}");
-
-        dirtCount += count;
-        Score.instance.updateText();
-        return true;
-            
+        if(Input.GetAxis("Fire1") == 0) {
+            dirtCount ++;
+            Score.instance.updateText(); 
+            ParticleManager.instance.setParticling(true);
+        } 
     }
 
     public void setTransform(Transform transform) 

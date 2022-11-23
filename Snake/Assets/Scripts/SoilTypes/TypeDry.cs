@@ -13,6 +13,10 @@ public class TypeDry : Type
         type = Types.dry;
     }
 
+    override public string ToString() {
+        return "Dry dirt";
+    }
+
     // Update is called once per frame
     void Update()
     {

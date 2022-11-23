@@ -21466,9 +21466,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1716257088354412435}
   - component: {fileID: 1716257088354412432}
-  - component: {fileID: 1716257088354412433}
   - component: {fileID: 1716257088354412439}
   - component: {fileID: 1716257088354412440}
+  - component: {fileID: 1716257088354412433}
   - component: {fileID: 1716257088354412441}
   m_Layer: 0
   m_Name: Head

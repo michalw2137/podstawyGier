@@ -13,6 +13,10 @@ public class TypeWet : Type
         type = Types.wet;
     }
 
+    override public string ToString() {
+        return "Wet dirt";
+    }
+
     // Update is called once per frame
     void Update()
     {

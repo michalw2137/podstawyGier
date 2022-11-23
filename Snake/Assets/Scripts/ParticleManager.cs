@@ -10,28 +10,26 @@ public class ParticleManager : MonoBehaviour
     [SerializeField]
     public List<Transform> particles = new List<Transform>();
 
-    private bool isParticling = true;
+    private bool isParticling = false;
 
     void Awake() {
         instance = this;
     }
 
-    void Start()
-    {
-  
+    void Start() {
+        setParticles();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-    public void particling(bool active) {
-        if (active && isParticling) {
+    public void setParticling(bool active) {
+        // TODO: fix
+        return;
+        // 
+
+        if (active == isParticling) {
             return;
         }
-        //Debug.Log($"changing isParticling to {active}");
+        Debug.Log($"changing isParticling to {active}");
         isParticling = active;
         setParticles();
     }
@@ -40,7 +38,7 @@ public class ParticleManager : MonoBehaviour
     {
         foreach(Transform tr in particles) {
             var ps = tr.GetComponent<ParticleSystem>().emission;
-            ps.enabled = !isParticling;
+            ps.enabled = isParticling;
         }
     }
 }

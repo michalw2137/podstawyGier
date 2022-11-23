@@ -19,7 +19,7 @@ public class Score : MonoBehaviour
     }
 
     public void updateText() {
-        dirtCollected.text = $"sand stored: {Ass.instance.dirtCount} / {Ass.instance.getMaxCapacity()}";
+        dirtCollected.text = $"{Ass.instance.storedType} stored: {Ass.instance.dirtCount} / {Ass.instance.getMaxCapacity()}";
     }
    
 }
