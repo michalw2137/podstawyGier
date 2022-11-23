@@ -33,7 +33,7 @@ public class Food : MonoBehaviour
     void Start() 
     {
         dirtDetector = transform.GetChild(0).GetComponent<DirtDetector>();
-
+        this.tag = "food";
         Spawn();
     }
 

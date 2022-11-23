@@ -6,7 +6,12 @@ public class FoodManager : MonoBehaviour
 {
 
     [SerializeField]
-    public List<GameObject> allFood = new List<GameObject>();
+    public GameObject food;
+
+    [SerializeField]
+    int foodCount;
+
+    private List<GameObject> allFood = new List<GameObject>(5);
 
     [SerializeField]
     public Vector2 biggerCords;
@@ -19,15 +24,17 @@ public class FoodManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        foreach(GameObject food in allFood) 
-        {
-           // food.GetComponent<Food>().Spawn();
+        for(int i = 0; i < foodCount; ++i) {
+            allFood.Add(Instantiate(food));
+            allFood[i].GetComponent<Food>().Spawn();
         }
+
     }
 
     // Update is called once per frame

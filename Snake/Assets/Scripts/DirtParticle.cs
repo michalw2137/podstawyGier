@@ -13,30 +13,15 @@ public class DirtParticle : MonoBehaviour
     void Awake()
     {
         sr = this.GetComponent<SpriteRenderer>();
-        //type = new Type();
-        int rnd = Random.Range(0, 3);
-        Debug.Log($"random int = {rnd}");
-
-        switch(rnd) {
-            case 1:
-                type = TypeDry.instance;
-                break;
-            case 0:
-                type = TypeNormal.instance;
-                break;
-            case 2:
-                type = TypeWet.instance;
-                break;
-        }
-        Debug.Log($"Type = {type}");
-        sr.color = type.defaultColor;
+        this.type = TypeNormal.instance;
         this.tag = "deafaultDirt";
+
+        setStatus(Status.eatable);
     }
 
-    void Update()
-    {
-        //Debug.Log($"fire: {Input.GetAxis("Fire1")}");
-    }
+    void Start() { }
+
+    void Update() { }
 
     void OnTriggerEnter2D(Collider2D other) 
     {   // DEBUG DONT DELETE
@@ -50,15 +35,14 @@ public class DirtParticle : MonoBehaviour
         //         sr.color = Color.blue;
         //     }
         // } 
-        
+        checkType(other);
 
         if (other.tag == "ass") {
             if(status == Status.eaten
             && Input.GetAxis("Fire1") == 1
             && Ass.instance.canChangeDirtCount(-1)
             ) {
-                status = Status.fertilizer;
-                updateColor();
+                setStatus(Status.fertilizer);
                 
                 FoodManager.instance.addParticle(this);       
                 
@@ -67,9 +51,7 @@ public class DirtParticle : MonoBehaviour
 
         if (other.tag == "head") {
             if (status == Status.eatable) {
-                //Debug.Log($"touched HEAD");
-                status = Status.eaten;
-                updateColor();
+                setStatus(Status.eaten);
                 
                 if(Input.GetAxis("Fire1") == 0) {
                     Ass.instance.canChangeDirtCount(1);
@@ -83,6 +65,26 @@ public class DirtParticle : MonoBehaviour
                 ParticleManager.instance.particling(true);
             }      
         } 
+    }
+
+    private void checkType(Collider2D other) {
+        if(other.tag == "DirtDry") {
+            setType(TypeDry.instance);
+        }
+         if(other.tag == "DirtWet") {
+            setType(TypeWet.instance);
+        }
+    }
+
+    private void setStatus(Status status) {
+        this.status = status;
+        updateColor();
+    }
+
+    private void setType(Type type) 
+    {
+        this.type = type;
+        updateColor();
     }
 
     private void updateColor() 

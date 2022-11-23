@@ -18,6 +18,9 @@ TagManager:
   - dirtDetection
   - GravityHorizontal
   - GravityVertical
+  - DirtType
+  - DirtWet
+  - DirtDry
   layers:
   - Default
   - TransparentFX
