@@ -21408,8 +21408,8 @@ SpriteRenderer:
   m_SortingLayerID: 99384771
   m_SortingLayer: 1
   m_SortingOrder: 50
-  m_Sprite: {fileID: 21300000, guid: 454ff1336f5893f46aba74cb54afe2a6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1363e2bdc7108b948a8cfa6adf04068e, type: 3}
+  m_Color: {r: 1, g: 0.5801887, b: 0.93788546, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -21436,8 +21436,8 @@ MonoBehaviour:
   SteerSpeed: 240
   Segment: {fileID: 1716257088121490837, guid: d74e8517b046a4440a06abbe2f626558, type: 3}
   Gap: 9
-  tailSprite: {fileID: 21300000, guid: d69bd618af97fc34e8989fd6316ab674, type: 3}
-  bodySprite: {fileID: 21300000, guid: 4e8694a3c6a20e144a7f1ba43254b226, type: 3}
+  tailSprite: {fileID: 21300000, guid: a9a028a553e2a834498385b42fca314c, type: 3}
+  bodySprite: {fileID: 21300000, guid: 23df885ad02858048971c969afda3744, type: 3}
   isMoving: 0
 --- !u!4 &1716257088354412435
 Transform:

@@ -18,7 +18,7 @@ public class Ass : MonoBehaviour
     void Awake() {
         instance = this;
         dirtCount = 0;
-
+        storedType = new Type();
     }
 
     public void respawnParticle(DirtParticle dp) {

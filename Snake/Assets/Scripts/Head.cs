@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,11 +38,14 @@ public class Head : MonoBehaviour
     private bool isJumping = false;
     private float fallDir = 0;
 
+    private SpriteRenderer sr;
+
     void Awake()
     {
         instance = this;
         Body = new List<GameObject>();
         PositionsHistory = new List<Vector3>();
+        sr = this.GetComponent<SpriteRenderer>();
     }
 
     void Start()
@@ -64,9 +68,7 @@ public class Head : MonoBehaviour
 
 
     /** Spawn body segment*/
-    public void Grow()
-    {
-        
+    public void Grow() {
         // Instantiate body instance and
         // add it to the list
         GameObject body = Instantiate(Segment);
@@ -83,16 +85,23 @@ public class Head : MonoBehaviour
 
         Body.Add(body);
 
-
         Ass.instance.updateCap(Body.Count);
-
     }
 
 
     // code stolen from : 
-    // https://www.youtube.com/watch?v=WZpdtNOisvA
-    void FixedUpdate() 
-    { 
+    // https://www.youtube.com/watch?v=iuz7aUHYC_E
+    void FixedUpdate() { 
+        Color storedDirtColor = new Color(1, 1, 1, 1);
+        try
+        {
+            storedDirtColor = Ass.instance.storedType.GetColor(Status.fertilizer);
+        } catch {
+            Debug.Log("nullptr exception");
+        }
+
+        Debug.Log(storedDirtColor);
+        sr.color = storedDirtColor;
 
         if(!isMoving) {
             return;
@@ -129,15 +138,16 @@ public class Head : MonoBehaviour
             //body.transform.Rotate(Vector3.right * 90);
             body.transform.Rotate(Vector3.up * 90);
 
+            SpriteRenderer tempSR = Body[index].GetComponent<SpriteRenderer>();
+            tempSR.color = storedDirtColor;
 
             if(index != Body.Count - 1) {
-                Body[index].GetComponent<SpriteRenderer>().sprite = bodySprite;
+                tempSR.sprite = bodySprite;
 
             } else 
             {
-                Body[index].GetComponent<SpriteRenderer>().flipX = true;
-                Body[index].GetComponent<SpriteRenderer>().sprite = tailSprite;
-
+                tempSR.flipX = true;
+                tempSR.sprite = tailSprite;
             }
 
             index++;

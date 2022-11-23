@@ -44,11 +44,9 @@ public class DirtParticle : MonoBehaviour
 
         if (other.tag == "ass") {
             if(Input.GetAxis("Fire1") == 1) {
-                Debug.Log("space pressed");
                 Ass.instance.respawnParticle(this);
             } 
         } 
-
         if (other.tag == "head") {
             Ass.instance.eatParticle(this);
         } 

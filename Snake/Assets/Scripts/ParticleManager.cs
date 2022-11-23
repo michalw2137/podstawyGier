@@ -20,7 +20,6 @@ public class ParticleManager : MonoBehaviour
         setParticles();
     }
 
-
     public void setParticling(bool active) {
         if (active == isParticling) {
             return;
