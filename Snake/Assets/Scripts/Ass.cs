@@ -18,7 +18,7 @@ public class Ass : MonoBehaviour
     void Awake() {
         instance = this;
         dirtCount = 0;
-        storedType = new Type();
+        storedType = TypeNormal.instance;
     }
 
     public void respawnParticle(DirtParticle dp) {
@@ -58,7 +58,7 @@ public class Ass : MonoBehaviour
             return;
         } 
 
-        if(Input.GetAxis("Fire1") == 0) {
+        if(Input.GetAxis("Fire2") == 1) {
             dirtCount ++;
             Score.instance.updateText(); 
             ParticleManager.instance.setParticling(true);

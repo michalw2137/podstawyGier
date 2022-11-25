@@ -34,6 +34,8 @@ public class ParticleManager : MonoBehaviour
         foreach(Transform tr in particles) {
             var ps = tr.GetComponent<ParticleSystem>().emission;
             ps.enabled = isParticling;
+            ParticleSystem.MainModule ma = tr.GetComponent<ParticleSystem>().main;
+            ma.startColor = Ass.instance.storedType.GetColor(Status.fertilizer) * 1.2f;
         }
     }
 }

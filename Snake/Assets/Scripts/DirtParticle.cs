@@ -49,6 +49,7 @@ public class DirtParticle : MonoBehaviour
         } 
         if (other.tag == "head") {
             Ass.instance.eatParticle(this);
+            
         } 
     }
 
