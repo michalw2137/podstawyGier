@@ -46,6 +46,7 @@ public class Head : MonoBehaviour
         Body = new List<GameObject>();
         PositionsHistory = new List<Vector3>();
         sr = this.GetComponent<SpriteRenderer>();
+        DontDestroyOnLoad(this);
     }
 
     void Start()
@@ -82,7 +83,7 @@ public class Head : MonoBehaviour
         if(Body.Count < 5) {
            body.tag = "initial";
         }
-
+        DontDestroyOnLoad(body);
         Body.Add(body);
 
         Ass.instance.updateCap(Body.Count);
@@ -247,7 +248,11 @@ public class Head : MonoBehaviour
         Debug.Log("respawning");
 
         SceneManager.LoadScene(0);
-    
+        foreach(GameObject seg in Body)
+        {
+            Destroy(seg);
+        }
+        Destroy(gameObject);
     }
 
 }
