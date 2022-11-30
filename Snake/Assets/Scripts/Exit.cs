@@ -22,10 +22,11 @@ public class Exit : MonoBehaviour
     {
         if(other.tag == "head")
         {
+            Head player = Head.instance;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            //Head player = Head.instance;
+
             // Set start position in new level
-            //player.transform.position = new Vector3(100.0f, 100.0f, 0.0f);
+            player.transform.position = new Vector3(-450.0f, 0.0f, 0.0f);
         }
     }
 }

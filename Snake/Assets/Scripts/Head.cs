@@ -34,11 +34,16 @@ public class Head : MonoBehaviour
     private List<GameObject> Body;
     private List<Vector3> PositionsHistory;
 
+    public int startLength = 5;
     public bool isMoving;
     private bool isJumping = false;
     private float fallDir = 0;
+    private int length = 0;
 
     private SpriteRenderer sr;
+
+    private bool isSceneLoaded = false;
+    private float delay = 0.0f;
 
     void Awake()
     {
@@ -53,18 +58,12 @@ public class Head : MonoBehaviour
     {
         isMoving = true;
 
-        Grow();
-        Grow();
-        Grow();
-        Grow();
-        Grow();
-        Grow();
-
-        foreach(GameObject segment in Body) {
-            segment.tag = "initial";
+        for (int i = 0; i < startLength; i++)
+        {
+            Grow();
         }
 
-        
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
 
@@ -80,12 +79,12 @@ public class Head : MonoBehaviour
             body.transform.position = Body.Last().transform.position;
         }
 
-        if(Body.Count < 5) {
+        if(Body.Count < startLength) {
            body.tag = "initial";
         }
-        DontDestroyOnLoad(body);
-        Body.Add(body);
 
+        Body.Add(body);
+        length++;
         Ass.instance.updateCap(Body.Count);
     }
 
@@ -94,6 +93,20 @@ public class Head : MonoBehaviour
     // https://www.youtube.com/watch?v=iuz7aUHYC_E
     void FixedUpdate() { 
         Color storedDirtColor = new Color(1, 1, 1, 1);
+
+        // Spawning body after load new level
+        delay -= Time.deltaTime;
+        if (isSceneLoaded && delay < 0.0f)
+        {
+            isSceneLoaded = false;
+            int temp = length;
+            for (int i = 0; i < temp - startLength; i++)
+            {
+                Grow();
+            }
+            length = temp;
+        }
+
         try
         {
             storedDirtColor = Ass.instance.storedType.GetColor(Status.fertilizer);
@@ -154,10 +167,35 @@ public class Head : MonoBehaviour
             index++;
         }
 
-        // Update dirt spawner's position
-        Ass.instance.setTransform(Body.Last().transform);
+        if (Body.Count > 0)
+        {
+            // Update dirt spawner's position
+            Ass.instance.setTransform(Body.Last().transform);
+        }
     }
 
+    private void OnSceneLoaded(Scene aScene, LoadSceneMode aMode)
+    {
+        if (gameObject is not null)
+        {
+            PositionsHistory.Clear();
+            foreach (GameObject body in Body)
+            {
+                if (body != null)
+                {
+                    Destroy(body);
+                }
+            }
+            Body.Clear();
+            isSceneLoaded = true;
+            delay = 0.3f;
+            for (int i = 0; i < startLength; i++)
+            {
+                Grow();
+            }
+            length -= startLength;
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -165,6 +203,7 @@ public class Head : MonoBehaviour
         {
             // TODO: i dont think i works properly all the time
             Debug.Log("DEATH");
+            Debug.Log(other.tag);
             StartCoroutine(Death());        
         }
         // if (other.tag == "food")
@@ -230,7 +269,10 @@ public class Head : MonoBehaviour
         }
     }
 
-
+    public int GetBodyLength()
+    {
+        return Body.Count();
+    }
     IEnumerator Death()
     {
         //do stuff
@@ -247,12 +289,15 @@ public class Head : MonoBehaviour
         //do stuff once enter is pressed
         Debug.Log("respawning");
 
-        SceneManager.LoadScene(0);
-        foreach(GameObject seg in Body)
+        foreach (GameObject seg in Body)
         {
             Destroy(seg);
         }
-        Destroy(gameObject);
+        Body.Clear();
+        Destroy(instance.gameObject);
+        Destroy(this.gameObject);
+
+        SceneManager.LoadScene(0);
     }
 
 }
