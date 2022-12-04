@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class Exit : MonoBehaviour
 {
+    public Vector3 SpawnLocation = new Vector3(-450.0f, 0.0f, 0.0f);
+    public int RequiredLength = 11;
+    private Head player;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,13 +23,17 @@ public class Exit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "head")
+        if (player is null)
         {
-            Head player = Head.instance;
+            player = Head.instance;
+        }
+
+        if (other.tag == "head" && player.length >= RequiredLength)
+        {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
             // Set start position in new level
-            player.transform.position = new Vector3(-450.0f, 0.0f, 0.0f);
+            player.transform.position = SpawnLocation;
         }
     }
 }

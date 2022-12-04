@@ -38,12 +38,15 @@ public class Head : MonoBehaviour
     public bool isMoving;
     private bool isJumping = false;
     private float fallDir = 0;
-    private int length = 0;
+
+    [NonSerialized]
+    public int length = 0;
 
     private SpriteRenderer sr;
 
     private bool isSceneLoaded = false;
     private float delay = 0.0f;
+    private bool isDestroyed = false;
 
     void Awake()
     {
@@ -93,11 +96,11 @@ public class Head : MonoBehaviour
     // https://www.youtube.com/watch?v=iuz7aUHYC_E
     void FixedUpdate() { 
         Color storedDirtColor = new Color(1, 1, 1, 1);
-
         // Spawning body after load new level
         delay -= Time.deltaTime;
         if (isSceneLoaded && delay < 0.0f)
         {
+            isJumping = false; // Protection from blocking movement
             isSceneLoaded = false;
             int temp = length;
             for (int i = 0; i < temp - startLength; i++)
@@ -117,7 +120,7 @@ public class Head : MonoBehaviour
         Debug.Log(storedDirtColor);
         sr.color = storedDirtColor;
 
-        if(!isMoving) {
+        if (!isMoving) {
             return;
         }
 
@@ -176,8 +179,9 @@ public class Head : MonoBehaviour
 
     private void OnSceneLoaded(Scene aScene, LoadSceneMode aMode)
     {
-        if (gameObject is not null)
+        if (!isDestroyed)
         {
+            Debug.Log(instance.ToString());
             PositionsHistory.Clear();
             foreach (GameObject body in Body)
             {
@@ -294,9 +298,8 @@ public class Head : MonoBehaviour
             Destroy(seg);
         }
         Body.Clear();
-        Destroy(instance.gameObject);
-        Destroy(this.gameObject);
-
+        Destroy(gameObject);
+        isDestroyed = true;
         SceneManager.LoadScene(0);
     }
 
