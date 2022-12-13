@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -44,8 +45,6 @@ public class Head : MonoBehaviour
 
     private SpriteRenderer sr;
 
-    private bool isSceneLoaded = false;
-    private float delay = 0.0f;
     private bool isDestroyed = false;
 
     void Awake()
@@ -101,20 +100,6 @@ public class Head : MonoBehaviour
     void FixedUpdate() { 
         //Debug.Log(length);
         Color storedDirtColor = new Color(1, 1, 1, 1);
-        // Spawning body after load new level
-        delay -= Time.deltaTime;
-        if (isSceneLoaded && delay < 0.0f)
-        {
-            isJumping = false; // Protection from blocking movement
-            isSceneLoaded = false;
-            int temp = length;
-            for (int i = 0; i < temp - startLength; i++)
-            {
-                Grow();
-            }
-            length = temp;
-            LevelProgress.instance.updateText();
-        }
 
         try
         {
@@ -183,11 +168,11 @@ public class Head : MonoBehaviour
         }
     }
 
-    private void OnSceneLoaded(Scene aScene, LoadSceneMode aMode)
+    private async void OnSceneLoaded(Scene aScene, LoadSceneMode aMode)
     {
         if (!isDestroyed)
         {
-            Debug.Log(instance.ToString());
+            Ass.instance.dirtCount = 0;
             PositionsHistory.Clear();
             foreach (GameObject body in Body)
             {
@@ -197,14 +182,27 @@ public class Head : MonoBehaviour
                 }
             }
             Body.Clear();
-            isSceneLoaded = true;
-            delay = 0.3f;
             for (int i = 0; i < startLength; i++)
             {
                 Grow();
             }
             length -= startLength;
+            RetardedGrowth(); 
         }
+    }
+
+    private async void RetardedGrowth()
+    {
+        // Spawning body after load new level
+        await Task.Delay(700); // Value calculated by eye ;)
+        isJumping = false; // Protection from blocking movement
+        int temp = length;
+        for (int i = 0; i < temp - startLength; i++)
+        {
+            Grow();
+        }
+        length = temp;
+        LevelProgress.instance.updateText();
     }
 
     void OnTriggerEnter2D(Collider2D other)
