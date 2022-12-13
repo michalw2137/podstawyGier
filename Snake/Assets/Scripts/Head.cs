@@ -67,6 +67,8 @@ public class Head : MonoBehaviour
         }
 
         SceneManager.sceneLoaded += OnSceneLoaded;
+        Score.instance.updateText();
+
     }
 
 

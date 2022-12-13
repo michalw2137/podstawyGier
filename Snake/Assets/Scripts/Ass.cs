@@ -62,7 +62,9 @@ public class Ass : MonoBehaviour
             dirtCount ++;
             Score.instance.updateText(); 
             ParticleManager.instance.setParticling(true);
-        } 
+        } else {
+            ParticleManager.instance.setParticling(false);
+        }
     }
 
     public void setTransform(Transform transform) 
