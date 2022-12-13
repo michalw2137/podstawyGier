@@ -24,7 +24,7 @@ public class ParticleManager : MonoBehaviour
         if (active == isParticling) {
             return;
         }
-        Debug.Log($"changing isParticling to {active}");
+        //Debug.Log($"changing isParticling to {active}");
         isParticling = active;
         setParticles();
     }

@@ -8,32 +8,39 @@ public class Exit : MonoBehaviour
 {
     public Vector3 SpawnLocation = new Vector3(-450.0f, 0.0f, 0.0f);
     public int RequiredLength = 11;
-    private Head player;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    private bool open = false;
+
+    public static Exit instance;
+
+    void Awake() {
+        instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (player is null)
-        {
-            player = Head.instance;
-        }
-
-        if (other.tag == "head" && player.length >= RequiredLength)
+        if (other.tag == "head" && Predicate())
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
             // Set start position in new level
-            player.transform.position = SpawnLocation;
+            Head.instance.transform.position = SpawnLocation;
         }
     }
+
+    private bool Predicate() {
+        if (open) {
+            return true;
+        }
+        return Head.instance.length >= RequiredLength;
+    }
+
+    public void Open() {
+        open = true;
+    }
+
+    public bool isOpen() {
+        return Predicate();
+    }
+
 }

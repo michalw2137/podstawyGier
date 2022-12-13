@@ -60,7 +60,7 @@ public class Head : MonoBehaviour
     void Start()
     {
         isMoving = true;
-
+        length = 0;
         for (int i = 0; i < startLength; i++)
         {
             Grow();
@@ -90,13 +90,16 @@ public class Head : MonoBehaviour
 
         Body.Add(body);
         length++;
+
         Ass.instance.updateCap(Body.Count);
+        LevelProgress.instance.updateText();
     }
 
 
     // code stolen from : 
     // https://www.youtube.com/watch?v=iuz7aUHYC_E
     void FixedUpdate() { 
+        //Debug.Log(length);
         Color storedDirtColor = new Color(1, 1, 1, 1);
         // Spawning body after load new level
         delay -= Time.deltaTime;
@@ -110,6 +113,7 @@ public class Head : MonoBehaviour
                 Grow();
             }
             length = temp;
+            LevelProgress.instance.updateText();
         }
 
         try
@@ -119,7 +123,7 @@ public class Head : MonoBehaviour
             Debug.Log("nullptr exception");
         }
 
-        Debug.Log(storedDirtColor);
+        //Debug.Log(storedDirtColor);
         sr.color = storedDirtColor;
 
         if (!isMoving) {
@@ -275,10 +279,6 @@ public class Head : MonoBehaviour
         }
     }
 
-    public int GetBodyLength()
-    {
-        return Body.Count();
-    }
     IEnumerator Death()
     {
         //do stuff

@@ -8,6 +8,8 @@ public class Food : MonoBehaviour
 
     private SpriteRenderer sr;
 
+    private bool isEaten = false;
+
     [SerializeField]
     public Sprite seed0;
 
@@ -41,12 +43,14 @@ public class Food : MonoBehaviour
     {
         if (other.tag == "head") {
             //Debug.Log("collision with head");
-            if(isRipe){
+            if(isRipe && !isEaten){
                 Head.instance.Grow();
                 Head.instance.Grow();
                 Head.instance.Grow();
 
-                Spawn();
+                LevelProgress.instance.updateText();
+                isEaten = true;
+                //Spawn();
             }
             else {
                 //Debug.Log("isnt ripe");
@@ -79,7 +83,7 @@ public class Food : MonoBehaviour
         isRipe = ripe;
     }
 
-    public void setSprite(int growStage)
+    public void setSprite(int growthStage)
     {
         if(isRipe)
         {
@@ -87,7 +91,7 @@ public class Food : MonoBehaviour
             return;
         }
         //Debug.Log($"setting food sprite to seed{growStage}");
-        switch(growStage)
+        switch(growthStage)
         {
             case 0: 
                 if(sr.sprite == seed0) break;
