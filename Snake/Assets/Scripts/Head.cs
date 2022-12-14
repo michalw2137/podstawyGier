@@ -187,11 +187,11 @@ public class Head : MonoBehaviour
                 Grow();
             }
             length -= startLength;
-            RetardedGrowth(); 
+            await RetardedGrowth(); 
         }
     }
 
-    private async void RetardedGrowth()
+    private async Task RetardedGrowth()
     {
         // Spawning body after load new level
         await Task.Delay(700); // Value calculated by eye ;)

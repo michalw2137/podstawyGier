@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 2745624168977661577}
   - component: {fileID: 2745624168977661576}
   m_Layer: 4
-  m_Name: Food
+  m_Name: Plant_dry
   m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,7 +165,7 @@ SpriteRenderer:
   m_SortingLayerID: 99384771
   m_SortingLayer: 1
   m_SortingOrder: 26
-  m_Sprite: {fileID: 21300000, guid: d01291f0c07923f49996c75097c2b12e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0e9991bd87e28854f94db231f9dbe3d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -209,10 +209,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeada9847583b2a41871881eb0593445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seed0: {fileID: 21300000, guid: 22f7d53c24d6c3d4dbb8a91682a375e0, type: 3}
-  seed1: {fileID: 21300000, guid: e3405f6416ada5641aa42b36d4bf7dee, type: 3}
-  seed2: {fileID: 21300000, guid: d01291f0c07923f49996c75097c2b12e, type: 3}
-  seed3: {fileID: 21300000, guid: b748dd9783a1ddf409a3cd48405ba266, type: 3}
+  seed0: {fileID: 21300000, guid: 0e9991bd87e28854f94db231f9dbe3d7, type: 3}
+  seed1: {fileID: 21300000, guid: 2d4aa8e2a35bcc54f81cdcf43e1108a9, type: 3}
+  seed2: {fileID: 21300000, guid: a7b39b97faabd06429b299b80f6bcaf7, type: 3}
+  seed3: {fileID: 21300000, guid: b95d31b2afd146c40ac21450e6914a26, type: 3}
+  seed4: {fileID: 21300000, guid: 8648aca0115de9c45a8cc2026a5851c0, type: 3}
+  grown: {fileID: 21300000, guid: a252b004587c3f04fbaf31bddec99850, type: 3}
 --- !u!68 &2745624168977661577
 EdgeCollider2D:
   m_ObjectHideFlags: 0

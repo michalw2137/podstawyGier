@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,16 +11,7 @@ public class Food : MonoBehaviour
     private bool isEaten = false;
 
     [SerializeField]
-    public Sprite seed0;
-
-    [SerializeField]
-    public Sprite seed1;
-
-    [SerializeField]
-    public Sprite seed2;
-
-    [SerializeField]
-    public Sprite seed3;
+    public Sprite seed0, seed1, seed2, seed3, seed4, grown;
 
     private DirtDetector dirtDetector;
 
@@ -48,7 +39,6 @@ public class Food : MonoBehaviour
                 Head.instance.Grow();
                 Head.instance.Grow();
 
-                LevelProgress.instance.updateText();
                 isEaten = true;
                 //Spawn();
             }
