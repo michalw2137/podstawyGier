@@ -87,6 +87,7 @@ MonoBehaviour:
   dirtRequired: 60
   detectionRadius: 70
   clearingRadius: 100
+  typeName: dry
 --- !u!1 &2745624168977661623
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,7 +100,6 @@ GameObject:
   - component: {fileID: 2745624168977661620}
   - component: {fileID: 2745624168977661621}
   - component: {fileID: 2745624168977661578}
-  - component: {fileID: 2745624168977661577}
   - component: {fileID: 2745624168977661576}
   m_Layer: 4
   m_Name: Plant_dry
@@ -117,7 +117,7 @@ Transform:
   m_GameObject: {fileID: 2745624168977661623}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -352.9, y: 141, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 30.000002, y: 30.000002, z: 30.000002}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2745624167947843538}
@@ -215,53 +215,6 @@ MonoBehaviour:
   seed3: {fileID: 21300000, guid: b95d31b2afd146c40ac21450e6914a26, type: 3}
   seed4: {fileID: 21300000, guid: 8648aca0115de9c45a8cc2026a5851c0, type: 3}
   grown: {fileID: 21300000, guid: a252b004587c3f04fbaf31bddec99850, type: 3}
---- !u!68 &2745624168977661577
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2745624168977661623}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.43352303, y: -0.68094575}
-  - {x: -0.51268196, y: -0.45864466}
-  - {x: -0.50329685, y: -0.33660185}
-  - {x: -0.53502816, y: -0.25889343}
-  - {x: -0.57387155, y: -0.1285504}
-  - {x: -0.5514246, y: 0.024900526}
-  - {x: -0.3629792, y: 0.33372894}
-  - {x: 0.14156699, y: 0.6896846}
-  - {x: 0.18780829, y: 0.69163424}
-  - {x: 0.17382221, y: 0.5812096}
-  - {x: 0.15468495, y: 0.44533646}
-  - {x: 0.18076377, y: 0.3602803}
-  - {x: 0.22519842, y: 0.2813567}
-  - {x: 0.44156468, y: 0.27297762}
-  - {x: 0.56056464, y: 0.27624255}
-  - {x: 0.50931513, y: 0.19804627}
-  - {x: 0.47015676, y: 0.120456554}
-  - {x: 0.4113735, y: 0.02539827}
-  - {x: 0.40541375, y: -0.13377227}
-  - {x: 0.39285144, y: -0.4199481}
-  - {x: 0.3472621, y: -0.5332235}
-  - {x: 0.2757522, y: -0.6146109}
-  - {x: 0.0920333, y: -0.6828259}
-  - {x: -0.04913629, y: -0.70958674}
-  - {x: -0.11704751, y: -0.69682646}
-  - {x: -0.43031046, y: -0.6905651}
-  - {x: -0.43800902, y: -0.65392333}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!58 &2745624168977661576
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -275,6 +228,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.036442567, y: 0.07288857}
+  m_Offset: {x: 0.019526163, y: 0.058847044}
   serializedVersion: 2
-  m_Radius: 2.8103771
+  m_Radius: 1.1313578

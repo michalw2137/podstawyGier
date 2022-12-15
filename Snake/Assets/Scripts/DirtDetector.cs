@@ -16,6 +16,10 @@ public class DirtDetector : MonoBehaviour
     [SerializeField]
     public float clearingRadius = 150.0f;
 
+    [SerializeField]
+    public string typeName;
+
+    private Type type;
     private List<DirtParticle> nearbyDirtParticles;
 
     private Food food;
@@ -28,7 +32,19 @@ public class DirtDetector : MonoBehaviour
     void Start()
     {
         food = transform.parent.GetComponent<Food>();
-        
+
+        if(typeName == "normal") {
+            type = TypeNormal.instance;
+        } else if (typeName == "wet") {
+            type = TypeWet.instance;
+        } else if (typeName == "dry") {
+            type = TypeDry.instance;
+        } else {
+            throw new System.Exception("INCORRECT DIRT TYPE IN DIRT DETECTOR!");
+        }
+
+        // Debug.Log(transform.parent);
+        // Debug.Log(food);
         nearbyDirtParticles = new List<DirtParticle>();
 
     }
@@ -39,19 +55,58 @@ public class DirtDetector : MonoBehaviour
 
     }
 
+    public void addParticle(DirtParticle particle)
+    {
+        if(particle.type != type) {
+            Debug.Log("inorrect dirt type");
+            return;
+        }
+        //Debug.Log("adding particle");
+        if(isInside(particle.transform.position, clearingRadius)) 
+        {
+            nearbyDirtParticles.Add(particle);
+
+            if(isInside(particle.transform.position, detectionRadius))
+            {
+                changeNearbyDirt(1);
+            }
+        }
+    }
+
+    public bool isInside(Vector3 coords, float radius)
+    {
+        if(coords.x <= transform.position.x + radius && coords.x >= transform.position.x - radius)
+        {
+            if(coords.y <= transform.position.y + radius && coords.y >= transform.position.y - radius)
+            {
+                return true;                    
+            } else
+            {
+                return false;
+            }
+        } else{
+            return false;
+        }
+        //return Mathf.Pow(coords.x - transform.position.x, 2) + Mathf.Pow(coords.y - transform.position.y, 2) <= Mathf.Pow(radius, 2);
+    }
+
     public void changeNearbyDirt(int delta)
     {
         nearbyDirt += delta;
+        //Debug.Log($"particle is inside {this}, changing dirt count to {nearbyDirt}");
 
         if(nearbyDirt >= dirtRequired) 
         {
-            food.setSprite(3);
+            food.setSprite(4);
             food.setRipe(true);
-            reset();
-        } else if (nearbyDirt >= dirtRequired * 2 / 3.0f) 
+            //reset();
+        } else if (nearbyDirt >= dirtRequired * 3 / 4.0f) 
+        {
+            food.setSprite(3);
+        } else if (nearbyDirt >= dirtRequired * 2 / 4.0f) 
         {
             food.setSprite(2);
-        } else if (nearbyDirt >= dirtRequired * 1 / 3.0f) 
+        } else if (nearbyDirt >= dirtRequired * 1 / 4.0f) 
         {
             food.setSprite(1);
         }  else 
@@ -73,36 +128,9 @@ public class DirtDetector : MonoBehaviour
         nearbyDirtParticles.Clear();
     }
 
-    public bool isInside(Vector3 coords, float radius)
-    {
-        if(coords.x <= transform.position.x + radius && coords.x >= transform.position.x - radius)
-        {
-            if(coords.y <= transform.position.y + radius && coords.y >= transform.position.y - radius)
-            {
-                return true;                    
-            } else
-            {
-                return false;
-            }
-        } else{
-            return false;
-        }
-        //return Mathf.Pow(coords.x - transform.position.x, 2) + Mathf.Pow(coords.y - transform.position.y, 2) <= Mathf.Pow(radius, 2);
-    }
+    
 
-    public void addParticle(DirtParticle particle)
-    {
-        if(isInside(particle.transform.position, clearingRadius)) 
-        {
-            nearbyDirtParticles.Add(particle);
-
-            if(isInside(particle.transform.position, detectionRadius))
-            {
-                changeNearbyDirt(1);
-            }
-        }
-    }
-
+    
     // private void adjustColor()
     // {
     //     float finalCoeff = ripeness / maxRipeness;

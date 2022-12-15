@@ -20,14 +20,16 @@ public class Food : MonoBehaviour
     void Awake()
     {
         instance = this;
-        sr = GetComponent<SpriteRenderer>();
     }
 
     void Start() 
     {
+        sr = GetComponent<SpriteRenderer>();
         dirtDetector = transform.GetChild(0).GetComponent<DirtDetector>();
-        this.tag = "food";
-        Spawn();
+        setSprite(0);
+        isRipe = false;
+
+        //Spawn();
     }
 
     void OnTriggerEnter2D(Collider2D other) 
@@ -35,11 +37,14 @@ public class Food : MonoBehaviour
         if (other.tag == "head") {
             //Debug.Log("collision with head");
             if(isRipe && !isEaten){
+                fullyGrow();
+
                 Head.instance.Grow();
                 Head.instance.Grow();
                 Head.instance.Grow();
 
-                isEaten = true;
+                
+                //sr.size *= new Vector2(4, 4);
                 //Spawn();
             }
             else {
@@ -48,6 +53,18 @@ public class Food : MonoBehaviour
         }
     }
 
+    private void fullyGrow() 
+    {
+        isEaten = true;
+        sr.sprite = grown;
+        emitParticles(false);
+    }
+
+    private void emitParticles(bool emit) {
+        Debug.Log($"emitting particles: {emit}");
+    }
+
+    
     public void Spawn() 
     {
         isRipe = false;
@@ -75,9 +92,12 @@ public class Food : MonoBehaviour
 
     public void setSprite(int growthStage)
     {
+        if(sr.sprite == grown && growthStage != 0) {
+            return;
+        }
         if(isRipe)
         {
-            sr.sprite = seed3;
+            sr.sprite = seed4;
             return;
         }
         //Debug.Log($"setting food sprite to seed{growStage}");
@@ -99,14 +119,19 @@ public class Food : MonoBehaviour
                 if(sr.sprite == seed2) break;
 
                 sr.sprite = seed2; 
-                //transform.position = new Vector3(transform.position.x, transform.position.y + 15, transform.position.z);
                 break;
 
             case 3: 
                 if(sr.sprite == seed3) break;
 
                 sr.sprite = seed3; 
-                //transform.position = new Vector3(transform.position.x, transform.position.y + 25, transform.position.z);
+                break;
+
+            case 4: 
+                if(sr.sprite == seed4) break;
+
+                sr.sprite = seed4; 
+                emitParticles(true);
                 break;
         }
     }

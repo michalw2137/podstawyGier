@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class FoodManager : MonoBehaviour
 {
-
-    [SerializeField]
-    public GameObject food;
-
-    [SerializeField]
-    int foodCount;
-
-    private List<GameObject> allFood = new List<GameObject>(5);
-
     [SerializeField]
     public Vector2 biggerCords;
 
@@ -21,20 +12,21 @@ public class FoodManager : MonoBehaviour
 
     public static FoodManager instance;
 
+    private List<Transform> spawnedFood = new List<Transform>();
+
+
     void Awake()
     {
         instance = this;
-
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < foodCount; ++i) {
-            allFood.Add(Instantiate(food));
-            allFood[i].GetComponent<Food>().Spawn();
-        }
-
+        // for(int i = 0; i < transform.childCount; ++i) {
+        //     spawnedFood.Add(transform.GetChild(0));
+        // }
     }
 
     // Update is called once per frame
@@ -43,11 +35,12 @@ public class FoodManager : MonoBehaviour
         
     }
 
-    public void addParticle(DirtParticle particle) 
-    {
-        foreach(GameObject food in allFood)
-        {
-            food.transform.GetChild(0).GetComponent<DirtDetector>().addParticle(particle);
-        }
-    }
+    // public void addParticle(DirtParticle particle) 
+    // {
+    //     foreach(Transform food in spawnedFood)
+    //     {
+    //         food.GetChild(0).GetComponent<DirtDetector>().addParticle(particle);
+    //         Debug.Log("adding particle to {food}");
+    //     }
+    // }
 }
