@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class Exit : MonoBehaviour
 {
-    public Vector3 SpawnLocation = new Vector3(-450.0f, 0.0f, 0.0f);
+    public Vector3 SpawnLocation = new Vector3(-490.0f, 0.0f, 0.0f);
     public int RequiredLength = 11;
     private bool open = false;
-
+    public Animator transition;
+    public float transitionTime = 1f;
     public static Exit instance;
 
     void Awake() {
@@ -19,16 +20,13 @@ public class Exit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "head" && Predicate())
+        if (other.tag == "head" && isOpen())
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
-            // Set start position in new level
-            Head.instance.transform.position = SpawnLocation;
+            StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
         }
     }
 
-    private bool Predicate() {
+    public bool isOpen() {
         if (open) {
             return true;
         }
@@ -39,8 +37,16 @@ public class Exit : MonoBehaviour
         open = true;
     }
 
-    public bool isOpen() {
-        return Predicate();
+    IEnumerator LoadScene(int Index)
+    {
+        transition.SetTrigger("Start");
+        Head.instance.isMoving = false;
+        yield return new WaitForSeconds(transitionTime);
+        
+        SceneManager.LoadScene(Index);
+        Head.instance.isMoving = true;
+        // Set start position in new level
+        Head.instance.transform.position = SpawnLocation;
     }
 
 }

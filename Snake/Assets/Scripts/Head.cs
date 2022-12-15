@@ -262,7 +262,7 @@ public class Head : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "GravityHorizontal" || other.tag == "GravityVertical")
+        if ((other.tag == "GravityHorizontal" || other.tag == "GravityVertical") && isMoving)
         {
             transform.Rotate(Vector3.back * fallDir * SteerSpeed * Time.deltaTime);
             isJumping = true; // Added to prevent bug while changing gravity areas
