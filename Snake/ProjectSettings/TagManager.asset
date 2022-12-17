@@ -21,6 +21,7 @@ TagManager:
   - DirtType
   - DirtWet
   - DirtDry
+  - soundtrack
   layers:
   - Default
   - TransparentFX

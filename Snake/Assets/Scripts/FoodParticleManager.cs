@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FoodParticleManager : MonoBehaviour
 {
-    public static FoodParticleManager instance;
+    public FoodParticleManager instance;
     
     [SerializeField]
     public List<Transform> particles = new List<Transform>();
