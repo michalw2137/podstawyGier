@@ -34,6 +34,7 @@ public class Ass : MonoBehaviour
 
         dp.setType(this.storedType);
         dp.setStatus(Status.fertilizer);
+        Shake.instance.startShake();
 
         for(int i = 0; i < FoodManager.instance.transform.childCount; i++) {
             FoodManager.instance.gameObject.transform.GetChild(i).GetChild(0).GetComponent<DirtDetector>().addParticle(dp);
