@@ -57,12 +57,13 @@ public class Food : MonoBehaviour
     {
         isEaten = true;
         sr.sprite = grown;
-        emitParticles(false);
+        emitParticles(false, 0);
+        emitParticles(true, 1);
     }
 
-    private void emitParticles(bool emit) {
+    private void emitParticles(bool emit, int n) {
         Debug.Log($"emitting particles: {emit}");
-        FoodParticleManager.instance.setParticling(emit);
+        FoodParticleManager.instance.setParticling(emit, n);
     }
 
     
@@ -130,7 +131,7 @@ public class Food : MonoBehaviour
                 if(sr.sprite == seed4) break;
 
                 sr.sprite = seed4; 
-                emitParticles(true);
+                emitParticles(true, 0);
                 
                 break;
         }

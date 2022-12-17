@@ -9,8 +9,6 @@ public class FoodParticleManager : MonoBehaviour
     [SerializeField]
     public List<Transform> particles = new List<Transform>();
 
-    private bool isParticling = false;
-
     void Awake() {
         instance = this;
     }
@@ -19,23 +17,31 @@ public class FoodParticleManager : MonoBehaviour
         setParticles();
     }
 
-    public void setParticling(bool active) {
-        if (active == isParticling) {
-            return;
+    public void setParticling(bool state, int n) 
+    {
+        Debug.Log($"setting {n} particle to {state}");
+        if(state) {
+            particles[n].GetComponent<ParticleSystem>().Play();
         }
-        //Debug.Log($"changing isParticling to {active}");
-        isParticling = active;
-        setParticles();
+        else 
+        {
+            particles[n].GetComponent<ParticleSystem>().Stop();
+        }
+
+        var ps = particles[n].GetComponent<ParticleSystem>().emission;
+        if(n == 1) 
+        {
+            particles[n].GetComponent<ParticleSystem>().Play();
+        }
+        ps.enabled = state;
     }
 
     private void setParticles()
     {
         foreach(Transform tr in particles) {
-            var ps = tr.GetComponent<ParticleSystem>().emission;
-            ps.enabled = isParticling;
-            // if(!isParticling) {
-            //     tr.GetComponent<ParticleSystem>().Clear();
-            // }
+            tr.GetComponent<ParticleSystem>().Stop();
+            // var ps = tr.GetComponent<ParticleSystem>().emission;
+            // ps.enabled = false;
         }
     }
 }
