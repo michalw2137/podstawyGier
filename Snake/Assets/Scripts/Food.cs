@@ -8,6 +8,8 @@ public class Food : MonoBehaviour
 
     private SpriteRenderer sr;
 
+    private FoodParticleManager fpm;
+
     private bool isEaten = false;
 
     [SerializeField]
@@ -25,6 +27,7 @@ public class Food : MonoBehaviour
     void Start() 
     {
         sr = GetComponent<SpriteRenderer>();
+        fpm = GetComponent<FoodParticleManager>();
         dirtDetector = transform.GetChild(0).GetComponent<DirtDetector>();
         setSprite(0);
         isRipe = false;
@@ -63,7 +66,7 @@ public class Food : MonoBehaviour
 
     private void emitParticles(bool emit, int n) {
         Debug.Log($"emitting particles: {emit}");
-        FoodParticleManager.instance.setParticling(emit, n);
+        fpm.setParticling(emit, n);
     }
 
     

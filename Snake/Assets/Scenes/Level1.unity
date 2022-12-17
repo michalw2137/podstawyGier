@@ -10187,6 +10187,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1887894405}
     m_Modifications:
+    - target: {fileID: 470155905685156798, guid: 9dfc0f8c1dd28724ebb743a185d73998,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 470155905685156798, guid: 9dfc0f8c1dd28724ebb743a185d73998,
+        type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2745624168977661577, guid: 9dfc0f8c1dd28724ebb743a185d73998,
         type: 3}
       propertyPath: m_Enabled

@@ -1643,6 +1643,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1887894405}
     m_Modifications:
+    - target: {fileID: 2329279007234096544, guid: 9dfc0f8c1dd28724ebb743a185d73998,
+        type: 3}
+      propertyPath: m_Name
+      value: fullyGrownParticles
+      objectReference: {fileID: 0}
     - target: {fileID: 2745624168977661579, guid: 9dfc0f8c1dd28724ebb743a185d73998,
         type: 3}
       propertyPath: m_RootOrder
@@ -1702,6 +1707,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plant_normal
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097144294343417550, guid: 9dfc0f8c1dd28724ebb743a185d73998,
+        type: 3}
+      propertyPath: m_Name
+      value: readyToEatParticles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dfc0f8c1dd28724ebb743a185d73998, type: 3}
