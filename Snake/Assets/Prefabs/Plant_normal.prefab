@@ -4947,6 +4947,8 @@ GameObject:
   - component: {fileID: 2745624168977661578}
   - component: {fileID: 2745624168977661576}
   - component: {fileID: 750275195936146757}
+  - component: {fileID: 5505578200774359846}
+  - component: {fileID: 250814714688738284}
   m_Layer: 4
   m_Name: Plant_normal
   m_TagString: food
@@ -5090,9 +5092,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4feec5fcf0d37bd409e569443c904b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  instance: {fileID: 0}
   particles:
   - {fileID: 3382466389671678007}
   - {fileID: 2999625312301703012}
+--- !u!95 &5505578200774359846
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2745624168977661623}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c20ecc83aa1a7a1469e1c5ddf7d0505c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &250814714688738284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2745624168977661623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a138394bd7130354f90df444af190a9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instance: {fileID: 0}
+  seed: {fileID: 2745624168977661623}
 --- !u!1 &5097144294343417550
 GameObject:
   m_ObjectHideFlags: 0

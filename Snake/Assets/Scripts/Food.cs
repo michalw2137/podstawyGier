@@ -10,6 +10,8 @@ public class Food : MonoBehaviour
 
     private FoodParticleManager fpm;
 
+    private SquashManager sm;
+
     private bool isEaten = false;
 
     [SerializeField]
@@ -28,6 +30,7 @@ public class Food : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         fpm = GetComponent<FoodParticleManager>();
+        sm = GetComponent<SquashManager>();
         dirtDetector = transform.GetChild(0).GetComponent<DirtDetector>();
         setSprite(0);
         isRipe = false;
@@ -59,14 +62,20 @@ public class Food : MonoBehaviour
     private void fullyGrow() 
     {
         isEaten = true;
+        squash();
         sr.sprite = grown;
         emitParticles(false, 0);
         emitParticles(true, 1);
     }
 
     private void emitParticles(bool emit, int n) {
-        Debug.Log($"emitting particles: {emit}");
+        //Debug.Log($"emitting particles: {emit}");
         fpm.setParticling(emit, n);
+    }
+
+    private void squash() {
+        Debug.Log("playing animation");
+        sm.triggerSquash();
     }
 
     
@@ -115,24 +124,24 @@ public class Food : MonoBehaviour
                 
             case 1: 
                 if(sr.sprite == seed1) break;
-
+                squash();
                 sr.sprite = seed1; 
                 break;
 
             case 2: 
                 if(sr.sprite == seed2) break;
-
+                squash();
                 sr.sprite = seed2; 
                 break;
 
             case 3: 
                 if(sr.sprite == seed3) break;
-
+                squash();
                 sr.sprite = seed3; 
                 break;
             case 4: 
                 if(sr.sprite == seed4) break;
-
+                squash();
                 sr.sprite = seed4; 
                 emitParticles(true, 0);
                 
