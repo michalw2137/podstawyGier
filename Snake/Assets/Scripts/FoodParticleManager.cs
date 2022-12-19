@@ -19,7 +19,7 @@ public class FoodParticleManager : MonoBehaviour
 
     public void setParticling(bool state, int n) 
     {
-        Debug.Log($"setting {n} particle to {state}");
+        //Debug.Log($"setting {n} particle to {state}");
         if(state) {
             particles[n].GetComponent<ParticleSystem>().Play();
         }
@@ -28,12 +28,12 @@ public class FoodParticleManager : MonoBehaviour
             particles[n].GetComponent<ParticleSystem>().Stop();
         }
 
-        var ps = particles[n].GetComponent<ParticleSystem>().emission;
-        if(n == 1) 
-        {
-            particles[n].GetComponent<ParticleSystem>().Play();
-        }
-        ps.enabled = state;
+        // var ps = particles[n].GetComponent<ParticleSystem>().emission;
+        // if(n == 1) 
+        // {
+        //     particles[n].GetComponent<ParticleSystem>().Play();
+        // }
+        // ps.enabled = state;
     }
 
     private void setParticles()

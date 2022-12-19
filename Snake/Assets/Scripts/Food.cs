@@ -8,6 +8,8 @@ public class Food : MonoBehaviour
 
     private SpriteRenderer sr;
 
+    private SFXmanager sfx;
+
     private FoodParticleManager fpm;
 
     private SquashManager sm;
@@ -31,6 +33,7 @@ public class Food : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         fpm = GetComponent<FoodParticleManager>();
         sm = GetComponent<SquashManager>();
+        sfx = GetComponent<SFXmanager>();
         dirtDetector = transform.GetChild(0).GetComponent<DirtDetector>();
         setSprite(0);
         isRipe = false;
@@ -62,6 +65,7 @@ public class Food : MonoBehaviour
     private void fullyGrow() 
     {
         isEaten = true;
+        sfx.playSound(0);
         squash();
         sr.sprite = grown;
         emitParticles(false, 0);
@@ -124,23 +128,27 @@ public class Food : MonoBehaviour
                 
             case 1: 
                 if(sr.sprite == seed1) break;
+                sfx.playSound(0);
                 squash();
                 sr.sprite = seed1; 
                 break;
 
             case 2: 
                 if(sr.sprite == seed2) break;
+                sfx.playSound(0);
                 squash();
                 sr.sprite = seed2; 
                 break;
 
             case 3: 
                 if(sr.sprite == seed3) break;
+                sfx.playSound(0);
                 squash();
                 sr.sprite = seed3; 
                 break;
             case 4: 
                 if(sr.sprite == seed4) break;
+                sfx.playSound(0);
                 squash();
                 sr.sprite = seed4; 
                 emitParticles(true, 0);
