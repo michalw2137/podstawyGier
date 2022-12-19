@@ -15,8 +15,11 @@ public class Ass : MonoBehaviour
 
     public Type storedType {get; set;}
 
+        private SFXmanager sfx;
+
     void Awake() {
         instance = this;
+        sfx = GetComponent<SFXmanager>();
         dirtCount = 0;
         storedType = TypeNormal.instance;
     }
@@ -31,7 +34,7 @@ public class Ass : MonoBehaviour
         
         dirtCount --;
         Score.instance.updateText();
-
+        sfx.playSound(0);
         dp.setType(this.storedType);
         dp.setStatus(Status.fertilizer);
         Shake.instance.startShake();
@@ -64,6 +67,7 @@ public class Ass : MonoBehaviour
         if(Input.GetAxis("Fire2") == 1) {
             dirtCount ++;
             Score.instance.updateText(); 
+            sfx.playSound(0);
             ParticleManager.instance.setParticling(true);
         } else {
             ParticleManager.instance.setParticling(false);
