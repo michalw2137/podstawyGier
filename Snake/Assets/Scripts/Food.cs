@@ -128,27 +128,27 @@ public class Food : MonoBehaviour
                 
             case 1: 
                 if(sr.sprite == seed1) break;
-                sfx.playSound(0);
+                sfx.playSound(1);
                 squash();
                 sr.sprite = seed1; 
                 break;
 
             case 2: 
                 if(sr.sprite == seed2) break;
-                sfx.playSound(0);
+                sfx.playSound(1);
                 squash();
                 sr.sprite = seed2; 
                 break;
 
             case 3: 
                 if(sr.sprite == seed3) break;
-                sfx.playSound(0);
+                sfx.playSound(1);
                 squash();
                 sr.sprite = seed3; 
                 break;
             case 4: 
                 if(sr.sprite == seed4) break;
-                sfx.playSound(0);
+                sfx.playSound(1);
                 squash();
                 sr.sprite = seed4; 
                 emitParticles(true, 0);

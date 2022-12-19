@@ -10865,7 +10865,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.197
+  m_Volume: 0.086
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -10964,7 +10964,7 @@ MonoBehaviour:
   instance: {fileID: 0}
   source: {fileID: 1019702207}
   sfx:
-  - {fileID: 8300000, guid: 005834ffad8c4314d827e00fa691d85f, type: 3}
+  - {fileID: 8300000, guid: 46b0e62a760f40a47ad219e55822ebba, type: 3}
   - {fileID: 8300000, guid: f0d68c794d716d740a2c69f4532cfca2, type: 3}
 --- !u!1 &1126568309
 GameObject:

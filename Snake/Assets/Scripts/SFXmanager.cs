@@ -19,13 +19,21 @@ public class SFXmanager : MonoBehaviour
         setSource();
     }
 
-    public void playSound(int n) 
+    public void playSoundWithoutRepeat(int n) 
     {
-        Debug.Log($"playing {n}");
+        //Debug.Log($"playing {n}");
         if(!source.isPlaying)
         {
             source.PlayOneShot(sfx[n]);
         }
+
+    }
+
+    public void playSound(int n) 
+    {
+        //Debug.Log($"playing {n}");
+        source.PlayOneShot(sfx[n]);
+
 
     }
 

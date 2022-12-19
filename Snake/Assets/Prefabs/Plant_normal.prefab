@@ -5144,9 +5144,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296f125c661e4a445b8e17644e90d79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  instance: {fileID: 0}
   source: {fileID: 8683234456902074648}
   sfx:
   - {fileID: 8300000, guid: f110f1244d518dc41b9f5233b2ccd52f, type: 3}
+  - {fileID: 8300000, guid: d340045d132c707438f3d8130bbec220, type: 3}
 --- !u!82 &8683234456902074648
 AudioSource:
   m_ObjectHideFlags: 0

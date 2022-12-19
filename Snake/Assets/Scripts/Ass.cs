@@ -34,7 +34,7 @@ public class Ass : MonoBehaviour
         
         dirtCount --;
         Score.instance.updateText();
-        sfx.playSound(0);
+        sfx.playSoundWithoutRepeat(1);
         dp.setType(this.storedType);
         dp.setStatus(Status.fertilizer);
         Shake.instance.startShake();
@@ -67,7 +67,7 @@ public class Ass : MonoBehaviour
         if(Input.GetAxis("Fire2") == 1) {
             dirtCount ++;
             Score.instance.updateText(); 
-            sfx.playSound(0);
+            sfx.playSoundWithoutRepeat(0);
             ParticleManager.instance.setParticling(true);
         } else {
             ParticleManager.instance.setParticling(false);
