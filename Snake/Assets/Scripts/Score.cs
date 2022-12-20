@@ -10,7 +10,12 @@ public class Score : MonoBehaviour
     public static Score instance;
 
     void Awake() {
-        instance = this;
+        if(instance == null) {
+            instance = this;
+            DontDestroyOnLoad(instance);
+        } else {
+            Destroy(gameObject);
+        }
     }
 
     void Start()

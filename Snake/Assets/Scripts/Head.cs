@@ -101,8 +101,7 @@ public class Head : MonoBehaviour
         //Debug.Log(length);
         Color storedDirtColor = new Color(1, 1, 1, 1);
 
-        try
-        {
+        try{
             storedDirtColor = Ass.instance.storedType.GetColor();
         } catch {
             Debug.Log("nullptr exception");
