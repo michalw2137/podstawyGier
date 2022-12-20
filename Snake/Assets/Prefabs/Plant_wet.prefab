@@ -4929,8 +4929,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nearbyDirt: 0
-  dirtRequired: 120
-  detectionRadius: 90
+  dirtRequired: 160
+  detectionRadius: 100
   clearingRadius: 100
   typeName: wet
 --- !u!1 &2745624168977661623

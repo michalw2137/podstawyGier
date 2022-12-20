@@ -49,8 +49,8 @@ public class Food : MonoBehaviour
                 fullyGrow();
 
                 Head.instance.Grow();
-                Head.instance.Grow();
-                Head.instance.Grow();
+                // Head.instance.Grow();
+                // Head.instance.Grow();
 
                 
                 //sr.size *= new Vector2(4, 4);

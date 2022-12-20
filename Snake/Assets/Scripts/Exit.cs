@@ -17,6 +17,11 @@ public class Exit : MonoBehaviour
         instance = this;
     }
 
+    void Start() {
+        RequiredLength = Head.instance.length + FoodManager.instance.gameObject.transform.childCount;
+        LevelProgress.instance.updateText();
+    }
+
     void Update() {
         if(Input.GetKeyDown(KeyCode.Space)) {
             Head.instance.length = RequiredLength;
