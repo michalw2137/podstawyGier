@@ -103,7 +103,7 @@ public class Head : MonoBehaviour
 
         try
         {
-            storedDirtColor = Ass.instance.storedType.GetColor(Status.fertilizer);
+            storedDirtColor = Ass.instance.storedType.GetColor();
         } catch {
             Debug.Log("nullptr exception");
         }

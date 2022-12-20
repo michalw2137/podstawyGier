@@ -16,10 +16,9 @@ public class DirtDetector : MonoBehaviour
     [SerializeField]
     public float clearingRadius = 150.0f;
 
-    [SerializeField]
-    public string typeName;
-
+    [SerializeField] public Types dirtType;
     private Type type;
+
     private List<DirtParticle> nearbyDirtParticles;
 
     private Food food;
@@ -32,21 +31,21 @@ public class DirtDetector : MonoBehaviour
     void Start()
     {
         food = transform.parent.GetComponent<Food>();
-
-        if(typeName == "normal") {
-            type = TypeNormal.instance;
-        } else if (typeName == "wet") {
-            type = TypeWet.instance;
-        } else if (typeName == "dry") {
-            type = TypeDry.instance;
-        } else {
-            throw new System.Exception("INCORRECT DIRT TYPE IN DIRT DETECTOR!");
-        }
-
         // Debug.Log(transform.parent);
         // Debug.Log(food);
         nearbyDirtParticles = new List<DirtParticle>();
 
+        if(dirtType == Types.normal) {
+            type = TypeNormal.instance;
+        } 
+        else if (dirtType == Types.wet) {
+            type = TypeWet.instance;
+        } 
+        else if (dirtType == Types.dry) {
+            type = TypeDry.instance;
+        } else {
+            Debug.Log("something went very wrong with seed type");
+        }
     }
 
     // Update is called once per frame

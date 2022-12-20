@@ -4932,7 +4932,7 @@ MonoBehaviour:
   dirtRequired: 60
   detectionRadius: 70
   clearingRadius: 100
-  typeName: dry
+  dirtType: 2
 --- !u!1 &2745624168977661623
 GameObject:
   m_ObjectHideFlags: 0

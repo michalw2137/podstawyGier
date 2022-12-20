@@ -7,9 +7,13 @@ public class TypeDry : Type
     public static Type instance;
 
     // Start is called before the first frame update
-    void Awake()
-    {
-        instance = this;
+    void Awake() {
+        if(instance == null) {
+            instance = this;
+            DontDestroyOnLoad(instance);
+        } else {
+            Destroy(gameObject);
+        }
         type = Types.dry;
     }
 

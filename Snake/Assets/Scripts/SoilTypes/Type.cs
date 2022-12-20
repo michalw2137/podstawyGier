@@ -2,36 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Status {eatable, eaten, fertilizer};
+public enum Status {eatable, eaten, fertilizer, nonDirt};
 public enum Types {normal, wet, dry};
 
 public class Type : MonoBehaviour
 {
-    [SerializeField] public Color defaultColor; 
-
-    [SerializeField] public Color deletedColor;
-
-    [SerializeField] public Color respawnedColor; 
+    [SerializeField] public Color wormColor; 
 
     [SerializeField] public Sprite defaultSprite;
     [SerializeField] public Sprite respawnedSprite;
 
-    
-    [SerializeField]
-    public Types type;
+    [SerializeField] public Types type;
 
-    public Color GetColor(Status status) {
+    private static Color neutralColor = new Color(1, 1, 1, 1);
+    private static Color deletedColor = new Color(0,0,0,0);
+
+    public Color GetColor(Status status = Status.nonDirt) {
        switch(status){
-            case Status.eatable:  
-                return defaultColor;
+            case Status.nonDirt:  
+                return wormColor;
+
+            case Status.eatable:
+                return neutralColor;
 
             case Status.eaten: 
                 return deletedColor;
 
             case Status.fertilizer: 
-                return respawnedColor;
+                return neutralColor;
 
-            default: return new Color(255, 0, 0, 255);
+            default: 
+                Debug.Log("Get Color default");
+                return new Color(255, 0, 0, 255);
         } 
     }
 

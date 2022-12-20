@@ -73,7 +73,7 @@ public class DirtParticle : MonoBehaviour
 
     public void resetColor()
     {
-        sr.color =  type.defaultColor;
+        sr.color =  type.wormColor;
     }
 
 
