@@ -28,11 +28,10 @@ public class Exit : MonoBehaviour
         // Debug.Log("head length = " + Head.instance.length);
         // Debug.Log("child count = " + FoodManager.instance.gameObject.transform.childCount);
 
-        LevelProgress.instance.updateText();
     }
 
     void Update() {
-        if(Input.GetKeyDown(KeyCode.Space)) {
+        if(Input.GetKeyDown(KeyCode.KeypadMinus)) {
             Head.instance.length = RequiredLength;
             StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
         }
@@ -68,6 +67,8 @@ public class Exit : MonoBehaviour
         Head.instance.isMoving = true;
         // Set start position in new level
         Head.instance.transform.position = SpawnLocation;
+        LevelProgress.instance.updateText();
+
     }
 
 }

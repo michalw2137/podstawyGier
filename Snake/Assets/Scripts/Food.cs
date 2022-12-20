@@ -72,7 +72,7 @@ public class Food : MonoBehaviour
         emitParticles(true, 1);
     }
 
-    private void emitParticles(bool emit, int n) {
+    public void emitParticles(bool emit, int n) {
         //Debug.Log($"emitting particles: {emit}");
         fpm.setParticling(emit, n);
     }
@@ -80,6 +80,11 @@ public class Food : MonoBehaviour
     private void squash() {
         //Debug.Log("playing animation");
         sm.triggerSquash();
+    }
+
+    public void squashIncrease() {
+        //Debug.Log("playing animation");
+        sm.triggerIncreaseSquash();
     }
 
     

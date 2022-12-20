@@ -92,6 +92,7 @@ public class Head : MonoBehaviour
 
         Ass.instance.updateCap(Body.Count);
         LevelProgress.instance.updateText();
+        Score.instance.updateText();
     }
 
 
@@ -201,7 +202,6 @@ public class Head : MonoBehaviour
             Grow();
         }
         length = temp;
-        LevelProgress.instance.updateText();
     }
 
     void OnTriggerEnter2D(Collider2D other)

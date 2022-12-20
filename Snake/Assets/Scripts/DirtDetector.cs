@@ -68,7 +68,8 @@ public class DirtDetector : MonoBehaviour
             if(isInside(particle.transform.position, detectionRadius))
             {
                 changeNearbyDirt(1);
-                // TODO: add squash
+                food.emitParticles(true, 2);
+                food.squashIncrease();
             }
         }
     }
