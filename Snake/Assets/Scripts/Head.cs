@@ -172,6 +172,7 @@ public class Head : MonoBehaviour
     {
         if (!isDestroyed)
         {
+            DirtSpawner.instance.spawnDirt();
             Ass.instance.dirtCount = 0;
             PositionsHistory.Clear();
             foreach (GameObject body in Body)

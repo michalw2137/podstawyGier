@@ -78,7 +78,7 @@ public class Food : MonoBehaviour
     }
 
     private void squash() {
-        Debug.Log("playing animation");
+       // Debug.Log("playing animation");
         sm.triggerSquash();
     }
 

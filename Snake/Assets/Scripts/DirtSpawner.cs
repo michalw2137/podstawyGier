@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DirtSpawner : MonoBehaviour
 {
@@ -15,19 +16,30 @@ public class DirtSpawner : MonoBehaviour
     public static DirtSpawner instance;
 
     void Awake() {
-        instance = this;
+        if(instance == null) {
+            instance = this;
+            DontDestroyOnLoad(instance);
+        } else {
+            Destroy(gameObject);
+        }
     }
 
     void Start()
     {
         soil = new List<GameObject>();
 
-        Debug.Log("START \n");
+        Debug.Log("START");
+        spawnDirt();
+                
+    }
 
-        for(float y = start.y; y <= end.y; y += dirtSize) 
-        {
-            for(float x = start.x; x <= end.x; x += dirtSize) 
-            {
+    public void spawnDirt() {
+        soil.Clear();
+        Debug.Log("spawning dirt");
+
+
+        for (float y = start.y; y <= end.y; y += dirtSize) {
+            for (float x = start.x; x <= end.x; x += dirtSize) {
                 GameObject temp = Instantiate(dirtParticle);
 
                 temp.transform.position = new Vector3(x, y, 0);  
@@ -36,12 +48,7 @@ public class DirtSpawner : MonoBehaviour
                 soil.Add(temp);
             }
         }
-
-        
     }
 
-    void Update()
-    {
-        
-    }
+
 }
