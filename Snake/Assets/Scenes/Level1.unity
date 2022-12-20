@@ -10364,11 +10364,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e2e480ac8a81fc4d840cfb01946ec23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wormColor: {r: 0.7264151, g: 0.46071312, b: 0.23642756, a: 1}
+  wormColor: {r: 0.7254902, g: 0.5153345, b: 0.23529412, a: 1}
   defaultSprite: {fileID: 21300000, guid: be5f724f11847e041bc875cff88303c9, type: 3}
-  defaultColor: {r: 0.4716981, g: 0.20132928, b: 0.14017443, a: 1}
+  defaultColor: {r: 0.5188679, g: 0.36734572, b: 0.12482198, a: 1}
   respawnedSprite: {fileID: 21300000, guid: 32bfd9305381bbb46935c711f9bbd172, type: 3}
-  respawnedColor: {r: 0.3490566, g: 0.14990838, b: 0.103729084, a: 1}
+  respawnedColor: {r: 0.34901962, g: 0.25216842, b: 0.101960786, a: 1}
   type: 0
 --- !u!114 &747074475
 MonoBehaviour:
@@ -11269,8 +11269,8 @@ SpriteRenderer:
   m_SortingLayerID: 99384771
   m_SortingLayer: 1
   m_SortingOrder: 9
-  m_Sprite: {fileID: 21300000, guid: 09544eaae7d1fba4daa6dc40792f7efa, type: 3}
-  m_Color: {r: 1, g: 0.872125, b: 0.75, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 3e69428abe5868a459eac6ee7616430f, type: 3}
+  m_Color: {r: 0.254717, g: 0.18842824, b: 0.126157, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
