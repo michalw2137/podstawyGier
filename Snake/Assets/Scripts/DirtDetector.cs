@@ -58,7 +58,7 @@ public class DirtDetector : MonoBehaviour
     public void addParticle(DirtParticle particle)
     {
         if(particle.type != type) {
-            Debug.Log("inorrect dirt type");
+            //Debug.Log("inorrect dirt type");
             return;
         }
         //Debug.Log("adding particle");
@@ -69,6 +69,7 @@ public class DirtDetector : MonoBehaviour
             if(isInside(particle.transform.position, detectionRadius))
             {
                 changeNearbyDirt(1);
+                // TODO: add squash
             }
         }
     }
