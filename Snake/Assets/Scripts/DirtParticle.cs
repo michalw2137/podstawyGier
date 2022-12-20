@@ -5,6 +5,7 @@ using UnityEngine;
 public class DirtParticle : MonoBehaviour
 {
     //[SerializeField] public Color defaultColor = new Color(231, 200, 128, 128); 
+
     private SpriteRenderer sr;
 
     public Type type {get; set;}
@@ -67,6 +68,7 @@ public class DirtParticle : MonoBehaviour
     private void updateColor() 
     {
         sr.color = type.GetColor(status);
+        sr.sprite = type.GetSprite(status);
     }
 
     public void resetColor()

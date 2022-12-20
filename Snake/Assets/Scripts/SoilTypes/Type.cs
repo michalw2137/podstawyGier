@@ -13,6 +13,10 @@ public class Type : MonoBehaviour
 
     [SerializeField] public Color respawnedColor; 
 
+    [SerializeField] public Sprite defaultSprite;
+    [SerializeField] public Sprite respawnedSprite;
+
+    
     [SerializeField]
     public Types type;
 
@@ -28,6 +32,21 @@ public class Type : MonoBehaviour
                 return respawnedColor;
 
             default: return new Color(255, 0, 0, 255);
+        } 
+    }
+
+    public Sprite GetSprite(Status status) {
+       switch(status){
+            case Status.eatable:  
+                return defaultSprite;
+
+            case Status.eaten: 
+                return respawnedSprite;
+
+            case Status.fertilizer: 
+                return respawnedSprite;
+
+            default: return defaultSprite;
         } 
     }
 
