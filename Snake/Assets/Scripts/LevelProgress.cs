@@ -9,7 +9,12 @@ public class LevelProgress : MonoBehaviour
     public static LevelProgress instance;
 
     void Awake() {
-        instance = this;
+        if(instance == null) {
+            instance = this;
+            DontDestroyOnLoad(instance);
+        } else {
+            Destroy(gameObject);
+        }
     }
 
     void Start()
