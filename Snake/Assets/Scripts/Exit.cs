@@ -17,6 +17,13 @@ public class Exit : MonoBehaviour
         instance = this;
     }
 
+    void Update() {
+        if(Input.GetKeyDown(KeyCode.Space)) {
+            Head.instance.length = RequiredLength;
+            StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
+        }
+    }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {

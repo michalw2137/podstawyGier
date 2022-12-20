@@ -4929,8 +4929,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nearbyDirt: 0
-  dirtRequired: 60
-  detectionRadius: 70
+  dirtRequired: 80
+  detectionRadius: 80
   clearingRadius: 100
   typeName: normal
 --- !u!1 &2745624168977661623
@@ -5016,7 +5016,7 @@ SpriteRenderer:
   m_SortingLayerID: 99384771
   m_SortingLayer: 1
   m_SortingOrder: 26
-  m_Sprite: {fileID: 21300000, guid: 22f7d53c24d6c3d4dbb8a91682a375e0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b748dd9783a1ddf409a3cd48405ba266, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

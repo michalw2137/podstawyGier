@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 739818678}
   - component: {fileID: 739818677}
   m_Layer: 0
-  m_Name: DirtWet
+  m_Name: DirtDry
   m_TagString: DirtDry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
