@@ -361,7 +361,6 @@ GameObject:
   - component: {fileID: 739818676}
   - component: {fileID: 739818679}
   - component: {fileID: 739818678}
-  - component: {fileID: 739818677}
   m_Layer: 0
   m_Name: DirtDry
   m_TagString: DirtDry
@@ -384,42 +383,6 @@ Transform:
   m_Father: {fileID: 747074472}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &739818677
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 739818675}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 278.20312, y: -228.21315}
-      - {x: 264.68887, y: -131.80911}
-      - {x: 153.23126, y: -82.20623}
-      - {x: 131.47826, y: -4.0078964}
-      - {x: 190.99997, y: 25.847565}
-      - {x: 266.3312, y: -46.943165}
-      - {x: 395.19952, y: -67.53877}
-      - {x: 423.79932, y: -131.10574}
-      - {x: 359.4028, y: -166.85701}
-      - {x: 345.83853, y: -227.71542}
-      - {x: 312.35654, y: -239.42381}
 --- !u!60 &739818678
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -445,12 +408,16 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -378.13525, y: -248.61871}
-      - {x: -131.11525, y: -230.36174}
-      - {x: -101.053696, y: -179.33583}
+    - - {x: -433.05698, y: -212.7442}
+      - {x: -378.13525, y: -248.61871}
+      - {x: -402.66428, y: -330.21414}
+      - {x: -228.01788, y: -383.3337}
+      - {x: -53.785103, y: -393.1013}
+      - {x: 59.39718, y: -361.65405}
+      - {x: 58.223312, y: -217.4238}
       - {x: -111.940384, y: -154.91423}
-      - {x: -167.82405, y: -134.26851}
-      - {x: -288.90143, y: -157.14133}
+      - {x: -112.42338, y: -106.56818}
+      - {x: -218.4964, y: -15.177048}
       - {x: -316.0464, y: -62.252693}
       - {x: -434.39133, y: -70.83406}
       - {x: -464.50955, y: -139.74107}
