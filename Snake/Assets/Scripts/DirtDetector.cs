@@ -69,6 +69,7 @@ public class DirtDetector : MonoBehaviour
             {
                 changeNearbyDirt(1);
                 food.emitParticles(true, 2);
+                food.squashIncrease();
             }
         }
     }

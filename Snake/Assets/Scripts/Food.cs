@@ -82,6 +82,11 @@ public class Food : MonoBehaviour
         sm.triggerSquash();
     }
 
+    public void squashIncrease() {
+        //Debug.Log("playing animation");
+        sm.triggerIncreaseSquash();
+    }
+
     
     public void Spawn() 
     {
