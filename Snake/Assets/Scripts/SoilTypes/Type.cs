@@ -10,7 +10,10 @@ public class Type : MonoBehaviour
     [SerializeField] public Color wormColor; 
 
     [SerializeField] public Sprite defaultSprite;
+    [SerializeField] public Color defaultColor; 
+
     [SerializeField] public Sprite respawnedSprite;
+    [SerializeField] public Color respawnedColor; 
 
     [SerializeField] public Types type;
 
@@ -23,13 +26,13 @@ public class Type : MonoBehaviour
                 return wormColor;
 
             case Status.eatable:
-                return neutralColor;
+                return defaultColor;
 
             case Status.eaten: 
                 return deletedColor;
 
             case Status.fertilizer: 
-                return neutralColor;
+                return respawnedColor;
 
             default: 
                 Debug.Log("Get Color default");

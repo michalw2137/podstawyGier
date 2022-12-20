@@ -10347,8 +10347,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wormColor: {r: 0.33962262, g: 0.065681726, b: 0.065681726, a: 1}
-  defaultSprite: {fileID: 21300000, guid: 05a8e048fd630754b99eeb9715d69271, type: 3}
-  respawnedSprite: {fileID: 21300000, guid: 79979fb0c64837741b526dab91f248d8, type: 3}
+  defaultSprite: {fileID: 21300000, guid: 281c1538e37098b4dbcd3e97f5fbb7cc, type: 3}
+  defaultColor: {r: 0.2264151, g: 0.05356034, b: 0.016019935, a: 1}
+  respawnedSprite: {fileID: 21300000, guid: aa9255b021237bf4c81093e1890f4a53, type: 3}
+  respawnedColor: {r: 0.16981131, g: 0.04280043, b: 0.016820932, a: 1}
   type: 1
 --- !u!114 &747074474
 MonoBehaviour:
@@ -10363,8 +10365,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wormColor: {r: 0.7264151, g: 0.46071312, b: 0.23642756, a: 1}
-  defaultSprite: {fileID: 21300000, guid: 93d6ff98862566e409c2ffcce2c5afdf, type: 3}
-  respawnedSprite: {fileID: 21300000, guid: e171b46a2154bba43aa692177ac929ed, type: 3}
+  defaultSprite: {fileID: 21300000, guid: be5f724f11847e041bc875cff88303c9, type: 3}
+  defaultColor: {r: 0.4716981, g: 0.20132928, b: 0.14017443, a: 1}
+  respawnedSprite: {fileID: 21300000, guid: 32bfd9305381bbb46935c711f9bbd172, type: 3}
+  respawnedColor: {r: 0.3490566, g: 0.14990838, b: 0.103729084, a: 1}
   type: 0
 --- !u!114 &747074475
 MonoBehaviour:
@@ -10378,9 +10382,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f38f73a5114c31459d5d02dbfcc1bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wormColor: {r: 0.46226418, g: 0.39113355, b: 0.3597811, a: 1}
-  defaultSprite: {fileID: 21300000, guid: 3e1f5b361e6e8634f8f87602eca6a5c1, type: 3}
-  respawnedSprite: {fileID: 21300000, guid: a61a43098479a53419f06a17973639ab, type: 3}
+  wormColor: {r: 0.745283, g: 0.66496766, b: 0.629272, a: 1}
+  defaultSprite: {fileID: 21300000, guid: 8cbd5ad409ff3db41a7623d0df2cc359, type: 3}
+  defaultColor: {r: 0.509434, g: 0.46692735, b: 0.42532933, a: 1}
+  respawnedSprite: {fileID: 21300000, guid: b48a630b76317aa44ae954bdaff6ce8c, type: 3}
+  respawnedColor: {r: 0.3679245, g: 0.32227203, b: 0.28635633, a: 1}
   type: 2
 --- !u!1 &752353877
 GameObject:
