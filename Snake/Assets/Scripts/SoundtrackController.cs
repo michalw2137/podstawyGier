@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class SoundtrackController : MonoBehaviour
 {
+    
+     public AudioSource audioSource;
+
+     void Start()
+     {
+          audioSource.Play();
+     }
+
     void Awake() {
         GameObject [] musicObj =  GameObject.FindGameObjectsWithTag("soundtrack");
-        if(musicObj.Length >1 ) 
+        if(musicObj.Length >2 ) 
         {
             Destroy(this.gameObject);
         }
