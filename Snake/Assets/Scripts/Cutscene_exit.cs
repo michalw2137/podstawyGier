@@ -33,7 +33,7 @@ using UnityEngine.SceneManagement;
     private void Exit()
     {
         Awake();
-        SceneManager.LoadScene("Level1", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Level1", LoadSceneMode.Single);
     }
 
 }

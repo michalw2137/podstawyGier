@@ -18,7 +18,15 @@ public class Ass : MonoBehaviour
         private SFXmanager sfx;
 
     void Awake() {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            Destroy(this);
+        }
         sfx = GetComponent<SFXmanager>();
         dirtCount = 0;
         storedType = TypeNormal.instance;

@@ -12,8 +12,17 @@ public class ParticleManager : MonoBehaviour
 
     private bool isParticling = false;
 
-    void Awake() {
-        instance = this;
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            Destroy(this);
+        }
     }
 
     void Start() {

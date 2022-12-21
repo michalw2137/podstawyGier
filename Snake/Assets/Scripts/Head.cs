@@ -45,15 +45,28 @@ public class Head : MonoBehaviour
 
     private SpriteRenderer sr;
 
-    private bool isDestroyed = false;
+    public bool isDestroyed = false;
 
     void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(instance);
+        }
+        else
+        {
+            for(int i = 0; i < gameObject.transform.childCount; ++i)
+            {
+                Destroy(gameObject.transform.GetChild(i).gameObject);
+            }
+            Destroy(this.gameObject);
+            Destroy(this);
+        }
         Body = new List<GameObject>();
         PositionsHistory = new List<Vector3>();
         sr = this.GetComponent<SpriteRenderer>();
-        DontDestroyOnLoad(this);
+
     }
 
     void Start()
@@ -276,7 +289,7 @@ public class Head : MonoBehaviour
         }
     }
 
-    IEnumerator Death()
+    public IEnumerator Death(bool force = false)
     {
         //do stuff
         Debug.Log("death"); 
@@ -284,11 +297,7 @@ public class Head : MonoBehaviour
         isMoving = false;
 
         //wait for enter to be pressed
-        while(!Input.anyKey)
-        {
-            yield return null;
-        }
-    
+
         //do stuff once enter is pressed
         Debug.Log("respawning");
 
@@ -297,9 +306,19 @@ public class Head : MonoBehaviour
             Destroy(seg);
         }
         Body.Clear();
-        Destroy(gameObject);
-        isDestroyed = true;
-        SceneManager.LoadScene(0);
+
+        if (SceneManager.GetActiveScene().name == "Level1" || force)
+        {
+            Destroy(gameObject);
+            instance = null;
+            isDestroyed = true;
+        }
+        else
+        {
+            isMoving = true;
+        }
+        PauseMenu.instance.Pause();
+        yield return null;
     }
 
 }
