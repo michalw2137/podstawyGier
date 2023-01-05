@@ -80,7 +80,7 @@ public class Head : MonoBehaviour
 
         SceneManager.sceneLoaded += OnSceneLoaded;
         Score.instance.updateText();
-
+        //LevelProgress.instance.updateText();
     }
 
 
@@ -104,7 +104,7 @@ public class Head : MonoBehaviour
         length++;
 
         Ass.instance.updateCap(Body.Count);
-        LevelProgress.instance.updateText();
+        //LevelProgress.instance.updateText();
         Score.instance.updateText();
     }
 

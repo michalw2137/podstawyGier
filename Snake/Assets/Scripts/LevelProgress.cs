@@ -38,6 +38,6 @@ public class LevelProgress : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //"Length: 0/0 - Exit closed"
+        updateText();
     }
 }
