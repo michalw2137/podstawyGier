@@ -4,26 +4,28 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 
-    public class Cutscene_exit : MonoBehaviour
-    {
-        public static Cutscene_exit instance;
+public class Cutscene_exit : MonoBehaviour
+{
+    public static Cutscene_exit instance;
 
-        void Awake()
+    [SerializeField] float duration = 20.0f;
+
+    void Awake()
+    {
+        if (instance == null)
         {
-            if (instance == null)
-            {
-                instance = this;
-                DontDestroyOnLoad(instance);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+            instance = this;
+            DontDestroyOnLoad(instance);
         }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
-        InvokeRepeating("Exit", 46, 0);
+        InvokeRepeating("Exit", duration, 0);
     }
 
     void Update()
@@ -32,6 +34,7 @@ using UnityEngine.SceneManagement;
 
     private void Exit()
     {
+        SoundtrackController.instance.setPlaying(false);
         Awake();
         SceneManager.LoadScene("Level1", LoadSceneMode.Single);
     }
