@@ -22,6 +22,7 @@ TagManager:
   - DirtWet
   - DirtDry
   - soundtrack
+  - levelComplete
   layers:
   - Default
   - TransparentFX

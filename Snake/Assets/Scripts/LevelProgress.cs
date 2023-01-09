@@ -30,8 +30,10 @@ public class LevelProgress : MonoBehaviour
         string state = "";
         if(Exit.instance.isOpen()) {
             state = "is open" ;
+            LevelCompleteParticleManager.instance.setParticling(true);
         } else {
             state = "is closed" ;
+            LevelCompleteParticleManager.instance.setParticling(false);
         } 
         int length = Head.instance.length;
         int requiredLength = Exit.instance.RequiredLength;
