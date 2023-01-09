@@ -9,6 +9,7 @@ public class Cutscene_exit : MonoBehaviour
     public static Cutscene_exit instance;
 
     [SerializeField] float duration = 20.0f;
+    [SerializeField] string NextLevelName = "MainMenu";
 
     void Awake()
     {
@@ -41,7 +42,7 @@ public class Cutscene_exit : MonoBehaviour
     {
         SoundtrackController.instance.setPlaying(false);
         Awake();
-        SceneManager.LoadScene("Level1", LoadSceneMode.Single);
+        SceneManager.LoadScene(NextLevelName, LoadSceneMode.Single);
     }
 
 }

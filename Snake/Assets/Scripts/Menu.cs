@@ -13,6 +13,11 @@ public class Menu : MonoBehaviour
          StartCoroutine(LoadScene("LevelSelection"));
     }
 
+    public void Cutscene()
+    {
+        StartCoroutine(LoadScene("Cutscene"));
+    }
+
     public void Quit()
     {
         Application.Quit();
