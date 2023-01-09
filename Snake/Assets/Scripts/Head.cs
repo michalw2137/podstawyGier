@@ -36,6 +36,8 @@ public class Head : MonoBehaviour
     private bool isJumping = false;
     private float fallDir = 0;
 
+    private float time = 0;
+
     [NonSerialized]
     public int length = 0;
 
@@ -86,6 +88,7 @@ public class Head : MonoBehaviour
         Debug.Log("HEAD START");
         isMoving = true;
         length = 0;
+        time = 0;
         for (int i = 0; i < startLength; i++)
         {
             // if(transform == null) {
@@ -137,6 +140,7 @@ public class Head : MonoBehaviour
     // code stolen from : 
     // https://www.youtube.com/watch?v=iuz7aUHYC_E
     void FixedUpdate() { 
+        time += Time.deltaTime;
         //Debug.Log(length);
         Color storedDirtColor = new Color(1, 1, 1, 1);
 
@@ -160,7 +164,7 @@ public class Head : MonoBehaviour
 
         // Steer
         if(isCutscene) {
-            transform.Rotate(Vector3.back * MathF.Sin(Time.time * timeMultiplyer) * SteerSpeed);
+            transform.Rotate(Vector3.back * MathF.Sin(time * timeMultiplyer) * SteerSpeed);
         } else if (!isJumping )
         {
             float steerDirection = Input.GetAxis("Horizontal"); // Returns value -1, 0, or 1
