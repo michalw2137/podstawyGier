@@ -29,7 +29,7 @@ public class LevelCompleteParticleManager : MonoBehaviour
 
     public void setParticling(bool state) 
     {
-        Debug.Log($"setting particle to {state}");
+        //Debug.Log($"setting particle to {state}");
         if(state) {
             particles[0].gameObject.GetComponent<Renderer>().sortingOrder = 60;
             particles[0].GetComponent<ParticleSystem>().Play();
