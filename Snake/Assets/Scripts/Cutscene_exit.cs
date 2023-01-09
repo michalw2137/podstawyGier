@@ -32,6 +32,9 @@ public class Cutscene_exit : MonoBehaviour
 
     private void Exit()
     {
+        // if(Head.instance != null) {
+        //     Head.instance.DestroyWorm();
+        // }
         SoundtrackController.instance.setPlaying(false);
         Awake();
         SceneManager.LoadScene(NextLevelName, LoadSceneMode.Single);

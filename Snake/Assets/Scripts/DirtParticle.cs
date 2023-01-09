@@ -44,13 +44,15 @@ public class DirtParticle : MonoBehaviour
         }
 
         if (other.tag == "ass") {
-            if(Input.GetAxis("Fire1") == 1) {
+            if(Head.instance.isCutscene) {
+                Ass.instance.respawnParticle(this);
+            } else if(Input.GetAxis("Fire1") == 1) {
                 Ass.instance.respawnParticle(this);
             } 
+            
         } 
         if (other.tag == "head") {
             Ass.instance.eatParticle(this);
-            
         } 
     }
 
@@ -68,7 +70,7 @@ public class DirtParticle : MonoBehaviour
     private void updateColor() 
     {
         sr.color = type.GetColor(status);
-        sr.sprite = type.GetSprite(status);
+        sr.sprite = type.GetSprite(status);        
     }
 
     public void resetColor()

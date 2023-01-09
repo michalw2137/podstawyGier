@@ -10,7 +10,10 @@ public class TypeDry : Type
     void Awake() {
         if(instance == null) {
             instance = this;
-            DontDestroyOnLoad(instance);
+            if(!Head.instance.isCutscene) {
+                DontDestroyOnLoad(instance);
+                Debug.Log("dry type dont destroy on load");
+            }
         } else {
             Destroy(gameObject);
         }

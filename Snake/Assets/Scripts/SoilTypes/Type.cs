@@ -12,16 +12,18 @@ public class Type : MonoBehaviour
     [SerializeField] public Sprite defaultSprite;
     [SerializeField] public Color defaultColor; 
 
+    [SerializeField] public Color deletedColor; 
+
     [SerializeField] public Sprite respawnedSprite;
     [SerializeField] public Color respawnedColor; 
 
     [SerializeField] public Types type;
 
     private static Color neutralColor = new Color(1, 1, 1, 1);
-    private static Color deletedColor = new Color(0,0,0,0);
+    //private static Color deletedColor = new Color(0,0,0,0);
 
     public Color GetColor(Status status = Status.nonDirt) {
-       switch(status){
+        switch(status){
             case Status.nonDirt:  
                 return wormColor;
 

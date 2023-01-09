@@ -14,12 +14,14 @@ public class Shake : MonoBehaviour
     private bool isShaking = false;
 
     void Awake() {
-        if(instance == null) {
-            instance = this;
-            DontDestroyOnLoad(instance);
-        } else {
-            Destroy(gameObject);
-        }
+        instance = this;
+
+        // if(instance == null) {
+        //     instance = this;
+        //     DontDestroyOnLoad(instance);
+        // } else {
+        //     Destroy(gameObject);
+        // }
     }
 
     public void startShake() {

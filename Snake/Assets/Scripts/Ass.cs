@@ -30,9 +30,26 @@ public class Ass : MonoBehaviour
         sfx = GetComponent<SFXmanager>();
         dirtCount = 0;
         storedType = TypeNormal.instance;
+
+    }
+
+    void Start() {
+        if(Head.instance.isCutscene) {
+            storedType = TypeNormal.instance;
+        }
     }
 
     public void respawnParticle(DirtParticle dp) {
+        if(Head.instance.isCutscene) {
+            sfx.playSoundWithoutRepeat(1);
+            dp.setType(this.storedType);
+            dp.setStatus(Status.fertilizer);
+            for(int i = 0; i < FoodManager.instance.transform.childCount; i++) {
+                FoodManager.instance.gameObject.transform.GetChild(i).GetChild(0).GetComponent<DirtDetector>().addParticle(dp);
+            } 
+            return;
+        }
+
         if (dp.status != Status.eaten) {
             return;
         }
@@ -53,6 +70,13 @@ public class Ass : MonoBehaviour
     }
 
     public void eatParticle(DirtParticle dp) {
+        if(Head.instance.isCutscene) {
+            ParticleManager.instance.setParticling(true); 
+            dp.setStatus(Status.eaten);
+
+            return;
+        }
+
         if (dp.status != Status.eatable) {
             ParticleManager.instance.setParticling(false);
             return;

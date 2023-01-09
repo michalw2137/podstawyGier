@@ -11,26 +11,22 @@ public class Head : MonoBehaviour
     public static Head instance;
 
 
-    [SerializeField]
-    public float MoveSpeed = 150.0f;
+    [SerializeField] public float MoveSpeed = 150.0f;
 
-    [SerializeField]
-    public float BodySpeed = 7.0f;
+    [SerializeField] public float BodySpeed = 7.0f;
 
-    [SerializeField]
-    public float SteerSpeed = 180.0f;
+    [SerializeField] public float SteerSpeed = 180.0f;
+    [SerializeField] public float timeMultiplyer = 180.0f;
 
-    [SerializeField]
-    public GameObject Segment;
+    [SerializeField] public GameObject Segment;
 
-    [SerializeField]
-    public int Gap = 10;
+    [SerializeField] public int Gap = 10;
 
-    [SerializeField]
-    public Sprite tailSprite;
+    [SerializeField] public Sprite tailSprite;
 
-    [SerializeField]
-    public Sprite bodySprite;
+    [SerializeField] public Sprite bodySprite;
+
+    [SerializeField] public bool isCutscene;
 
     private List<GameObject> Body;
     private List<Vector3> PositionsHistory;
@@ -51,17 +47,16 @@ public class Head : MonoBehaviour
     {
         if (instance == null)
         {
+            Debug.Log("instance = this");
             instance = this;
-            DontDestroyOnLoad(instance);
+            if(!isCutscene) {
+                Debug.Log("NOT destroying head");
+                DontDestroyOnLoad(instance);
+            }
         }
         else
         {
-            for(int i = 0; i < gameObject.transform.childCount; ++i)
-            {
-                Destroy(gameObject.transform.GetChild(i).gameObject);
-            }
-            Destroy(this.gameObject);
-            Destroy(this);
+            DestroyWorm();
         }
         Body = new List<GameObject>();
         PositionsHistory = new List<Vector3>();
@@ -69,17 +64,49 @@ public class Head : MonoBehaviour
 
     }
 
+    public void DestroyWorm() {
+        Debug.Log("destroying worm");
+        for(int i = 0; i < gameObject.transform.childCount; ++i)
+        {
+            Debug.Log($"{i} segment destroyed");
+
+            Destroy(gameObject.transform.GetChild(i).gameObject);
+        }
+        foreach(GameObject segment in Body) {
+            Destroy(segment);
+        }
+        Body.Clear();
+        length = 0;
+        Destroy(this.gameObject);
+        //Destroy(this);
+    }
+
     void Start()
     {
+        Debug.Log("HEAD START");
         isMoving = true;
         length = 0;
         for (int i = 0; i < startLength; i++)
         {
-            Grow();
+            // if(transform == null) {
+            //     Debug.Log("TRANSFORM OBJECT IS NULL");
+            // }
+            // if(gameObject == null) {
+            //     Debug.Log("GAME OBJECT IS NULL");
+            // }
+            // if(instance == null) {
+            //     Debug.Log("INSTANCE IS NULL");
+            // }
+            if(this == null) {
+                Debug.Log("HEAD IS NULL");
+            } else {
+                Debug.Log("trying to grow...");
+                Grow();
+            }
         }
 
         SceneManager.sceneLoaded += OnSceneLoaded;
-        Score.instance.updateText();
+        //Score.instance.updateText();
         //LevelProgress.instance.updateText();
     }
 
@@ -104,8 +131,6 @@ public class Head : MonoBehaviour
         length++;
 
         Ass.instance.updateCap(Body.Count);
-        //LevelProgress.instance.updateText();
-        Score.instance.updateText();
     }
 
 
@@ -118,7 +143,9 @@ public class Head : MonoBehaviour
         try{
             storedDirtColor = Ass.instance.storedType.GetColor();
         } catch {
-            Debug.Log("nullptr exception");
+            if(!isCutscene) {
+                Debug.Log("nullptr exception");
+            }
         }
 
         //Debug.Log(storedDirtColor);
@@ -132,7 +159,9 @@ public class Head : MonoBehaviour
         transform.position += transform.right * MoveSpeed * Time.deltaTime;
 
         // Steer
-        if (!isJumping)
+        if(isCutscene) {
+            transform.Rotate(Vector3.back * MathF.Sin(Time.time * timeMultiplyer) * SteerSpeed);
+        } else if (!isJumping )
         {
             float steerDirection = Input.GetAxis("Horizontal"); // Returns value -1, 0, or 1
             transform.Rotate(Vector3.back * steerDirection * SteerSpeed * Time.deltaTime);
@@ -197,7 +226,12 @@ public class Head : MonoBehaviour
             Body.Clear();
             for (int i = 0; i < startLength; i++)
             {
-                Grow();
+                if(this == null) {
+                    Debug.Log("HEAD IS NULL (grow in OnSceneLoaded)");
+                } else {
+                    Debug.Log("trying to grow...");
+                    Grow();
+                }
             }
             length -= startLength;
             await RetardedGrowth(); 

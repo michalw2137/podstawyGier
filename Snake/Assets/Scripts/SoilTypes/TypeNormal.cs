@@ -10,7 +10,12 @@ public class TypeNormal : Type
     void Awake() {
         if(instance == null) {
             instance = this;
-            DontDestroyOnLoad(instance);
+            Debug.Log("normal type instance set");
+
+            if(!Head.instance.isCutscene) {
+                DontDestroyOnLoad(instance);
+                Debug.Log("normal type dont destroy on load");
+            }
         } else {
             Destroy(gameObject);
         }
