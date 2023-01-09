@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
@@ -10,6 +11,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject PauseUI;
 
     public static PauseMenu instance;
+
+    public GameObject FirstSelectedButton;
 
     private int StartLength;
     private Vector3 StartPosition;
@@ -28,9 +31,11 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetButtonDown("Cancel"))
         {
-            if(IsGamePaused)
+            // GamePad support
+            EventSystem.current.SetSelectedGameObject(FirstSelectedButton);
+            if (IsGamePaused)
             {
                 Resume();
             }
@@ -61,7 +66,7 @@ public class PauseMenu : MonoBehaviour
         {
             StartCoroutine(Head.instance.Death(true));
         }
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MainMenu");
         Resume();
     }
 

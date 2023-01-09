@@ -30,6 +30,11 @@ public class Cutscene_exit : MonoBehaviour
 
     void Update()
     {
+        // Skip cutscene
+        if (Input.GetButtonDown("Cancel"))
+        {
+            Exit();
+        }
     }
 
     private void Exit()

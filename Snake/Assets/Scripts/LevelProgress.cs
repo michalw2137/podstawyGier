@@ -23,6 +23,10 @@ public class LevelProgress : MonoBehaviour
     }
 
     public void updateText() {
+        if (Head.instance == null) {
+            return;
+        }
+
         string state = "";
         if(Exit.instance.isOpen()) {
             state = "is open" ;

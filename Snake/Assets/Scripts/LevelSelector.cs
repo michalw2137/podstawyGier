@@ -1,26 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class Menu : MonoBehaviour
+public class LevelSelector : MonoBehaviour
 {
+    public int level;
+    public TMP_Text levelText;
     public Animator transition;
     public float transitionTime = 1f;
 
-    public void Play()
+    void Start()
     {
-         StartCoroutine(LoadScene("LevelSelection"));
+        levelText.text = level.ToString();
     }
 
-    public void Quit()
+    public void OpenScene()
     {
-        Application.Quit();
-    }
-
-    public void Back()
-    {
-        StartCoroutine(LoadScene("MainMenu"));
+        StartCoroutine(LoadScene("Level" + level.ToString()));
     }
 
     IEnumerator LoadScene(string levelName)

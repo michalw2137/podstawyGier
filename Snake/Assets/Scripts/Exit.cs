@@ -47,6 +47,10 @@ public class Exit : MonoBehaviour
     }
 
     public bool isOpen() {
+        if (Head.instance == null) {
+            return false;
+        }
+
         if (open) {
             return true;
         }
