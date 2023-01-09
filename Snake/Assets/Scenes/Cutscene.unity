@@ -151,7 +151,7 @@ PlayableDirector:
   m_GameObject: {fileID: 56004215}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 93530cd0b61accc47a206f814c28ff47, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 341a0874f9b5f9d4b84a153f3cb0849b, type: 2}
   m_InitialState: 1
   m_WrapMode: 0
   m_DirectorUpdateMode: 1
@@ -187,6 +187,38 @@ PlayableDirector:
     value: {fileID: 440269372}
   - key: {fileID: 8846235607789038383, guid: 93530cd0b61accc47a206f814c28ff47, type: 2}
     value: {fileID: 144630357}
+  - key: {fileID: -3052683112769275575, guid: 93530cd0b61accc47a206f814c28ff47, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 6140262842022548283, guid: 93530cd0b61accc47a206f814c28ff47, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -7430881887289873326, guid: 341a0874f9b5f9d4b84a153f3cb0849b, type: 2}
+    value: {fileID: 440269372}
+  - key: {fileID: 5040029759011937521, guid: 341a0874f9b5f9d4b84a153f3cb0849b, type: 2}
+    value: {fileID: 1892115692}
+  - key: {fileID: -4913832885541610016, guid: 341a0874f9b5f9d4b84a153f3cb0849b, type: 2}
+    value: {fileID: 1272700414}
+  - key: {fileID: -954493726275992129, guid: 341a0874f9b5f9d4b84a153f3cb0849b, type: 2}
+    value: {fileID: 606993325}
+  - key: {fileID: 8846235607789038383, guid: 341a0874f9b5f9d4b84a153f3cb0849b, type: 2}
+    value: {fileID: 144630357}
+  - key: {fileID: 4880829300417358207, guid: 341a0874f9b5f9d4b84a153f3cb0849b, type: 2}
+    value: {fileID: 493579639}
+  - key: {fileID: -680242757889058766, guid: 341a0874f9b5f9d4b84a153f3cb0849b, type: 2}
+    value: {fileID: 1727914983}
+  - key: {fileID: -1444888486518211214, guid: 341a0874f9b5f9d4b84a153f3cb0849b, type: 2}
+    value: {fileID: 1547435575}
+  - key: {fileID: 4083235429769386373, guid: 341a0874f9b5f9d4b84a153f3cb0849b, type: 2}
+    value: {fileID: 591936422}
+  - key: {fileID: -9078042036710250645, guid: 341a0874f9b5f9d4b84a153f3cb0849b, type: 2}
+    value: {fileID: 1703864959}
+  - key: {fileID: -330035020392294051, guid: 341a0874f9b5f9d4b84a153f3cb0849b, type: 2}
+    value: {fileID: 1827000292}
+  - key: {fileID: 8401719955571080372, guid: 341a0874f9b5f9d4b84a153f3cb0849b, type: 2}
+    value: {fileID: 1873563167}
+  - key: {fileID: 5274575984205667427, guid: 341a0874f9b5f9d4b84a153f3cb0849b, type: 2}
+    value: {fileID: 232508761}
+  - key: {fileID: 4148920056706215161, guid: 341a0874f9b5f9d4b84a153f3cb0849b, type: 2}
+    value: {fileID: 521405333}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &56004217
