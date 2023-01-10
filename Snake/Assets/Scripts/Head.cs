@@ -331,8 +331,11 @@ public class Head : MonoBehaviour
     {
         //do stuff
         Debug.Log("death"); 
-
         isMoving = false;
+        yield return StartCoroutine(DeathManager.instance.triggerDeath());
+         Debug.Log("after anim"); 
+
+        
 
         //wait for enter to be pressed
 
@@ -358,5 +361,6 @@ public class Head : MonoBehaviour
         PauseMenu.instance.Pause();
         yield return null;
     }
+    
 
 }
