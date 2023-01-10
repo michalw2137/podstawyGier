@@ -16,18 +16,18 @@ public class DeathManager : MonoBehaviour
     }
 
     void Start() {
-        
+
     }
 
     public IEnumerator triggerDeath() 
     {
-        Debug.Log("starting anim");
+        //Debug.Log("starting anim");
 
         anim.Play("Death");
 
         float animationLength = anim.GetCurrentAnimatorStateInfo(0).length;
         yield return new WaitForSecondsRealtime(animationLength);
-        Debug.Log("Done Playing");
+        //Debug.Log("Done Playing");
     }
 
     

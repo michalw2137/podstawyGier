@@ -333,7 +333,7 @@ public class Head : MonoBehaviour
         Debug.Log("death"); 
         isMoving = false;
         yield return StartCoroutine(DeathManager.instance.triggerDeath());
-         Debug.Log("after anim"); 
+         //Debug.Log("after anim"); 
 
         
 
