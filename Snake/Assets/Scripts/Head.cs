@@ -345,7 +345,7 @@ public class Head : MonoBehaviour
         }
         Body.Clear();
 
-        if (SceneManager.GetActiveScene().name == "Level1" || force)
+        if (force)
         {
             Destroy(gameObject);
             instance = null;
@@ -355,7 +355,10 @@ public class Head : MonoBehaviour
         {
             isMoving = true;
         }
-        PauseMenu.instance.Pause();
+        if (PauseMenu.instance != null)
+        {
+            PauseMenu.instance.Pause();
+        }
         yield return null;
     }
 

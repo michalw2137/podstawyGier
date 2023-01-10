@@ -11,7 +11,7 @@ public class TypeWet : Type
         if(instance == null) {
             instance = this;
 
-            if(!Head.instance.isCutscene) {
+            if(Head.instance != null && !Head.instance.isCutscene) {
                 DontDestroyOnLoad(instance);
                 Debug.Log("wet type dont destroy on load");
             }

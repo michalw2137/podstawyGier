@@ -12,7 +12,7 @@ public class TypeNormal : Type
             instance = this;
             Debug.Log("normal type instance set");
 
-            if(!Head.instance.isCutscene) {
+            if(Head.instance != null && !Head.instance.isCutscene) {
                 DontDestroyOnLoad(instance);
                 Debug.Log("normal type dont destroy on load");
             }
