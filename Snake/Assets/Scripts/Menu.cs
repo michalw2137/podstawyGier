@@ -8,10 +8,6 @@ public class Menu : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1f;
 
-    public void Start()
-    {
-    }
-
     public void Play()
     {
          StartCoroutine(LoadScene("LevelSelection"));
@@ -29,10 +25,6 @@ public class Menu : MonoBehaviour
 
     public void Back()
     {
-        if (Head.instance != null)
-        {
-            StartCoroutine(Head.instance.Death(true));
-        }
         StartCoroutine(LoadScene("MainMenu"));
     }
 

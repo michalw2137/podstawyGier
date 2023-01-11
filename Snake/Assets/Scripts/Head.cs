@@ -47,7 +47,19 @@ public class Head : MonoBehaviour
 
     void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            Debug.Log("instance = this");
+            instance = this;
+            if(!isCutscene) {
+                Debug.Log("NOT destroying head");
+                DontDestroyOnLoad(instance);
+            }
+        }
+        else
+        {
+            DestroyWorm();
+        }
         Body = new List<GameObject>();
         PositionsHistory = new List<Vector3>();
         sr = this.GetComponent<SpriteRenderer>();
@@ -96,7 +108,7 @@ public class Head : MonoBehaviour
             }
         }
 
-        //SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneLoaded += OnSceneLoaded;
         //Score.instance.updateText();
         //LevelProgress.instance.updateText();
     }
@@ -336,7 +348,7 @@ public class Head : MonoBehaviour
         }
         Body.Clear();
 
-        if (force)
+        if (SceneManager.GetActiveScene().name == "Level1" || force)
         {
             Destroy(gameObject);
             instance = null;
@@ -346,10 +358,7 @@ public class Head : MonoBehaviour
         {
             isMoving = true;
         }
-        if (PauseMenu.instance != null)
-        {
-            PauseMenu.instance.Pause();
-        }
+        PauseMenu.instance.Pause();
         yield return null;
     }
     

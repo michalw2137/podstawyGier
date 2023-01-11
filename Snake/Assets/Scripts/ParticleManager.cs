@@ -26,7 +26,7 @@ public class ParticleManager : MonoBehaviour
     }
 
     void Start() {
-        //setParticles(); // This line crashes menu
+        setParticles();
     }
 
     public void setParticling(bool active) {

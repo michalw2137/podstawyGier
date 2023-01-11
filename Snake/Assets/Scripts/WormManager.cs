@@ -5,7 +5,6 @@ using UnityEngine;
 public class WormManager : MonoBehaviour
 {
     public Vector3 StartPosition = new Vector3(-490.0f, 0.0f, 0.0f);
-    public Quaternion StartRotation = Quaternion.identity;
     public int StartLength;
 
     void Start()
@@ -17,7 +16,5 @@ public class WormManager : MonoBehaviour
         }
         Head.instance.length = StartLength;
         Head.instance.transform.position = StartPosition;
-        Head.instance.transform.rotation = StartRotation;
-        Head.instance.isMoving = true;
     }
 }

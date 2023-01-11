@@ -42,11 +42,6 @@ public class Exit : MonoBehaviour
     {
         if (other.tag == "head" && isOpen())
         {
-            int nextSceneLoad = SceneManager.GetActiveScene().buildIndex + 1;
-            if (nextSceneLoad > PlayerPrefs.GetInt("levelAt"))
-            {
-                PlayerPrefs.SetInt("levelAt", nextSceneLoad);
-            }
             StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
         }
     }
