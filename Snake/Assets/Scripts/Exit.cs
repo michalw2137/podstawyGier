@@ -19,11 +19,8 @@ public class Exit : MonoBehaviour
 
     void Start() {
         int wormLength = 0;
-        if(Head.instance.length == 0) {
-            wormLength = Head.instance.startLength;
-        } else {
-            wormLength = Head.instance.length;
-        }
+
+        wormLength = WormManager.instance.StartLength;
         RequiredLength = wormLength + FoodManager.instance.gameObject.transform.childCount;
         // Debug.Log("head length = " + Head.instance.length);
         // Debug.Log("child count = " + FoodManager.instance.gameObject.transform.childCount);

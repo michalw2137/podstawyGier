@@ -7,6 +7,13 @@ public class WormManager : MonoBehaviour
     public Vector3 StartPosition = new Vector3(-490.0f, 0.0f, 0.0f);
     public Vector3 StartRotation = Vector3.zero;
     public int StartLength;
+    public static WormManager instance;
+
+    void Awake()
+    {
+        instance = this;
+    }
+
 
     void Start()
     {
@@ -15,7 +22,7 @@ public class WormManager : MonoBehaviour
             Debug.Log("Something went wrong, where head?");
             return;
         }
-        Debug.Log(StartLength);
+
         Head.instance.length = StartLength;
         Head.instance.transform.position = StartPosition;
         Head.instance.transform.eulerAngles = StartRotation;
