@@ -56,7 +56,7 @@ public class Exit : MonoBehaviour
             return false;
         }
 
-        if (open) {
+        if (open) {            
             return true;
         }
         return Head.instance.length >= RequiredLength;

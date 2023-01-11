@@ -15,7 +15,7 @@ public class Ass : MonoBehaviour
 
     public Type storedType {get; set;}
 
-    private SFXmanager sfx;
+    public SFXmanager sfx;
 
     private SquashManager sm;
 
