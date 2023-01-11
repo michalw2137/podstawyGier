@@ -32,6 +32,7 @@ public class Cutscene_exit : MonoBehaviour
 
     private void Exit()
     {
+        Debug.Log("EXITING CUTSCENE");
         // if(Head.instance != null) {
         //     Head.instance.DestroyWorm();
         // }
