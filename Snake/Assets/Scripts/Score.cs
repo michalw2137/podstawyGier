@@ -13,6 +13,7 @@ public class Score : MonoBehaviour
         if(instance == null) {
             instance = this;
             DontDestroyOnLoad(instance);
+            updateText();
         } else {
             Destroy(gameObject);
         }
@@ -24,7 +25,10 @@ public class Score : MonoBehaviour
     }
 
     public void updateText() {
-        dirtCollected.text = $"{Ass.instance.storedType} stored: {Ass.instance.dirtCount} / {Ass.instance.getMaxCapacity()}";
+        if (Ass.instance != null)
+        {
+            dirtCollected.text = $"{Ass.instance.storedType} stored: {Ass.instance.dirtCount} / {Ass.instance.getMaxCapacity()}";
+        }
     }
    
 }

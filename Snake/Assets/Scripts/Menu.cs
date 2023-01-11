@@ -10,7 +10,6 @@ public class Menu : MonoBehaviour
 
     public void Start()
     {
-        Head.instance.isMoving = false;
     }
 
     public void Play()
