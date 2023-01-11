@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53bcaa2af353af2408ad6c80bc8fbaf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPosition: {x: -490, y: 0, z: 0}
+  StartPosition: {x: -630, y: 0, z: 0}
+  StartRotation: {x: 0, y: 0, z: 0}
   StartLength: 5
