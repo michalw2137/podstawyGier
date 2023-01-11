@@ -11,16 +11,7 @@ public class LevelCompleteParticleManager : MonoBehaviour
     public List<Transform> particles = new List<Transform>();
 
     void Awake() {
-        if(instance == null) {
-            instance = this;
-        }
-
-        GameObject [] lvlCpltObj =  GameObject.FindGameObjectsWithTag("levelComplete");
-        if(lvlCpltObj.Length >2 ) 
-        {
-            Destroy(this.gameObject);
-        }
-        DontDestroyOnLoad(this.gameObject);
+        instance = this;
     }
 
     void Start() {
