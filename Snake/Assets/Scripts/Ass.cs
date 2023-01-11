@@ -30,7 +30,6 @@ public class Ass : MonoBehaviour
             Destroy(this);
         }
         sfx = GetComponent<SFXmanager>();
-        sm = Head.instance.tail.GetComponent<SquashManager>();
         dirtCount = 0;
         storedType = TypeNormal.instance;
 
@@ -61,8 +60,6 @@ public class Ass : MonoBehaviour
         }
         
         dirtCount --;
-
-        //sm.triggerShitting();
 
         Score.instance.updateText();
         sfx.playSoundWithoutRepeat(1);

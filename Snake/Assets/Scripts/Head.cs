@@ -45,7 +45,6 @@ public class Head : MonoBehaviour
 
     public bool isDestroyed = false;
 
-    public GameObject tail;
 
     void Awake()
     {
@@ -192,7 +191,7 @@ public class Head : MonoBehaviour
             {
                 tempSR.flipX = true;
                 tempSR.sprite = tailSprite;
-                tail = Body[index];
+
             }
 
             index++;
