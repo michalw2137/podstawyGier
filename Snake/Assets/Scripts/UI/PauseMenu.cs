@@ -31,10 +31,8 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel") && !Head.instance.isDestroyed)
         {
-            // GamePad support
-            EventSystem.current.SetSelectedGameObject(FirstSelectedButton);
             if (IsGamePaused)
             {
                 Resume();
@@ -55,6 +53,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
+        // GamePad support
+        EventSystem.current.SetSelectedGameObject(FirstSelectedButton);
         PauseUI.SetActive(true);
         Time.timeScale = 0.0f;
         IsGamePaused = true;

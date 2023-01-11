@@ -47,19 +47,7 @@ public class Head : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
-        {
-            Debug.Log("instance = this");
-            instance = this;
-            if(!isCutscene) {
-                Debug.Log("NOT destroying head");
-                DontDestroyOnLoad(instance);
-            }
-        }
-        else
-        {
-            DestroyWorm();
-        }
+        instance = this;
         Body = new List<GameObject>();
         PositionsHistory = new List<Vector3>();
         sr = this.GetComponent<SpriteRenderer>();
@@ -83,11 +71,10 @@ public class Head : MonoBehaviour
         //Destroy(this);
     }
 
-    void Start()
+    async void Start()
     {
         Debug.Log("HEAD START");
         isMoving = true;
-        length = 0;
         time = 0;
         for (int i = 0; i < startLength; i++)
         {
@@ -107,8 +94,9 @@ public class Head : MonoBehaviour
                 Grow();
             }
         }
-
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        length -= startLength;
+        await RetardedGrowth();
+        //SceneManager.sceneLoaded += OnSceneLoaded;
         //Score.instance.updateText();
         //LevelProgress.instance.updateText();
     }
@@ -244,6 +232,7 @@ public class Head : MonoBehaviour
 
     private async Task RetardedGrowth()
     {
+        Debug.Log("RETARDED GROW " + length);
         // Spawning body after load new level
         await Task.Delay(700); // Value calculated by eye ;)
         isJumping = false; // Protection from blocking movement
@@ -348,16 +337,16 @@ public class Head : MonoBehaviour
         }
         Body.Clear();
 
-        if (SceneManager.GetActiveScene().name == "Level1" || force)
+        if (force)
         {
             Destroy(gameObject);
             instance = null;
-            isDestroyed = true;
         }
         else
         {
             isMoving = true;
         }
+        isDestroyed = true;
         PauseMenu.instance.Pause();
         yield return null;
     }
