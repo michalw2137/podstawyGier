@@ -19668,6 +19668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dirtCapMultiplier: 9
+  sfx: {fileID: 0}
 --- !u!114 &6547635163041457438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19685,6 +19686,7 @@ MonoBehaviour:
   sfx:
   - {fileID: 8300000, guid: 46b0e62a760f40a47ad219e55822ebba, type: 3}
   - {fileID: 8300000, guid: f0d68c794d716d740a2c69f4532cfca2, type: 3}
+  - {fileID: 8300000, guid: 48aaa11d3894bee4abc94b6fc7daaddc, type: 3}
 --- !u!82 &6547635163041457505
 AudioSource:
   m_ObjectHideFlags: 0

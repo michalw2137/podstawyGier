@@ -21,7 +21,7 @@ public class SFXmanager : MonoBehaviour
 
     public void playSoundWithoutRepeat(int n) 
     {
-        //Debug.Log($"playing {n}");
+        Debug.Log($"playing {n}");
         if(!source.isPlaying)
         {
             source.PlayOneShot(sfx[n]);
