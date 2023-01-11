@@ -26,6 +26,12 @@ public class SquashManager : MonoBehaviour
         anim.Play("Squash");
     }
 
+    public void triggerShitting() 
+    {
+        anim.StopPlayback();
+        anim.Play("shitting_squash");
+    }
+
     public void triggerIncreaseSquash() 
     {
         if((anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !anim.IsInTransition(0)))

@@ -15,7 +15,9 @@ public class Ass : MonoBehaviour
 
     public Type storedType {get; set;}
 
-        private SFXmanager sfx;
+    private SFXmanager sfx;
+
+    private SquashManager sm;
 
     void Awake() {
         if (instance == null)
@@ -28,6 +30,7 @@ public class Ass : MonoBehaviour
             Destroy(this);
         }
         sfx = GetComponent<SFXmanager>();
+        sm = GetComponent<SquashManager>();
         dirtCount = 0;
         storedType = TypeNormal.instance;
 
@@ -58,6 +61,7 @@ public class Ass : MonoBehaviour
         }
         
         dirtCount --;
+        sm.triggerShitting();
         Score.instance.updateText();
         sfx.playSoundWithoutRepeat(1);
         dp.setType(this.storedType);

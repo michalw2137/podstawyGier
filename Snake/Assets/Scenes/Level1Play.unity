@@ -10907,6 +10907,8 @@ GameObject:
   - component: {fileID: 1019702201}
   - component: {fileID: 1019702208}
   - component: {fileID: 1019702207}
+  - component: {fileID: 1019702210}
+  - component: {fileID: 1019702209}
   m_Layer: 0
   m_Name: Ass
   m_TagString: ass
@@ -11144,6 +11146,40 @@ MonoBehaviour:
   sfx:
   - {fileID: 8300000, guid: 46b0e62a760f40a47ad219e55822ebba, type: 3}
   - {fileID: 8300000, guid: f0d68c794d716d740a2c69f4532cfca2, type: 3}
+--- !u!114 &1019702209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019702200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a138394bd7130354f90df444af190a9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instance: {fileID: 0}
+  seed: {fileID: 1019702200}
+--- !u!95 &1019702210
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019702200}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fee149385d1197b4e8af52dbb2796223, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1126568309
 GameObject:
   m_ObjectHideFlags: 0
