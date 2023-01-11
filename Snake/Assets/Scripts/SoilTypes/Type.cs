@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum Status {eatable, eaten, fertilizer, nonDirt};
-public enum Types {normal, wet, dry};
+public enum Types {normal, wet, dry, cutscene};
 
 public class Type : MonoBehaviour
 {

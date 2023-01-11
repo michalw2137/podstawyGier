@@ -34,9 +34,14 @@ public class Ass : MonoBehaviour
     }
 
     void Start() {
-        if(Head.instance.isCutscene) {
-            storedType = TypeNormal.instance;
+        try{
+            if(StateManager.instance.isCutscene) {
+                storedType = TypeNormal.instance;
+            }
+        } catch {
+            
         }
+        
     }
 
     public void respawnParticle(DirtParticle dp) {

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class DirtParticle : MonoBehaviour
 {
@@ -14,13 +16,25 @@ public class DirtParticle : MonoBehaviour
     void Awake()
     {
         sr = this.GetComponent<SpriteRenderer>();
-        this.type = TypeNormal.instance;
         this.tag = "deafaultDirt";
 
         setStatus(Status.eatable);
     }
 
-    void Start() { }
+    void Start() { 
+        this.type = TypeNormal.instance;
+
+        try {
+            if(StateManager.instance.isCutscene) {
+                this.type = TypeCutscene.instance;
+            }
+        } catch {
+            Debug.Log("state manager nie istnieje i mu rucham starom");
+        }
+        Debug.Log(TypeCutscene.instance);
+
+        Debug.Log(type);
+    }
 
     void Update() { }
 
@@ -69,6 +83,14 @@ public class DirtParticle : MonoBehaviour
 
     private void updateColor() 
     {
+        if(SceneManager.GetActiveScene().name == "Level1") {
+
+            type = TypeCutscene.instance;
+        }
+        if(type == null) {
+            type = TypeNormal.instance;
+            Debug.Log("NULL DIRT TYPE");
+        }
         sr.color = type.GetColor(status);
         sr.sprite = type.GetSprite(status);        
     }

@@ -23,17 +23,25 @@ public class DirtSpawner : MonoBehaviour
         soil = new List<GameObject>();
 
         Debug.Log("START \n");
+        //Head.instance.setCutscenePosition();
 
         for(float y = start.y; y <= end.y; y += dirtSize) 
         {
             for(float x = start.x; x <= end.x; x += dirtSize) 
             {
-                GameObject temp = Instantiate(dirtParticle);
+                try {
+                    GameObject temp;
 
-                temp.transform.position = new Vector3(x, y, 0);  
-                //temp.transform.localScale = new Vector3(dirtSize, dirtSize, 0);
+                    temp = Instantiate(dirtParticle);
+                    temp.transform.position = new Vector3(x, y, 0);  
+                    //temp.transform.localScale = new Vector3(dirtSize, dirtSize, 0);
 
-                soil.Add(temp);
+                    soil.Add(temp);
+                } catch {
+
+                }
+
+                
             }
         }
 

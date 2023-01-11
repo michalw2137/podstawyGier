@@ -16,7 +16,9 @@ public class Head : MonoBehaviour
     [SerializeField] public float BodySpeed = 7.0f;
 
     [SerializeField] public float SteerSpeed = 180.0f;
-    [SerializeField] public float timeMultiplyer = 180.0f;
+
+    [SerializeField] public float cutsceneTurn = 2.0f;
+    [SerializeField] public float timeMultiplyer = 2.0f;
 
     [SerializeField] public GameObject Segment;
 
@@ -58,12 +60,19 @@ public class Head : MonoBehaviour
         }
         else
         {
-            DestroyWorm();
+           // DestroyWorm();
         }
         Body = new List<GameObject>();
         PositionsHistory = new List<Vector3>();
         sr = this.GetComponent<SpriteRenderer>();
 
+    }
+
+    public void setCutscenePosition() {
+        if(isCutscene) {
+            transform.eulerAngles = Vector3.back * 42;
+            transform.position = new Vector3(-1100, 461, 0);
+        }
     }
 
     public void DestroyWorm() {
@@ -103,7 +112,7 @@ public class Head : MonoBehaviour
             if(this == null) {
                 Debug.Log("HEAD IS NULL");
             } else {
-                Debug.Log("trying to grow...");
+                //Debug.Log("trying to grow...");
                 Grow();
             }
         }
@@ -148,7 +157,7 @@ public class Head : MonoBehaviour
             storedDirtColor = Ass.instance.storedType.GetColor();
         } catch {
             if(!isCutscene) {
-                Debug.Log("nullptr exception");
+                //Debug.Log("nullptr exception");
             }
         }
 
@@ -164,7 +173,7 @@ public class Head : MonoBehaviour
 
         // Steer
         if(isCutscene) {
-            transform.Rotate(Vector3.back * MathF.Sin(time * timeMultiplyer) * SteerSpeed);
+            transform.Rotate(Vector3.back * MathF.Sin(time * timeMultiplyer) * cutsceneTurn);
         } else if (!isJumping )
         {
             float steerDirection = Input.GetAxis("Horizontal"); // Returns value -1, 0, or 1
@@ -216,6 +225,10 @@ public class Head : MonoBehaviour
 
     private async void OnSceneLoaded(Scene aScene, LoadSceneMode aMode)
     {
+        if(SceneManager.GetActiveScene().name == "Level1") {
+            isCutscene = true;
+            setCutscenePosition();
+        }
         if (!isDestroyed)
         {
             Ass.instance.dirtCount = 0;
