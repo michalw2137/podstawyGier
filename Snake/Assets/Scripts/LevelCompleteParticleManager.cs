@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelCompleteParticleManager : MonoBehaviour
 {
@@ -21,6 +22,14 @@ public class LevelCompleteParticleManager : MonoBehaviour
             Destroy(this.gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
+    }
+
+    void Update() {
+        if(SceneManager.GetActiveScene().name == "Level10") {
+            transform.position = new Vector3(672, -74, 0);
+        } else {
+            transform.position = new Vector3(485, 0, 0);
+        }
     }
 
     void Start() {
