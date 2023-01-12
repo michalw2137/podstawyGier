@@ -8,6 +8,8 @@ public class SoundtrackController : MonoBehaviour
 
     public AudioSource audioSource;
 
+    //private float startVolume = 0.3f;
+
     void Start()
     {
         audioSource.Play();
@@ -26,11 +28,17 @@ public class SoundtrackController : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+
     public void setPlaying(bool playing) {
         if(playing) {
             audioSource.Play();
         } else {
             audioSource.Stop();
         }
+    }
+
+    public void setVolume(float volume)
+    {
+        audioSource.volume = volume;
     }
 }

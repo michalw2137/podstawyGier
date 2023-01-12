@@ -8,7 +8,7 @@ public class Food : MonoBehaviour
 
     private SpriteRenderer sr;
 
-    private SFXmanager sfx;
+    public SFXmanager sfx;
 
     private FoodParticleManager fpm;
 

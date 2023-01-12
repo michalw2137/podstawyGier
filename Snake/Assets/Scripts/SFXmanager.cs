@@ -41,4 +41,9 @@ public class SFXmanager : MonoBehaviour
     {
         source.Stop();
     }
+
+    public void setVolume(float volume)
+    {
+        source.volume = volume;
+    }
 }
