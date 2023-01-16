@@ -8,17 +8,8 @@ public class TypeNormal : Type
 
     // Start is called before the first frame update
     void Awake() {
-        if(instance == null) {
-            instance = this;
-            Debug.Log("normal type instance set");
-
-            if(!Head.instance.isCutscene) {
-                DontDestroyOnLoad(instance);
-                Debug.Log("normal type dont destroy on load");
-            }
-        } else {
-            Destroy(gameObject);
-        }
+        instance = this;
+        
         type = Types.normal;
     }
 

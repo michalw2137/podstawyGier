@@ -9,12 +9,15 @@ public class LevelSelector : MonoBehaviour
 {
     public int level;
     public TMP_Text levelText;
-    public Animator transition;
-    public float transitionTime = 1f;
 
     void Start()
     {
         levelText.text = level.ToString();
+    }
+
+    public void StartCutscene()
+    {
+        StartCoroutine(LoadScene("Cutscene2"));
     }
 
     public void OpenScene()
@@ -24,8 +27,8 @@ public class LevelSelector : MonoBehaviour
 
     IEnumerator LoadScene(string levelName)
     {
-        transition.SetTrigger("Start");
-        yield return new WaitForSeconds(transitionTime);
+        //transition.SetTrigger("Start");
+        yield return new WaitForSeconds(0);
         SceneManager.LoadScene(levelName);
     }
 }

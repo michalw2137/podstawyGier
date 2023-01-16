@@ -8,16 +8,8 @@ public class TypeWet : Type
 
     // Start is called before the first frame update
     void Awake() {
-        if(instance == null) {
-            instance = this;
+        instance = this;
 
-            if(!Head.instance.isCutscene) {
-                DontDestroyOnLoad(instance);
-                Debug.Log("wet type dont destroy on load");
-            }
-        } else {
-            Destroy(gameObject);
-        }
         type = Types.wet;
     }
 

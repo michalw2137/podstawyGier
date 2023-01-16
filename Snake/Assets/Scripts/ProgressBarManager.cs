@@ -14,6 +14,7 @@ public class ProgressBarManager : MonoBehaviour
     private void Awake() {
         slider = gameObject.GetComponent<Slider>();
     }
+    
     void Start()
     {
         

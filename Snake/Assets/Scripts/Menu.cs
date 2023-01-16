@@ -5,17 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    public Animator transition;
-    public float transitionTime = 1f;
-
     public void Play()
     {
-         StartCoroutine(LoadScene("LevelSelection"));
+         //StartCoroutine(LoadScene("LevelSelection"));
+         SceneManager.LoadScene("LevelSelection");
     }
 
     public void Cutscene()
     {
-        StartCoroutine(LoadScene("Cutscene"));
+        //StartCoroutine(LoadScene("Cutscene"));
+        SceneManager.LoadScene("Cutscene");
+
     }
 
     public void Quit()
@@ -25,13 +25,15 @@ public class Menu : MonoBehaviour
 
     public void Back()
     {
-        StartCoroutine(LoadScene("MainMenu"));
+        //StartCoroutine(LoadScene("MainMenu"));
+        SceneManager.LoadScene("MainMenu");
+
     }
 
-    IEnumerator LoadScene(string levelName)
+    IEnumerator Wait1sec(string levelName)
     {
-        transition.SetTrigger("Start");
-        yield return new WaitForSeconds(transitionTime);
-        SceneManager.LoadScene(levelName);
+        // transition.SetTrigger("Start");
+        yield return new WaitForSeconds(1);
+        // SceneManager.LoadScene(levelName);
     }
 }

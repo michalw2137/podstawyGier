@@ -33,8 +33,7 @@ public class Head : MonoBehaviour
 
     public int startLength = 5;
     public bool isMoving;
-    private bool isJumping = false;
-    private float fallDir = 0;
+    public bool isJumping = false;
 
     private float time = 0;
 
@@ -45,68 +44,28 @@ public class Head : MonoBehaviour
 
     public bool isDestroyed = false;
 
-
     void Awake()
     {
+        Debug.Log("HEAD AWAKE");
         instance = this;
+        isMoving = true;
         Body = new List<GameObject>();
         PositionsHistory = new List<Vector3>();
         sr = this.GetComponent<SpriteRenderer>();
-
     }
 
-    public void DestroyWorm() {
-        Debug.Log("destroying worm");
-        for(int i = 0; i < gameObject.transform.childCount; ++i)
-        {
-            Debug.Log($"{i} segment destroyed");
-
-            Destroy(gameObject.transform.GetChild(i).gameObject);
-        }
-        foreach(GameObject segment in Body) {
-            Destroy(segment);
-        }
-        Body.Clear();
-        length = 0;
-        Destroy(this.gameObject);
-        //Destroy(this);
-    }
-
-    async void Start()
+    void Start()
     {
         Debug.Log("HEAD START");
-        isMoving = true;
         time = 0;
-        for (int i = 0; i < startLength; i++)
-        {
-            // if(transform == null) {
-            //     Debug.Log("TRANSFORM OBJECT IS NULL");
-            // }
-            // if(gameObject == null) {
-            //     Debug.Log("GAME OBJECT IS NULL");
-            // }
-            // if(instance == null) {
-            //     Debug.Log("INSTANCE IS NULL");
-            // }
-            if(this == null) {
-                Debug.Log("HEAD IS NULL");
-            } else {
-                Debug.Log("trying to grow...");
-                Grow();
-            }
+        for (int i = 0; i < startLength; i++) {
+            Grow();
         }
-        length -= startLength;
-        await RetardedGrowth();
-        //SceneManager.sceneLoaded += OnSceneLoaded;
-        //Score.instance.updateText();
-        //LevelProgress.instance.updateText();
     }
 
 
     /** Spawn body segment*/
     public void Grow() {
-        // Instantiate body instance and
-        // add it to the list
         GameObject body = Instantiate(Segment);
 
         if(Body.Count == 0 ) {
@@ -130,27 +89,35 @@ public class Head : MonoBehaviour
     // https://www.youtube.com/watch?v=iuz7aUHYC_E
     void FixedUpdate() { 
         time += Time.deltaTime;
-        //Debug.Log(length);
-        Color storedDirtColor = new Color(1, 1, 1, 1);
 
-        try{
-            storedDirtColor = Ass.instance.storedType.GetColor();
-        } catch {
-            if(!isCutscene) {
-                Debug.Log("nullptr exception");
-            }
-        }
-
-        //Debug.Log(storedDirtColor);
+    //Set color
+        Color storedDirtColor = Ass.instance.storedType.GetColor();
         sr.color = storedDirtColor;
 
         if (!isMoving) {
             return;
         }
 
-        // Move forward
-        transform.position += transform.right * MoveSpeed * Time.deltaTime;
+    //Movement    
+        Steer();
+        Move();
 
+    //Update segments' sprites
+        Body.Last().GetComponent<SpriteRenderer>().sprite = tailSprite;
+
+        if(Body.Count() >= 2) {
+            Body.ElementAt(Body.Count() - 2).GetComponent<SpriteRenderer>().sprite = bodySprite;
+        }
+
+    
+    // Update dirt spawner's position
+        if (Body.Count > 0) {
+            Ass.instance.setTransform(Body.Last().transform);
+        }
+
+    }
+
+    private void Steer() {
         // Steer
         if(isCutscene) {
             transform.Rotate(Vector3.back * MathF.Sin(time * timeMultiplyer) * SteerSpeed);
@@ -160,17 +127,20 @@ public class Head : MonoBehaviour
             transform.Rotate(Vector3.back * steerDirection * SteerSpeed * Time.deltaTime);
         }
 
+    }
+
+    private void Move() {
+        // Move forward
+        transform.position += transform.right * MoveSpeed * Time.deltaTime;
+
         // Store position history
         PositionsHistory.Insert(0, transform.position);
 
         // Move body parts
         int index = 0;
         
-        int tempGap = (int) (Gap / Time.deltaTime / 100);
-        //Debug.Log($"gap = {tempGap}, max = {PositionsHistory.Count}, deltaTime = {Time.deltaTime}");
-
         foreach (GameObject body in Body) {
-            Vector3 point = PositionsHistory[Mathf.Clamp(index * tempGap, 0, PositionsHistory.Count - 1)];
+            Vector3 point = PositionsHistory[Mathf.Clamp(index * Gap, 0, PositionsHistory.Count - 1)];
 
             // Move body towards the point along the snakes path
             Vector3 moveDirection = point - body.transform.position;
@@ -181,70 +151,11 @@ public class Head : MonoBehaviour
             //body.transform.Rotate(Vector3.right * 90);
             body.transform.Rotate(Vector3.up * 90);
 
-            SpriteRenderer tempSR = Body[index].GetComponent<SpriteRenderer>();
-            tempSR.color = storedDirtColor;
-
-            if(index != Body.Count - 1) {
-                tempSR.sprite = bodySprite;
-
-            } else 
-            {
-                tempSR.flipX = true;
-                tempSR.sprite = tailSprite;
-
-            }
-
             index++;
         }
-
-        if (Body.Count > 0)
-        {
-            // Update dirt spawner's position
-            Ass.instance.setTransform(Body.Last().transform);
-        }
+        
     }
 
-    private async void OnSceneLoaded(Scene aScene, LoadSceneMode aMode)
-    {
-        if (!isDestroyed)
-        {
-            Ass.instance.dirtCount = 0;
-            PositionsHistory.Clear();
-            foreach (GameObject body in Body)
-            {
-                if (body != null)
-                {
-                    Destroy(body);
-                }
-            }
-            Body.Clear();
-            for (int i = 0; i < startLength; i++)
-            {
-                if(this == null) {
-                    Debug.Log("HEAD IS NULL (grow in OnSceneLoaded)");
-                } else {
-                    Debug.Log("trying to grow...");
-                    Grow();
-                }
-            }
-            length -= startLength;
-            await RetardedGrowth(); 
-        }
-    }
-
-    private async Task RetardedGrowth()
-    {
-        Debug.Log("RETARDED GROW " + length);
-        // Spawning body after load new level
-        await Task.Delay(700); // Value calculated by eye ;)
-        isJumping = false; // Protection from blocking movement
-        int temp = length;
-        for (int i = 0; i < temp - startLength; i++)
-        {
-            Grow();
-        }
-        length = temp;
-    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -255,66 +166,9 @@ public class Head : MonoBehaviour
             Debug.Log(other.tag);
             StartCoroutine(Death());        
         }
-        // if (other.tag == "food")
-        // {
-        //     Food.instance.Spawn();
-        //     Grow();
-        // }
-        if (other.tag == "respawnedDirt")
-        {
-            //Debug.Log("DEATH");
-            //StartCoroutine(Death());        
-        }
-        if (other.tag == "GravityHorizontal")
-        {
-            if (Mathf.Abs(transform.rotation.w) > Mathf.Abs(transform.rotation.z))
-            {
-                fallDir = 0.5f;
-            }
-            else
-            {
-                fallDir = -0.5f;
-            }
-            if (transform.rotation.z < 0.0f)
-            {
-                fallDir *= -1.0f;
-            }
-            isJumping = true;
-        }
+        if(other.tag != "deafaultDirt") {
 
-
-        if (other.tag == "GravityVertical")
-        {
-            if (transform.rotation.z < 0.0f)
-            {
-                fallDir = 0.5f;
-            }
-            else
-            {
-                fallDir = -0.5f;
-            }
-            if (Mathf.Abs(transform.rotation.w) < Mathf.Abs(transform.rotation.z))
-            {
-                fallDir *= -1.0f;
-            }
-            isJumping = true;
-        }
-    }
-
-    void OnTriggerStay2D(Collider2D other)
-    {
-        if ((other.tag == "GravityHorizontal" || other.tag == "GravityVertical") && isMoving)
-        {
-            transform.Rotate(Vector3.back * fallDir * SteerSpeed * Time.deltaTime);
-            isJumping = true; // Added to prevent bug while changing gravity areas
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.tag == "GravityHorizontal" || other.tag == "GravityVertical")
-        {
-            isJumping = false;
+            Debug.Log($"HEAD COLLIDED WITH {other.tag}");
         }
     }
 
@@ -323,12 +177,8 @@ public class Head : MonoBehaviour
         //do stuff
         Debug.Log("death"); 
         isMoving = false;
-        yield return StartCoroutine(DeathManager.instance.triggerDeath());
-         //Debug.Log("after anim"); 
-
-        
-
-        //wait for enter to be pressed
+        yield return StartCoroutine(triggerDeath());
+       
 
         //do stuff once enter is pressed
         Debug.Log("respawning");
@@ -352,6 +202,15 @@ public class Head : MonoBehaviour
         PauseMenu.instance.Pause();
         yield return null;
     }
-    
+
+    public IEnumerator triggerDeath() 
+    {
+        Animator anim = GetComponent<Animator>();
+        anim.Play("Death");
+
+        float animationLength = anim.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSecondsRealtime(animationLength);
+        //Debug.Log("Done Playing");
+    }
 
 }

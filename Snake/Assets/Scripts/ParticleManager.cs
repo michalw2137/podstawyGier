@@ -14,15 +14,7 @@ public class ParticleManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            Destroy(this);
-        }
+        instance = this;
     }
 
     void Start() {

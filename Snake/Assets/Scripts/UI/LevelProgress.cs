@@ -27,7 +27,7 @@ public class LevelProgress : MonoBehaviour
         //string state = "";
         if(Exit.instance.isOpen()) {
            // state = "is open" ;
-            LevelCompleteParticleManager.instance.setParticling(true);
+            //TODO: fix nullptr LevelCompleteParticleManager.instance.setParticling(true);
             if(onlyOnce)
             {
                 Ass.instance.sfx.playSoundWithoutRepeat(2);
@@ -36,11 +36,10 @@ public class LevelProgress : MonoBehaviour
         } else {
             //state = "is closed" ;
             onlyOnce = true;
-            LevelCompleteParticleManager.instance.setParticling(false);
+            // TODO: fix nullptr LevelCompleteParticleManager.instance.setParticling(false);
         } 
         int length = Head.instance.length;
-        int requiredLength = Exit.instance.RequiredLength;
-        textField.text = $"Length: {length}/{requiredLength}";
+        textField.text = $"Length: {length}/idk";
     }
    
 

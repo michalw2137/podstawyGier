@@ -23,6 +23,7 @@ TagManager:
   - DirtDry
   - soundtrack
   - levelComplete
+  - Exit
   layers:
   - Default
   - TransparentFX

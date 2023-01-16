@@ -20,15 +20,8 @@ public class Ass : MonoBehaviour
     private SquashManager sm;
 
     void Awake() {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            Destroy(this);
-        }
+        instance = this;
+
         sfx = GetComponent<SFXmanager>();
         dirtCount = 0;
         storedType = TypeNormal.instance;
@@ -36,9 +29,7 @@ public class Ass : MonoBehaviour
     }
 
     void Start() {
-        if(Head.instance.isCutscene) {
-            storedType = TypeNormal.instance;
-        }
+        storedType = TypeNormal.instance;
     }
 
     public void respawnParticle(DirtParticle dp) {

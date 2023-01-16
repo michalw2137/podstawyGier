@@ -6,25 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class Exit : MonoBehaviour
 {
-    public Vector3 SpawnLocation = new Vector3(-490.0f, 0.0f, 0.0f);
-    public int RequiredLength = 11;
-    private bool open = false;
-    public Animator transition;
+    private int RequiredLength = 0;
+    private bool open;
     public float transitionTime = 1f;
+
     public static Exit instance;
 
     void Awake() {
         instance = this;
+        open = false;
     }
 
     void Start() {
-        int wormLength = 0;
-
-        wormLength = WormManager.instance.StartLength;
-        RequiredLength = wormLength + FoodManager.instance.gameObject.transform.childCount;
-        // Debug.Log("head length = " + Head.instance.length);
-        // Debug.Log("child count = " + FoodManager.instance.gameObject.transform.childCount);
-
+        RequiredLength = Head.instance.startLength + FoodManager.instance.gameObject.transform.childCount;
     }
 
     void Update() {
@@ -34,25 +28,23 @@ public class Exit : MonoBehaviour
         }
     }
 
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "head" && isOpen())
         {
+            Debug.Log("head touched open exit");
             int nextSceneLoad = SceneManager.GetActiveScene().buildIndex + 1;
             if (nextSceneLoad > PlayerPrefs.GetInt("levelAt"))
             {
                 PlayerPrefs.SetInt("levelAt", nextSceneLoad);
             }
-            StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
+            GameObject.Find("Fade").GetComponent<Animator>().Play("Transition");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            //StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
         }
     }
 
     public bool isOpen() {
-        if (Head.instance == null) {
-            return false;
-        }
-
         if (open) {            
             return true;
         }
@@ -65,16 +57,10 @@ public class Exit : MonoBehaviour
 
     IEnumerator LoadScene(int Index)
     {
-        transition.SetTrigger("Start");
-        Head.instance.isMoving = false;
+        //Head.instance.isMoving = false;
         yield return new WaitForSeconds(transitionTime);
         
         SceneManager.LoadScene(Index);
-        Head.instance.isMoving = true;
-        // Set start position in new level
-        Head.instance.transform.position = SpawnLocation;
-        LevelProgress.instance.updateText();
-
     }
 
 }
