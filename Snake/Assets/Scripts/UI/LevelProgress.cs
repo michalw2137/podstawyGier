@@ -36,7 +36,7 @@ public class LevelProgress : MonoBehaviour
         } else {
             //state = "is closed" ;
             onlyOnce = true;
-            LevelCompleteParticleManager.instance.setParticling(false);
+//TODO: fix nullptr in lvl1            LevelCompleteParticleManager.instance.setParticling(false);
         } 
         int length = Head.instance.length;
         int requiredLength = Exit.instance.RequiredLength;

@@ -39,6 +39,7 @@ public class Ass : MonoBehaviour
         if(Head.instance.isCutscene) {
             storedType = TypeNormal.instance;
         }
+        dirtCount = dirtCapMultiplier * 2;
     }
 
     public void respawnParticle(DirtParticle dp) {
@@ -127,4 +128,7 @@ public class Ass : MonoBehaviour
         return dirtCap;
     }
 
+    public bool isFull() {
+        return dirtCount == dirtCap;
+    }
 }
