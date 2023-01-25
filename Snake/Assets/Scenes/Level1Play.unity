@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 290578044}
   - component: {fileID: 290578043}
   - component: {fileID: 290578042}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Tutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -904,7 +904,7 @@ GameObject:
   - component: {fileID: 731724152}
   - component: {fileID: 731724151}
   - component: {fileID: 731724153}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Pop-up 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1029,7 +1029,7 @@ GameObject:
   - component: {fileID: 751827183}
   - component: {fileID: 751827182}
   - component: {fileID: 751827181}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Pop-up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2406,7 +2406,7 @@ GameObject:
   - component: {fileID: 2048615358}
   - component: {fileID: 2048615357}
   - component: {fileID: 2048615359}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Pop-up 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2579,6 +2579,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2137313731191909250, guid: 9b7e22d376dfc224f87b8e179991102b,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2137313731191909253, guid: 9b7e22d376dfc224f87b8e179991102b,
         type: 3}
