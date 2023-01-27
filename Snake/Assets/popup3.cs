@@ -25,6 +25,12 @@ public class popup3 : MonoBehaviour
             StartCoroutine(waiter(2));
             GetComponent<Image>().color = new Color32(255,255,255,255);
             firstTime = false;
+            Head.instance.isMoving = false;
+        }
+
+        if(popup2.instance.done && Input.GetAxis("Fire1") > 0.5) {
+            Debug.Log("fire 2");
+            Head.instance.isMoving = true;
         }
 
         if(!firstTime && !done) {
