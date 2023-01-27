@@ -8,15 +8,8 @@ public class TypeDry : Type
 
     // Start is called before the first frame update
     void Awake() {
-        if(instance == null) {
-            instance = this;
-            //if(!Head.instance.isCutscene) { // This lines crash game ;p
-            //    DontDestroyOnLoad(instance);
-            //    Debug.Log("dry type dont destroy on load");
-            //}
-        } else {
-            Destroy(gameObject);
-        }
+        instance = this;
+
         type = Types.dry;
     }
 

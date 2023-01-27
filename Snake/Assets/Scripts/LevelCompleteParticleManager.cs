@@ -12,28 +12,12 @@ public class LevelCompleteParticleManager : MonoBehaviour
     public List<Transform> particles = new List<Transform>();
 
     void Awake() {
-        if(instance == null) {
-            instance = this;
-        }
-
-        GameObject [] lvlCpltObj =  GameObject.FindGameObjectsWithTag("levelComplete");
-        if(lvlCpltObj.Length >2 ) 
-        {
-            Destroy(this.gameObject);
-        }
-        DontDestroyOnLoad(this.gameObject);
-    }
-
-    void Update() {
-        if(SceneManager.GetActiveScene().name == "Level10") {
-            transform.position = new Vector3(672, -74, 0);
-        } else {
-            transform.position = new Vector3(485, 0, 0);
-        }
+        instance = this;
+        stopParticles();
     }
 
     void Start() {
-        setParticles();
+        stopParticles();
     }
 
     public void setParticling(bool state) 
@@ -50,11 +34,11 @@ public class LevelCompleteParticleManager : MonoBehaviour
         }
     }
 
-    private void setParticles()
+    private void stopParticles()
     {
         foreach(Transform tr in particles) {
+            tr.gameObject.GetComponent<Renderer>().sortingOrder = 0;
             tr.GetComponent<ParticleSystem>().Stop();
-
         }
     }
     
