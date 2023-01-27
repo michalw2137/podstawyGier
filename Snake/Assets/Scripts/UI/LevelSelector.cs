@@ -22,6 +22,11 @@ public class LevelSelector : MonoBehaviour
         StartCoroutine(LoadScene("Level" + level.ToString()));
     }
 
+    public void PlayCutscene2()
+    {
+        StartCoroutine(LoadScene("Cutscene2"));
+    }
+
     IEnumerator LoadScene(string levelName)
     {
         transition.SetTrigger("Start");

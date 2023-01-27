@@ -3131,6 +3131,11 @@ PrefabInstance:
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 0.28627452
       objectReference: {fileID: 0}
+    - target: {fileID: 7885341828848589838, guid: b31560f9b74bc3a4e8446cc30990edde,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayCutscene2
+      objectReference: {fileID: 0}
     - target: {fileID: 7885341828848589839, guid: b31560f9b74bc3a4e8446cc30990edde,
         type: 3}
       propertyPath: m_Pivot.x
