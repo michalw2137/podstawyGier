@@ -59,6 +59,9 @@ public class Ass : MonoBehaviour
         if(dirtCount <= 0) {
             return;
         }
+        if(Input.GetAxis("Fire2") == 1) {
+            return;
+        }
         
         dirtCount --;
 
