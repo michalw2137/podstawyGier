@@ -9743,7 +9743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nearbyDirt: 0
-  dirtRequired: 60
+  dirtRequired: 40
   detectionRadius: 70
   clearingRadius: 100
   dirtType: 2
@@ -9874,6 +9874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeada9847583b2a41871881eb0593445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx: {fileID: 0}
   seed0: {fileID: 21300000, guid: 0e9991bd87e28854f94db231f9dbe3d7, type: 3}
   seed1: {fileID: 21300000, guid: 2d4aa8e2a35bcc54f81cdcf43e1108a9, type: 3}
   seed2: {fileID: 21300000, guid: a7b39b97faabd06429b299b80f6bcaf7, type: 3}

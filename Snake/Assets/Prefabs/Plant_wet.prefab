@@ -4931,7 +4931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nearbyDirt: 0
-  dirtRequired: 160
+  dirtRequired: 120
   detectionRadius: 100
   clearingRadius: 100
   dirtType: 1
@@ -5062,6 +5062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeada9847583b2a41871881eb0593445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx: {fileID: 0}
   seed0: {fileID: 21300000, guid: c935f043f7cd5d547bd186ab4ef9afa0, type: 3}
   seed1: {fileID: 21300000, guid: 2a2c82b7a85b6854cb2f258b0b621fd7, type: 3}
   seed2: {fileID: 21300000, guid: 1894a7f0246cf0c42a08f39d8b349422, type: 3}
