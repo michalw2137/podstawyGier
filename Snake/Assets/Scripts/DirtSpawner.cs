@@ -29,7 +29,7 @@ public class DirtSpawner : MonoBehaviour
             for(float x = start.x; x <= end.x; x += dirtSize) 
             {
                 GameObject temp = Instantiate(dirtParticle);
-
+                temp.transform.parent = transform;
                 temp.transform.position = new Vector3(x, y, 0);  
                 //temp.transform.localScale = new Vector3(dirtSize, dirtSize, 0);
 
