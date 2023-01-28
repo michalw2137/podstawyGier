@@ -21,7 +21,7 @@ public class Food : MonoBehaviour
 
     private DirtDetector dirtDetector;
 
-    private bool isRipe = false;
+    private bool ripe = false;
 
     void Awake()
     {
@@ -36,7 +36,7 @@ public class Food : MonoBehaviour
         sfx = GetComponent<SFXmanager>();
         dirtDetector = transform.GetChild(0).GetComponent<DirtDetector>();
         setSprite(0);
-        isRipe = false;
+        ripe = false;
 
         //Spawn();
     }
@@ -45,7 +45,7 @@ public class Food : MonoBehaviour
     {
         if (other.tag == "head") {
             //Debug.Log("collision with head");
-            if(isRipe && !isEaten){
+            if(ripe && !isEaten){
                 fullyGrow();
 
                 Head.instance.Grow();
@@ -90,7 +90,7 @@ public class Food : MonoBehaviour
     
     public void Spawn() 
     {
-        isRipe = false;
+        ripe = false;
         setSprite(0);
 
         Vector2 start = FoodManager.instance.smallerCords;
@@ -110,7 +110,19 @@ public class Food : MonoBehaviour
 
     public void setRipe(bool ripe)
     {
-        isRipe = ripe;
+        this.ripe = ripe;
+    }
+
+    public bool isRipe() {
+        return ripe;
+    }
+
+    public bool hasGrown() {
+        return isEaten;
+    }
+
+    public int getNearbyDirt() {
+        return transform.GetChild(0).GetComponent<DirtDetector>().nearbyDirt;
     }
 
     public void setSprite(int growthStage)
@@ -118,7 +130,7 @@ public class Food : MonoBehaviour
         if(sr.sprite == grown && growthStage != 0) {
             return;
         }
-        if(isRipe)
+        if(ripe)
         {
             sr.sprite = seed4;
             return;

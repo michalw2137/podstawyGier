@@ -3,35 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class popup1 : MonoBehaviour
+public class popup1 : Popup
 {
-    public static popup1 instance;
-    public bool done = false;
+
+    public static Popup instance;
     void Awake() {
         instance = this;
+        hide();
     }
-
-    // Start is called before the first frame update
+    
     void Start()
     {
-        StartCoroutine(waiter(0.1f));
-        GetComponent<Image>().color = new Color32(255,255,255,255);
+        StartCoroutine(stopHeadAfterSeconds(0.05f));
+        show();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetAxis("Horizontal") != 0) {
-            GetComponent<Image>().color = new Color32(255,255,255,0);
+        if(Input.GetAxis("Horizontal") != 0 && !done) {
+            hide();
             done = true;
             Head.instance.isMoving = true;
         }
     }
 
-    IEnumerator waiter(float seconds) {
-        //Wait for 4 seconds
-        yield return new WaitForSeconds(seconds);
-        Head.instance.isMoving = false;
-
-    }
 }

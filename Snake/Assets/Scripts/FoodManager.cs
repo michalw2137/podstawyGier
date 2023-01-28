@@ -12,27 +12,18 @@ public class FoodManager : MonoBehaviour
 
     public static FoodManager instance;
 
-    private List<Transform> spawnedFood = new List<Transform>();
-
 
     void Awake()
     {
-        instance = this;
-        
+        instance = this;  
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        // for(int i = 0; i < transform.childCount; ++i) {
-        //     spawnedFood.Add(transform.GetChild(0));
-        // }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public Food getFood(int id=0) {
+        if(id >= transform.childCount) {
+            Debug.LogError($"id={id} too big for child count={transform.childCount}");
+            return null;
+        }
+        return transform.GetChild(id).GetComponent<Food>();
     }
 
     // public void addParticle(DirtParticle particle) 

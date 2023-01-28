@@ -3,41 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class popup2 : MonoBehaviour
+public class popup2 : Popup
 {
-    public static popup2 instance;
-    public bool done = false;
-    private bool firstTime = true;
+    public static Popup instance;
     void Awake() {
         instance = this;
+        hide();
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        GetComponent<Image>().color = new Color32(255,255,255,0);
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        if(popup1.instance.done && firstTime) {
-            StartCoroutine(waiter(2));
-            GetComponent<Image>().color = new Color32(255,255,255,255);
-            firstTime = false;
+        if(popup1.instance.done && firstCheck) {
+            StartCoroutine(stopHeadAfterSeconds(2f));
+            popup1.instance.hide();
         }
 
-        if(!firstTime && !done) {
-            if(Ass.instance.isFull()) {
-                GetComponent<Image>().color = new Color32(255,255,255,0);
+        if(secondCheck && Input.GetAxis("Fire2") != 0) {
+            Head.instance.isMoving = true;
 
+            secondCheck = false;
+        }
+
+        if(!done && !firstCheck && !secondCheck) {
+            if(Ass.instance.isFull()) {
+                hide();
                 done = true;
             }
         }
     }
 
-    IEnumerator waiter(float seconds) {
-        //Wait for 4 seconds
-        yield return new WaitForSeconds(seconds);
-    }
+
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class popup3 : Popup
+public class popup4 : Popup
 {
     public static Popup instance;
     void Awake() {
@@ -13,25 +13,22 @@ public class popup3 : Popup
     
     void Update()
     {
-        if(popup2.instance.done && firstCheck) {
+        if(popup3.instance.done && firstCheck) {
             StartCoroutine(stopHeadAfterSeconds(1f));
-            popup2.instance.hide();
+            popup3.instance.hide();
 
         }
 
-        if(secondCheck && Input.GetAxis("Fire1") != 0) {
+        if(secondCheck && anyInput()) {
             Head.instance.isMoving = true;
 
             secondCheck = false;
         }
 
-        if(!firstCheck && !secondCheck && FoodManager.instance.getFood().getNearbyDirt() > 0) {
+        if(!firstCheck && !secondCheck && FoodManager.instance.getFood().isRipe()) {
             hide();
-
             done = true;
         }
         
     }
-
-
 }

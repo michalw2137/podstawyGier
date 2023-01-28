@@ -39,7 +39,6 @@ public class Ass : MonoBehaviour
         if(Head.instance.isCutscene) {
             storedType = TypeNormal.instance;
         }
-        dirtCount = dirtCapMultiplier * 2;
     }
 
     public void respawnParticle(DirtParticle dp) {
@@ -94,7 +93,7 @@ public class Ass : MonoBehaviour
         if (dirtCount == 0) {
             this.storedType = dp.type;
         }
-        if (dp.type != storedType) {
+        if (dp.type.type != storedType.type) {
             ParticleManager.instance.setParticling(false);
             return;
         }
