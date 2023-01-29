@@ -2872,16 +2872,76 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 8671199253449003780, guid: 460321e42e9138847b25512e31fc4bea,
         type: 3}
+      propertyPath: deletedColor.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 8671199253449003780, guid: 460321e42e9138847b25512e31fc4bea,
+        type: 3}
+      propertyPath: deletedColor.b
+      value: 0.32156864
+      objectReference: {fileID: 0}
+    - target: {fileID: 8671199253449003780, guid: 460321e42e9138847b25512e31fc4bea,
+        type: 3}
+      propertyPath: deletedColor.g
+      value: 0.45882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 8671199253449003780, guid: 460321e42e9138847b25512e31fc4bea,
+        type: 3}
+      propertyPath: deletedColor.r
+      value: 0.6509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 8671199253449003780, guid: 460321e42e9138847b25512e31fc4bea,
+        type: 3}
       propertyPath: respawnedSprite
       value: 
       objectReference: {fileID: 21300000, guid: 0e219233b1a6ec442850776f1fb67d7e,
         type: 3}
     - target: {fileID: 8671199253449003781, guid: 460321e42e9138847b25512e31fc4bea,
         type: 3}
+      propertyPath: eatenColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8671199253449003781, guid: 460321e42e9138847b25512e31fc4bea,
+        type: 3}
+      propertyPath: eatenColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8671199253449003781, guid: 460321e42e9138847b25512e31fc4bea,
+        type: 3}
+      propertyPath: eatenColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8671199253449003781, guid: 460321e42e9138847b25512e31fc4bea,
+        type: 3}
+      propertyPath: eatenColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8671199253449003781, guid: 460321e42e9138847b25512e31fc4bea,
+        type: 3}
       propertyPath: defaultSprite
       value: 
       objectReference: {fileID: 21300000, guid: 0e219233b1a6ec442850776f1fb67d7e,
         type: 3}
+    - target: {fileID: 8671199253449003781, guid: 460321e42e9138847b25512e31fc4bea,
+        type: 3}
+      propertyPath: deletedColor.a
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 8671199253449003781, guid: 460321e42e9138847b25512e31fc4bea,
+        type: 3}
+      propertyPath: deletedColor.b
+      value: 0.14117648
+      objectReference: {fileID: 0}
+    - target: {fileID: 8671199253449003781, guid: 460321e42e9138847b25512e31fc4bea,
+        type: 3}
+      propertyPath: deletedColor.g
+      value: 0.23921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 8671199253449003781, guid: 460321e42e9138847b25512e31fc4bea,
+        type: 3}
+      propertyPath: deletedColor.r
+      value: 0.47058824
+      objectReference: {fileID: 0}
     - target: {fileID: 8671199253449003781, guid: 460321e42e9138847b25512e31fc4bea,
         type: 3}
       propertyPath: respawnedSprite

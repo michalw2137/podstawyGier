@@ -31,9 +31,15 @@ public class Popup : MonoBehaviour
     }
 
     protected bool anyInput() {
-        bool move = Input.GetAxis("Horizontal") != 0;
-        bool eat = Input.GetAxis("Fire1") != 0;
-        bool shit = Input.GetAxis("Fire2") != 0;
-        return move || eat || shit;
+        if(Input.GetAxis("Horizontal") != 0) {
+            return true;
+        }
+        if(Input.GetAxis("Fire1") != 0) {
+            return true;
+        };
+        if(Input.GetAxis("Fire2") != 0) {
+            return true;
+        };
+        return false;
     }
 }

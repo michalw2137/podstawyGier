@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Status {eatable, eaten, fertilizer, nonDirt};
+public enum Status {eatable, deleted, eaten, fertilizer, nonDirt};
 public enum Types {normal, wet, dry};
 
 public class Type : MonoBehaviour
@@ -12,6 +12,7 @@ public class Type : MonoBehaviour
     [SerializeField] public Sprite defaultSprite;
     [SerializeField] public Color defaultColor; 
 
+    [SerializeField] public Color eatenColor; 
     [SerializeField] public Color deletedColor; 
 
     [SerializeField] public Sprite respawnedSprite;
@@ -31,6 +32,9 @@ public class Type : MonoBehaviour
                 return defaultColor;
 
             case Status.eaten: 
+                return eatenColor;
+
+            case Status.deleted: 
                 return deletedColor;
 
             case Status.fertilizer: 

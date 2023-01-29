@@ -8,8 +8,8 @@ public class DirtParticle : MonoBehaviour
 
     private SpriteRenderer sr;
 
-    public Type type {get; set;}
-    public Status status {get; set;}
+    [SerializeField] public Type type {get; set;}
+    [SerializeField] public Status status {get; set;}
 
     void Awake()
     {

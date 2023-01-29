@@ -52,7 +52,7 @@ public class Ass : MonoBehaviour
             return;
         }
 
-        if (dp.status != Status.eaten) {
+        if (dp.status != Status.eaten && dp.status != Status.deleted) {
             return;
         }
         if(dirtCount <= 0) {
@@ -88,7 +88,7 @@ public class Ass : MonoBehaviour
             return;
         }
 
-        dp.setStatus(Status.eaten);
+        dp.setStatus(Status.deleted);
 
         if (dirtCount == 0) {
             this.storedType = dp.type;
@@ -104,11 +104,13 @@ public class Ass : MonoBehaviour
 
         if(Input.GetAxis("Fire2") == 1) {
             dirtCount ++;
-            Score.instance.updateText(); 
+            Debug.Log("particle eaten");
             sfx.playSoundWithoutRepeat(0);
             ParticleManager.instance.setParticling(true);
+            dp.setStatus(Status.eaten);
         } else {
             ParticleManager.instance.setParticling(false);
+            //dp.setStatus(Status.deleted);
         }
     }
 
