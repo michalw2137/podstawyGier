@@ -15,7 +15,7 @@ public class SilderVolume : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SoundtrackController.instance.setVolume(musicSlider.value);
+        //SoundtrackController.instance.setVolume(musicSlider.value);
         Ass.instance.sfx.setVolume(sfxSlider.value);
         Food.instance.sfx.setVolume(sfxSlider.value);
     }

@@ -47,10 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wormColor: {r: 0.6509434, g: 0.46017697, b: 0.3224012, a: 1}
-  defaultSprite: {fileID: 21300000, guid: 8cbd5ad409ff3db41a7623d0df2cc359, type: 3}
+  defaultSprite: {fileID: 21300000, guid: 0e219233b1a6ec442850776f1fb67d7e, type: 3}
   defaultColor: {r: 0.44313726, g: 0.3019608, b: 0.2, a: 1}
   deletedColor: {r: 0, g: 0, b: 0, a: 0}
-  respawnedSprite: {fileID: 21300000, guid: b48a630b76317aa44ae954bdaff6ce8c, type: 3}
+  respawnedSprite: {fileID: 21300000, guid: 0e219233b1a6ec442850776f1fb67d7e, type: 3}
   respawnedColor: {r: 0.3207547, g: 0.2074266, b: 0.1255785, a: 1}
   type: 2
 --- !u!114 &8671199253449003781
@@ -66,10 +66,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wormColor: {r: 0.7169812, g: 0.35828927, b: 0.20630117, a: 1}
-  defaultSprite: {fileID: 21300000, guid: be5f724f11847e041bc875cff88303c9, type: 3}
+  defaultSprite: {fileID: 21300000, guid: 0e219233b1a6ec442850776f1fb67d7e, type: 3}
   defaultColor: {r: 0.47058824, g: 0.2389529, b: 0.1411765, a: 1}
   deletedColor: {r: 0, g: 0, b: 0, a: 0}
-  respawnedSprite: {fileID: 21300000, guid: 32bfd9305381bbb46935c711f9bbd172, type: 3}
+  respawnedSprite: {fileID: 21300000, guid: 0e219233b1a6ec442850776f1fb67d7e, type: 3}
   respawnedColor: {r: 0.33962262, g: 0.16311382, b: 0.09131362, a: 1}
   type: 0
 --- !u!114 &8671199253449003782
@@ -85,9 +85,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wormColor: {r: 0.5283019, g: 0.18785116, b: 0.10715558, a: 1}
-  defaultSprite: {fileID: 21300000, guid: 281c1538e37098b4dbcd3e97f5fbb7cc, type: 3}
+  defaultSprite: {fileID: 21300000, guid: 0e219233b1a6ec442850776f1fb67d7e, type: 3}
   defaultColor: {r: 0.2735849, g: 0.08036822, b: 0.042586334, a: 1}
   deletedColor: {r: 0, g: 0, b: 0, a: 0}
-  respawnedSprite: {fileID: 21300000, guid: aa9255b021237bf4c81093e1890f4a53, type: 3}
+  respawnedSprite: {fileID: 21300000, guid: 0e219233b1a6ec442850776f1fb67d7e, type: 3}
   respawnedColor: {r: 0.13207549, g: 0.0325646, b: 0.015574938, a: 1}
   type: 1
