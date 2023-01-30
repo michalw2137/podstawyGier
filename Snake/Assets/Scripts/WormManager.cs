@@ -22,6 +22,7 @@ public class WormManager : MonoBehaviour
             Debug.Log("Something went wrong, where head?");
             return;
         }
+        Debug.Log("worm manager start");
 
         Head.instance.length = StartLength;
         Head.instance.transform.position = StartPosition;

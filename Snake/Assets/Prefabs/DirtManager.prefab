@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {x: -500, y: -280}
   end: {x: 500, y: 250}
-  dirtSize: 10
+  dirtSize: 0.1
+  gap: 10
   dirtParticle: {fileID: 8189657484937228441, guid: fac9a6a2107044c4ab4992ee53332e3e,
     type: 3}

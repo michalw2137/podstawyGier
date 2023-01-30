@@ -46,9 +46,13 @@ public class Ass : MonoBehaviour
             sfx.playSoundWithoutRepeat(1);
             dp.setType(this.storedType);
             dp.setStatus(Status.fertilizer);
-            for(int i = 0; i < FoodManager.instance.transform.childCount; i++) {
-                FoodManager.instance.gameObject.transform.GetChild(i).GetChild(0).GetComponent<DirtDetector>().addParticle(dp);
-            } 
+            dp.GetComponent<Animator>().Play("respawn");
+
+            FoodManager.instance.getFood().getDirtDetector().addParticle(dp);
+
+            // for(int i = 0; i < FoodManager.instance.transform.childCount; i++) {
+            //     FoodManager.instance.gameObject.transform.GetChild(i).GetChild(0).GetComponent<DirtDetector>().addParticle(dp);
+            // } 
             return;
         }
 

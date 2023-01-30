@@ -108,6 +108,10 @@ public class Food : MonoBehaviour
         this.transform.position = position;
     }
 
+    public DirtDetector getDirtDetector() {
+        return dirtDetector;
+    }
+
     public void setRipe(bool ripe)
     {
         this.ripe = ripe;
