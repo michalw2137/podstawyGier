@@ -7,6 +7,7 @@ public class DirtSpawner : MonoBehaviour
     [SerializeField] public Vector2 start;
     [SerializeField] public Vector2 end;
     [SerializeField] public float dirtSize;
+    [SerializeField] public float gap;
 
     public GameObject dirtParticle;
 
@@ -24,14 +25,14 @@ public class DirtSpawner : MonoBehaviour
 
         Debug.Log("START \n");
 
-        for(float y = start.y; y <= end.y; y += dirtSize) 
+        for(float y = start.y; y <= end.y; y += gap) 
         {
-            for(float x = start.x; x <= end.x; x += dirtSize) 
+            for(float x = start.x; x <= end.x; x += gap) 
             {
                 GameObject temp = Instantiate(dirtParticle);
                 temp.transform.parent = transform;
                 temp.transform.position = new Vector3(x, y, 0);  
-                //temp.transform.localScale = new Vector3(dirtSize, dirtSize, 0);
+                temp.transform.localScale = new Vector3(dirtSize, dirtSize, 0);
 
                 soil.Add(temp);
             }

@@ -70,6 +70,10 @@ public class Ass : MonoBehaviour
         dp.setStatus(Status.fertilizer);
         Shake.instance.startShake();
 
+
+        dp.GetComponent<Animator>().Play("respawn");
+        //GetComponent<Animation>().Play("RespawnDirt");
+
         for(int i = 0; i < FoodManager.instance.transform.childCount; i++) {
             FoodManager.instance.gameObject.transform.GetChild(i).GetChild(0).GetComponent<DirtDetector>().addParticle(dp);
         } 
@@ -104,7 +108,7 @@ public class Ass : MonoBehaviour
 
         if(Input.GetAxis("Fire2") == 1) {
             dirtCount ++;
-            Debug.Log("particle eaten");
+//            Debug.Log("particle eaten");
             sfx.playSoundWithoutRepeat(0);
             ParticleManager.instance.setParticling(true);
             dp.setStatus(Status.eaten);

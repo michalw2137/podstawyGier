@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 6250991680195227802}
   - component: {fileID: -2497274921265626675}
   - component: {fileID: 121548558594047068}
+  - component: {fileID: 7305512634502182882}
+  - component: {fileID: 852766430305343454}
   m_Layer: 0
   m_Name: DirtParticlePrefab
   m_TagString: dirt
@@ -29,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 8189657484937228441}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -104,7 +106,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3, y: 3}
+    oldSize: {x: 5, y: 5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -146,3 +148,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10ce4a1bf3c8ab244bf2f783b6cdda72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &7305512634502182882
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8189657484937228441}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 84af81757151af64195ee48805a77f9b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!111 &852766430305343454
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8189657484937228441}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 50d7c831be8749348aa413cd8273f70f, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 50d7c831be8749348aa413cd8273f70f, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
