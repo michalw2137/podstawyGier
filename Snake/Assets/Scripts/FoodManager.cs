@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class FoodManager : MonoBehaviour
 {
-    [SerializeField]
-    public Vector2 biggerCords;
+    [SerializeField] public Vector2 biggerCords;
 
-    [SerializeField]
-    public Vector2 smallerCords;
+    [SerializeField] public Vector2 smallerCords;
 
     public static FoodManager instance;
 
-
     void Awake()
     {
-        instance = this;  
+        instance = this; 
+
+        for(int i=0; i<transform.childCount; i++) {
+            getFood(i).id = i;
+        }
     }
 
     public Food getFood(int id=0) {

@@ -13,7 +13,7 @@ public class Ass : MonoBehaviour
 
     private int dirtCap;
 
-    public Type storedType {get; set;}
+    public Types storedType {get; set;}
 
     public SFXmanager sfx;
 
@@ -31,14 +31,12 @@ public class Ass : MonoBehaviour
         }
         sfx = GetComponent<SFXmanager>();
         dirtCount = 0;
-        storedType = TypeNormal.instance;
 
     }
 
     void Start() {
-        if(Head.instance.isCutscene) {
-            storedType = TypeNormal.instance;
-        }
+        storedType = Types.normal;
+
     }
 
     public void respawnParticle(DirtParticle dp) {
@@ -79,7 +77,7 @@ public class Ass : MonoBehaviour
         //GetComponent<Animation>().Play("RespawnDirt");
 
         for(int i = 0; i < FoodManager.instance.transform.childCount; i++) {
-            FoodManager.instance.gameObject.transform.GetChild(i).GetChild(0).GetComponent<DirtDetector>().addParticle(dp);
+            FoodManager.instance.getFood(i).getDirtDetector().addParticle(dp);
         } 
     }
 
@@ -101,7 +99,7 @@ public class Ass : MonoBehaviour
         if (dirtCount == 0) {
             this.storedType = dp.type;
         }
-        if (dp.type.type != storedType.type) {
+        if (dp.type != storedType) {
             ParticleManager.instance.setParticling(false);
             return;
         }

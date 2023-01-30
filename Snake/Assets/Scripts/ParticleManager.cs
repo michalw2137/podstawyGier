@@ -45,7 +45,7 @@ public class ParticleManager : MonoBehaviour
             ps.enabled = isParticling;
             ParticleSystem.MainModule ma = tr.GetComponent<ParticleSystem>().main;
             try {
-                ma.startColor = Ass.instance.storedType.GetColor() * 1.2f;
+                ma.startColor = Type.getInstance(Ass.instance.storedType).GetColor() * 1.2f;
             } catch {
                 Debug.Log("Ass nullptr expcetion");
             }

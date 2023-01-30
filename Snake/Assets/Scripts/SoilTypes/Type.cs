@@ -61,6 +61,20 @@ public class Type : MonoBehaviour
         } 
     }
 
+    public static Type getInstance(Types type) {
+        switch(type) {
+            case Types.normal:
+                return TypeNormal.instance;
+
+            case Types.wet:
+                return TypeWet.instance;
+
+            case Types.dry:
+                return TypeDry.instance;
+        }
+        return TypeNormal.instance;
+    }
+
     // public static Type GetType(Status status) {
     //     Type temp = new Type();
     //     temp.SetType(status);

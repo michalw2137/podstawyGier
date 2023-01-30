@@ -30,9 +30,9 @@ public class ProgressBarManager : MonoBehaviour
     }
 
     public void UpdateDirtSlider() {
-                slider.gameObject.transform.Find("Background").GetComponent<Image>().color = Ass.instance.storedType.GetColor(Status.fertilizer);
+                slider.gameObject.transform.Find("Background").GetComponent<Image>().color = Type.getInstance(Ass.instance.storedType).GetColor(Status.fertilizer);
 
-        slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Ass.instance.storedType.GetColor();
+        slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color =  Type.getInstance(Ass.instance.storedType).GetColor();
         targetProgress = (Ass.instance.dirtCount / (float)Ass.instance.getMaxCapacity());
     }
 }

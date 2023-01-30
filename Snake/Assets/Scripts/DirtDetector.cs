@@ -17,7 +17,7 @@ public class DirtDetector : MonoBehaviour
     public float clearingRadius = 150.0f;
 
     [SerializeField] public Types dirtType;
-    private Type type;
+    public Types type;
 
     private List<DirtParticle> nearbyDirtParticles;
 
@@ -25,27 +25,24 @@ public class DirtDetector : MonoBehaviour
 
     void Awake()
     {
+                type = dirtType;
+
+    }
+
+    public Types getType() {
+        if(type == null) {
+            Debug.Log("HUUUUJ");
+        }
+        return type;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         food = transform.parent.GetComponent<Food>();
-        // Debug.Log(transform.parent);
-        // Debug.Log(food);
+
         nearbyDirtParticles = new List<DirtParticle>();
 
-        if(dirtType == Types.normal) {
-            type = TypeNormal.instance;
-        } 
-        else if (dirtType == Types.wet) {
-            type = TypeWet.instance;
-        } 
-        else if (dirtType == Types.dry) {
-            type = TypeDry.instance;
-        } else {
-            Debug.Log("something went very wrong with seed type");
-        }
     }
 
     // Update is called once per frame
@@ -117,19 +114,7 @@ public class DirtDetector : MonoBehaviour
 
 
     }
-
-    public void reset()
-    {
-        foreach(DirtParticle particle in nearbyDirtParticles)
-        {
-            particle.resetColor();
-        }
-
-        nearbyDirt = 0;
-        nearbyDirtParticles.Clear();
-    }
-
-    
+   
 
     
     // private void adjustColor()

@@ -133,13 +133,7 @@ public class Head : MonoBehaviour
         //Debug.Log(length);
         Color storedDirtColor = new Color(1, 1, 1, 1);
 
-        try{
-            storedDirtColor = Ass.instance.storedType.GetColor();
-        } catch {
-            if(!isCutscene) {
-                Debug.Log("nullptr exception");
-            }
-        }
+        storedDirtColor = Type.getInstance(Ass.instance.storedType).GetColor();
 
         //Debug.Log(storedDirtColor);
         sr.color = storedDirtColor;

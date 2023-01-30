@@ -8,19 +8,22 @@ public class DirtParticle : MonoBehaviour
 
     private SpriteRenderer sr;
 
-    [SerializeField] public Type type {get; set;}
+    [SerializeField] public Types type {get; set;}
     [SerializeField] public Status status {get; set;}
 
     void Awake()
     {
         sr = this.GetComponent<SpriteRenderer>();
-        this.type = TypeNormal.instance;
         this.tag = "deafaultDirt";
 
         setStatus(Status.eatable);
+        this.type = Types.normal;
     }
 
-    void Start() { }
+    void Start() { 
+        //this.type = Types.normal;
+
+    }
 
     void Update() { }
 
@@ -37,10 +40,11 @@ public class DirtParticle : MonoBehaviour
         //     }
         // } 
         if(other.tag == "DirtDry") {
-            setType(TypeDry.instance);
+            Debug.Log("dry dirt set");
+            setType(Types.dry);
         }
          if(other.tag == "DirtWet") {
-            setType(TypeWet.instance);
+            setType(Types.wet);
         }
 
         if (other.tag == "ass") {
@@ -61,7 +65,7 @@ public class DirtParticle : MonoBehaviour
         updateColor();
     }
 
-    public void setType(Type type) 
+    public void setType(Types type) 
     {
         this.type = type;
         updateColor();
@@ -69,14 +73,12 @@ public class DirtParticle : MonoBehaviour
 
     private void updateColor() 
     {
-        sr.color = type.GetColor(status);
-        sr.sprite = type.GetSprite(status);        
+        Type typeObject = Type.getInstance(type);
+
+        sr.color = typeObject.GetColor(status);
+        sr.sprite = typeObject.GetSprite(status);        
     }
 
-    public void resetColor()
-    {
-        sr.color =  type.wormColor;
-    }
 
 
 }

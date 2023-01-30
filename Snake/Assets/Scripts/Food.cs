@@ -23,9 +23,13 @@ public class Food : MonoBehaviour
 
     private bool ripe = false;
 
+    public int id;
+
     void Awake()
     {
         instance = this;
+        dirtDetector = transform.GetChild(0).GetComponent<DirtDetector>();
+
     }
 
     void Start() 
@@ -34,7 +38,6 @@ public class Food : MonoBehaviour
         fpm = GetComponent<FoodParticleManager>();
         sm = GetComponent<SquashManager>();
         sfx = GetComponent<SFXmanager>();
-        dirtDetector = transform.GetChild(0).GetComponent<DirtDetector>();
         setSprite(0);
         ripe = false;
 
@@ -70,6 +73,8 @@ public class Food : MonoBehaviour
         sr.sprite = grown;
         emitParticles(false, 0);
         emitParticles(true, 1);
+
+        OutlineManager.instance.updateOutline(id);
     }
 
     public void emitParticles(bool emit, int n) {
