@@ -45,14 +45,12 @@ public class Head : MonoBehaviour
 
     public bool isDestroyed = false;
 
-
     void Awake()
     {
         instance = this;
         Body = new List<GameObject>();
         PositionsHistory = new List<Vector3>();
         sr = this.GetComponent<SpriteRenderer>();
-
     }
 
     public void DestroyWorm() {
@@ -74,6 +72,7 @@ public class Head : MonoBehaviour
 
     async void Start()
     {
+
         Debug.Log("HEAD START");
         isMoving = true;
         time = 0;
@@ -101,7 +100,6 @@ public class Head : MonoBehaviour
         //Score.instance.updateText();
         //LevelProgress.instance.updateText();
     }
-
 
     /** Spawn body segment*/
     public void Grow() {
@@ -249,6 +247,7 @@ public class Head : MonoBehaviour
             Debug.Log(other.tag);
             StartCoroutine(Death());        
         }
+
         // if (other.tag == "food")
         // {
         //     Food.instance.Spawn();

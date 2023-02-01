@@ -30,9 +30,9 @@ public class DirtDetector : MonoBehaviour
     }
 
     public Types getType() {
-        if(type == null) {
-            Debug.Log("HUUUUJ");
-        }
+        // if(type == null) {
+        //     Debug.Log("HUUUUJ");
+        // }
         return type;
     }
 

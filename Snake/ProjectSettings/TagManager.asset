@@ -23,6 +23,7 @@ TagManager:
   - DirtDry
   - soundtrack
   - levelComplete
+  - radioactive
   layers:
   - Default
   - TransparentFX
@@ -31,7 +32,7 @@ TagManager:
   - Water
   - UI
   - UI2
-  - 
+  - Shit
   - 
   - 
   - test10

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8077489456981555645}
   - component: {fileID: 2057227220752773067}
   - component: {fileID: 8156640931482029025}
-  m_Layer: 4
+  m_Layer: 7
   m_Name: SegmentPrefab
   m_TagString: body
   m_Icon: {fileID: 0}

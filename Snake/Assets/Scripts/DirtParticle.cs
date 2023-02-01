@@ -61,6 +61,13 @@ public class DirtParticle : MonoBehaviour
     }
 
     public void setStatus(Status status) {
+
+        if(status == Status.fertilizer) {
+            this.gameObject.layer = 7;
+        } else {
+            this.gameObject.layer = 0;
+        }
+
         this.status = status;
         updateColor();
     }

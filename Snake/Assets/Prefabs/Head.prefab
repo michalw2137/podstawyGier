@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5551955135991277895}
   - component: {fileID: 5551955135991277892}
   - component: {fileID: 5551955135991277893}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head
   m_TagString: head
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 6547635161732778232}
   - component: {fileID: 6547635161732778230}
   - component: {fileID: 6547635161732778233}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particle Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5037,7 +5037,7 @@ GameObject:
   - component: {fileID: 6547635162128741819}
   - component: {fileID: 6547635162128741817}
   - component: {fileID: 6547635162128741816}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particle MidRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9857,7 +9857,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6547635162347613910}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9894,7 +9894,7 @@ GameObject:
   - component: {fileID: 6547635162436544444}
   - component: {fileID: 6547635162436544442}
   - component: {fileID: 6547635162436544445}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particle MidLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14716,7 +14716,7 @@ GameObject:
   - component: {fileID: 6547635162490847957}
   - component: {fileID: 6547635162490847955}
   - component: {fileID: 6547635162490847954}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particle Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19544,7 +19544,7 @@ GameObject:
   - component: {fileID: 6547635163041457505}
   - component: {fileID: 6547635163041457436}
   - component: {fileID: 6547635163041457439}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ass
   m_TagString: ass
   m_Icon: {fileID: 0}
