@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -14,9 +15,14 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject FirstSelectedButton;
 
+    public GameObject ResumeButton;
+
     private int StartLength;
     private Vector3 StartPosition;
     private Quaternion StartRotation;
+
+    public Image GameOver;
+    public Image GamePaused;
 
     private void Start()
     {
@@ -44,17 +50,35 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    void Resume()
+    public void Resume()
     {
         PauseUI.SetActive(false);
         Time.timeScale = 1.0f;
         IsGamePaused = false;
     }
 
+    Color ChangeAlpha(Color ImageColor, float Alpha)
+    {
+        ImageColor.a = Alpha;
+        return ImageColor;
+    }
+
     public void Pause()
     {
-        // GamePad support
-        EventSystem.current.SetSelectedGameObject(FirstSelectedButton);
+        if (!Head.instance.isDestroyed) // GamePaused
+        {
+            GamePaused.color = ChangeAlpha(GamePaused.color, 1.0f);
+            GameOver.color = ChangeAlpha(GameOver.color, 0.0f);
+            ResumeButton.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(ResumeButton); // GamePad support
+        }
+        else // GameOver
+        {
+            GamePaused.color = ChangeAlpha(GamePaused.color, 0.0f);
+            GameOver.color = ChangeAlpha(GameOver.color, 1.0f);
+            ResumeButton.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(FirstSelectedButton); // GamePad support
+        }
         PauseUI.SetActive(true);
         Time.timeScale = 0.0f;
         IsGamePaused = true;
