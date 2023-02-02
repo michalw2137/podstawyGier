@@ -6,8 +6,8 @@ public class DirtSpawner : MonoBehaviour
 {
     [SerializeField] public Vector2 start;
     [SerializeField] public Vector2 end;
-    [SerializeField] public float dirtSize;
-    [SerializeField] public float gap;
+    [SerializeField] public float dirtSize = 0.1f;
+    [SerializeField] public float gap = 10;
 
     public GameObject dirtParticle;
 
