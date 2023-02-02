@@ -28,6 +28,11 @@ public class Menu : MonoBehaviour
         StartCoroutine(LoadScene("MainMenu"));
     }
 
+    public void Upgrades()
+    {
+        StartCoroutine(LoadScene("Upgrades"));
+    }
+
     IEnumerator LoadScene(string levelName)
     {
         transition.SetTrigger("Start");

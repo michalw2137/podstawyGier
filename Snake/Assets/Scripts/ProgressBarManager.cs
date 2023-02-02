@@ -46,7 +46,13 @@ public class ProgressBarManager : MonoBehaviour
         slider.gameObject.transform.Find("Background").GetComponent<Image>().color = Type.getInstance(Ass.instance.storedType).GetColor(Status.fertilizer);
         
         slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color =  Type.getInstance(Ass.instance.storedType).GetColor();
-        targetProgress = (Ass.instance.dirtCount / (float)Ass.instance.getMaxCapacity());
-        targetLenght = (float)Ass.instance.getMaxCapacity();
+        float maxCap = (float)Ass.instance.getMaxCapacity();
+        
+        targetProgress = (Ass.instance.dirtCount / maxCap);
+        if(maxCap > targetLenght) 
+        {
+            targetLenght = maxCap;
+        }
+        //Debug.Log(targetLenght);
     }
 }
