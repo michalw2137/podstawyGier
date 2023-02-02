@@ -5,14 +5,20 @@ using UnityEngine.UI;
 public class ProgressBarManager : MonoBehaviour
 {
     private Slider slider;
+    private RectTransform sliderRect;
 
     [SerializeField]
-    public float fillSpeed = 1.5f;
+    private float currentLenght = 0;
+
+    private float increaseSpeed = 3f;
 
     private float targetProgress = 0;
+
+    private float targetLenght = 0;
     
     private void Awake() {
         slider = gameObject.GetComponent<Slider>();
+        sliderRect = slider.GetComponent<RectTransform>();
     }
     void Start()
     {
@@ -27,12 +33,20 @@ public class ProgressBarManager : MonoBehaviour
         {
             slider.value = targetProgress;
         }
+        if(currentLenght < targetLenght)
+        {
+            currentLenght += increaseSpeed;
+            sliderRect.sizeDelta = new Vector2(currentLenght, sliderRect.sizeDelta.y);
+        }
+        
+
     }
 
     public void UpdateDirtSlider() {
-                slider.gameObject.transform.Find("Background").GetComponent<Image>().color = Type.getInstance(Ass.instance.storedType).GetColor(Status.fertilizer);
-
+        slider.gameObject.transform.Find("Background").GetComponent<Image>().color = Type.getInstance(Ass.instance.storedType).GetColor(Status.fertilizer);
+        
         slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color =  Type.getInstance(Ass.instance.storedType).GetColor();
         targetProgress = (Ass.instance.dirtCount / (float)Ass.instance.getMaxCapacity());
+        targetLenght = (float)Ass.instance.getMaxCapacity();
     }
 }
