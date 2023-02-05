@@ -240,7 +240,7 @@ public class Head : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "body")
+        if (other.tag == "body" || other.tag == "obstacle")
         {
             // TODO: i dont think i works properly all the time
             Debug.Log("DEATH");

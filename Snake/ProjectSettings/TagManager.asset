@@ -73,3 +73,6 @@ TagManager:
   - name: test4
     uniqueID: 3521203551
     locked: 0
+  - name: Obstacles
+    uniqueID: 2653204359
+    locked: 0

@@ -9747,6 +9747,7 @@ MonoBehaviour:
   detectionRadius: 70
   clearingRadius: 100
   dirtType: 2
+  type: 0
 --- !u!1 &2745624168977661623
 GameObject:
   m_ObjectHideFlags: 0
@@ -9809,7 +9810,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9881,6 +9882,7 @@ MonoBehaviour:
   seed3: {fileID: 21300000, guid: b95d31b2afd146c40ac21450e6914a26, type: 3}
   seed4: {fileID: 21300000, guid: 8648aca0115de9c45a8cc2026a5851c0, type: 3}
   grown: {fileID: 21300000, guid: a252b004587c3f04fbaf31bddec99850, type: 3}
+  id: 0
 --- !u!58 &2745624168977661576
 CircleCollider2D:
   m_ObjectHideFlags: 0
