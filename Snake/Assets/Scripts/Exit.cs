@@ -44,6 +44,7 @@ public class Exit : MonoBehaviour
             {
                 PlayerPrefs.SetInt("levelAt", nextSceneLoad);
             }
+            CreditCounter.instance.confirmCredits();
             StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
         }
     }

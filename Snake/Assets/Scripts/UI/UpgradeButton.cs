@@ -23,6 +23,21 @@ public class UpgradeButton : MonoBehaviour
 
     public void buyUpgrade()
     {
+        if(PlayerPrefs.GetInt(upgradeName, 0) == 1) 
+        {
+            Debug.Log("ALREADY BOUGHT");
+            return;
+        }
+        if(upgradeCost > PlayerPrefs.GetInt("credits", 0)) 
+        {
+            Debug.Log("TOO LITTLE CREDTIS");
+            return;
+        }
+        
+
         Debug.Log("BUYING: " + upgradeName.ToString());
+        PlayerPrefs.SetInt("credits", PlayerPrefs.GetInt("credits", 0) - upgradeCost);
+        PlayerPrefs.SetInt(upgradeName, 1);
+
     }
 }

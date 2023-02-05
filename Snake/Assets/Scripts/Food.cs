@@ -74,6 +74,8 @@ public class Food : MonoBehaviour
         emitParticles(false, 0);
         emitParticles(true, 1);
 
+        CreditCounter.instance.changePotentialCredits(1);
+
         OutlineManager.instance.updateOutline(id);
     }
 

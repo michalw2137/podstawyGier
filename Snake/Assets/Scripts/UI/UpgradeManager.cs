@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class UpgradeManager : MonoBehaviour
 {
+    
     public Button[] upgradeButtons;
-    void Start()
-    {
-        
-    }
 
+    void test()
+    {
+
+    }
 }
