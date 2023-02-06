@@ -30,6 +30,13 @@ public class UpgradeButton : MonoBehaviour
         {
             costText.text = upgradeCost.ToString();
         }
+
+        if(Input.GetKeyDown(KeyCode.KeypadDivide)) {
+            removeUpgrade();
+        }
+        if(Input.GetKeyDown(KeyCode.KeypadMultiply)) {
+            addCredits();
+        }
     }
 
     public void buyUpgrade()
@@ -46,9 +53,22 @@ public class UpgradeButton : MonoBehaviour
         }
         
 
-        Debug.Log("BUYING: " + upgradeName.ToString());
+        //Debug.Log("BUYING: " + upgradeName.ToString());
         PlayerPrefs.SetInt("credits", PlayerPrefs.GetInt("credits", 0) - upgradeCost);
         PlayerPrefs.SetInt(upgradeName, 1);
 
+    }
+
+    public void removeUpgrade()
+    {
+        //Debug.Log("REMOVING" + upgradeName.ToString());
+        PlayerPrefs.SetInt(upgradeName, 0);
+        PlayerPrefs.SetInt("credits", PlayerPrefs.GetInt("credits", 0) + upgradeCost);
+    }
+
+    public void addCredits()
+    {
+        //Debug.Log("ADDING MONEY");
+        PlayerPrefs.SetInt("credits", PlayerPrefs.GetInt("credits", 0) + 20);
     }
 }

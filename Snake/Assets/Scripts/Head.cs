@@ -140,6 +140,13 @@ public class Head : MonoBehaviour
             return;
         }
 
+        if(PlayerPrefs.GetInt("Speed Boost", 0) == 1 && Input.GetAxis("Jump") == 1)
+        {
+            MoveSpeed = 250.0f;
+        }
+        else{
+            MoveSpeed = 150.0f;
+        }
         // Move forward
         transform.position += transform.right * MoveSpeed * Time.deltaTime;
 
