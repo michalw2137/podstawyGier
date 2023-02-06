@@ -18,7 +18,18 @@ public class UpgradeButton : MonoBehaviour
         nameText.text = upgradeName.ToString();
         descText.text = upgradeDesc.ToString();
         iconImage.sprite = upgradeIcon;
-        costText.text = upgradeCost.ToString();
+    }
+
+    void Update() 
+    {
+        if(PlayerPrefs.GetInt(upgradeName, 0) == 1) 
+        {
+            costText.text = "\u221A";
+        }
+        else
+        {
+            costText.text = upgradeCost.ToString();
+        }
     }
 
     public void buyUpgrade()

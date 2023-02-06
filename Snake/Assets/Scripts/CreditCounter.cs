@@ -24,7 +24,7 @@ public class CreditCounter : MonoBehaviour
 
     void Update() {
         // Debug.Log($"potential = {potentialCredits}");
-         Debug.Log($"credits = {PlayerPrefs.GetInt("credits", 0)}");
+         //Debug.Log($"credits = {PlayerPrefs.GetInt("credits", 0)}");
     }
 
     public void changePotentialCredits(int delta) 

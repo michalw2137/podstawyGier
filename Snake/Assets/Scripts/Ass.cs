@@ -131,10 +131,13 @@ public class Ass : MonoBehaviour
     {
         if(PlayerPrefs.GetInt("Increase Dirt Capacity", 0) == 1)
         {
-            dirtCapMultiplier = 150;
+            dirtCapMultiplier = 13;
+        }
+        else{
+            dirtCapMultiplier = 9;
         }
         dirtCap = dirtCapMultiplier * size;
-        //Debug.Log($"current cup = {dirtCap}");
+        Debug.Log($"current cup = {dirtCap}");
     }
 
     public int getMaxCapacity()
