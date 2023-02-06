@@ -38,4 +38,9 @@ public class CreditCounter : MonoBehaviour
         potentialCredits = 0;
     }
 
+    public int getPotentialCreditSum() 
+    {
+        return PlayerPrefs.GetInt("credits", 0) + potentialCredits;
+    }
+
 }
