@@ -140,13 +140,8 @@ public class Head : MonoBehaviour
             return;
         }
 
-        if(PlayerPrefs.GetInt("Speed Boost", 0) == 1 && Input.GetAxis("Jump") == 1)
-        {
-            MoveSpeed = 250.0f;
-        }
-        else{
-            MoveSpeed = 150.0f;
-        }
+        
+        MoveSpeed = Upgrades.instance.applyBoost();
         // Move forward
         transform.position += transform.right * MoveSpeed * Time.deltaTime;
 
@@ -155,13 +150,8 @@ public class Head : MonoBehaviour
             transform.Rotate(Vector3.back * MathF.Sin(time * timeMultiplyer) * SteerSpeed);
         } else if (!isJumping )
         {
-            if(PlayerPrefs.GetInt("Faster Turning", 0) == 1)
-            {
-                SteerSpeed = 300.0f;
-            }
-            else{
-                SteerSpeed = 180.0f;
-            }
+            SteerSpeed = Upgrades.instance.upgradeTurning();
+
             float steerDirection = Input.GetAxis("Horizontal"); // Returns value -1, 0, or 1
             transform.Rotate(Vector3.back * steerDirection * SteerSpeed * Time.deltaTime);
         }
@@ -256,7 +246,7 @@ public class Head : MonoBehaviour
     {
         if (other.tag == "body" || other.tag == "obstacle")
         {
-            if(PlayerPrefs.GetInt("Nonlethal Collisions", 0) == 0)
+            if(Upgrades.instance.dying())
             {
                 Debug.Log("DEATH");
                 Debug.Log(other.tag);

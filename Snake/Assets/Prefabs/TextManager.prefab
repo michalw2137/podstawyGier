@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2563873598073156023}
   - component: {fileID: 2563873598073156022}
   - component: {fileID: 2563873598073156019}
-  - component: {fileID: 5623869163564576529}
   m_Layer: 20
   m_Name: TextManager
   m_TagString: Untagged
@@ -132,19 +131,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textField: {fileID: 2563873599113784905}
---- !u!114 &5623869163564576529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2563873598073156025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ea3b0f3cc7a2ca409aec8f3f9d54fe5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  creditsText: {fileID: 0}
 --- !u!1 &2563873598411221108
 GameObject:
   m_ObjectHideFlags: 0

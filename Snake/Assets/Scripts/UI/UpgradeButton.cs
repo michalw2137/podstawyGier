@@ -55,6 +55,7 @@ public class UpgradeButton : MonoBehaviour
 
         //Debug.Log("BUYING: " + upgradeName.ToString());
         PlayerPrefs.SetInt("credits", PlayerPrefs.GetInt("credits", 0) - upgradeCost);
+        UpdateCredits.instance.updateScore();
         PlayerPrefs.SetInt(upgradeName, 1);
 
     }
@@ -64,11 +65,13 @@ public class UpgradeButton : MonoBehaviour
         //Debug.Log("REMOVING" + upgradeName.ToString());
         PlayerPrefs.SetInt(upgradeName, 0);
         PlayerPrefs.SetInt("credits", PlayerPrefs.GetInt("credits", 0) + upgradeCost);
+        UpdateCredits.instance.updateScore();
     }
 
     public void addCredits()
     {
         //Debug.Log("ADDING MONEY");
         PlayerPrefs.SetInt("credits", PlayerPrefs.GetInt("credits", 0) + 5);
+        UpdateCredits.instance.updateScore();
     }
 }

@@ -7,8 +7,17 @@ public class UpdateCredits : MonoBehaviour
 {
     public TMP_Text creditsText;
 
-    // Update is called once per frame
-    void Update()
+    public static UpdateCredits instance;
+    void Awake()
+    {
+        instance = this;
+    }
+
+    void Start()
+    {
+        updateScore();
+    }
+    public void updateScore()
     {
         creditsText.text = "Seeds: " + PlayerPrefs.GetInt("credits", 0).ToString();
     }

@@ -27,13 +27,7 @@ public class DirtDetector : MonoBehaviour
     {
         type = dirtType;
 
-        if(PlayerPrefs.GetInt("More Fertile Dirt", 0) == 1)
-        {
-            dirtRequired = 90;
-        }
-        else{
-            dirtRequired = 150;
-        }
+        dirtRequired = Upgrades.instance.fertileDirtUpgrade(dirtRequired);
 
     }
 
@@ -61,7 +55,7 @@ public class DirtDetector : MonoBehaviour
 
     public void addParticle(DirtParticle particle)
     {
-        if(particle.type != type && !(PlayerPrefs.GetInt("Universal Dirt", 0) == 1)) {
+        if(particle.type != type && Upgrades.instance.universalDirtUpgrade()) {
             //Debug.Log("inorrect dirt type");
             return;
         }
