@@ -44,11 +44,13 @@ public class UpgradeButton : MonoBehaviour
         if(PlayerPrefs.GetInt(upgradeName, 0) == 1) 
         {
             Debug.Log("ALREADY BOUGHT");
+            popup7.instance.popup();
             return;
         }
         if(upgradeCost > PlayerPrefs.GetInt("credits", 0)) 
         {
             Debug.Log("TOO LITTLE CREDTIS");
+            popup8.instance.popup();
             return;
         }
         

@@ -42,4 +42,14 @@ public class Popup : MonoBehaviour
         };
         return false;
     }
+
+    public void popup() {
+        StartCoroutine(showForSeconds(1));
+    }
+
+    protected IEnumerator showForSeconds(float seconds) {
+        show();
+        yield return new WaitForSeconds(seconds);
+        hide();
+    }
 }
