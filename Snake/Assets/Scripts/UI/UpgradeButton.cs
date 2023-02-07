@@ -69,6 +69,6 @@ public class UpgradeButton : MonoBehaviour
     public void addCredits()
     {
         //Debug.Log("ADDING MONEY");
-        PlayerPrefs.SetInt("credits", PlayerPrefs.GetInt("credits", 0) + 20);
+        PlayerPrefs.SetInt("credits", PlayerPrefs.GetInt("credits", 0) + 5);
     }
 }

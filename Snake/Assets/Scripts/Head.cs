@@ -155,6 +155,13 @@ public class Head : MonoBehaviour
             transform.Rotate(Vector3.back * MathF.Sin(time * timeMultiplyer) * SteerSpeed);
         } else if (!isJumping )
         {
+            if(PlayerPrefs.GetInt("Faster Turning", 0) == 1)
+            {
+                SteerSpeed = 300.0f;
+            }
+            else{
+                SteerSpeed = 180.0f;
+            }
             float steerDirection = Input.GetAxis("Horizontal"); // Returns value -1, 0, or 1
             transform.Rotate(Vector3.back * steerDirection * SteerSpeed * Time.deltaTime);
         }
@@ -249,10 +256,14 @@ public class Head : MonoBehaviour
     {
         if (other.tag == "body" || other.tag == "obstacle")
         {
-            // TODO: i dont think i works properly all the time
-            Debug.Log("DEATH");
-            Debug.Log(other.tag);
-            StartCoroutine(Death());        
+            if(PlayerPrefs.GetInt("Nonlethal Collisions", 0) == 0)
+            {
+                Debug.Log("DEATH");
+                Debug.Log(other.tag);
+                StartCoroutine(Death());
+            }
+            
+                    
         }
 
         // if (other.tag == "food")
