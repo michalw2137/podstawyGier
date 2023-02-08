@@ -19,6 +19,6 @@ public class UpdateCredits : MonoBehaviour
     }
     public void updateScore()
     {
-        creditsText.text = "Seeds: " + PlayerPrefs.GetInt("credits", 0).ToString();
+        creditsText.text = PlayerPrefs.GetInt("credits", 0).ToString();
     }
 }

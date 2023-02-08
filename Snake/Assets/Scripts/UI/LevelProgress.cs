@@ -40,7 +40,7 @@ public class LevelProgress : MonoBehaviour
         } 
         int length = Head.instance.length;
         int requiredLength = Exit.instance.RequiredLength;
-        textField.text = $"Credits: {CreditCounter.instance.getPotentialCreditSum()}";
+        textField.text = CreditCounter.instance.getPotentialCreditSum().ToString();
     }
    
 
