@@ -418,7 +418,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 84de8eaf23872e64c9a7e424b77f57d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e81bc17cc27150e44b4f94bf8d41b658, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -500,7 +500,7 @@ MonoBehaviour:
   nameText: {fileID: 7885341827485610175}
   upgradeDesc: 'It makes your snake able to eat more dirt with the same size. '
   descText: {fileID: 7420058655828839276}
-  upgradeIcon: {fileID: 21300000, guid: 23df885ad02858048971c969afda3744, type: 3}
+  upgradeIcon: {fileID: 21300000, guid: 0abc50d2888abc849b191e7f887dbfec, type: 3}
   iconImage: {fileID: 8837023778944679828}
   upgradeCost: 50
   costText: {fileID: 765213707381541829}
