@@ -26,8 +26,10 @@ public class DirtDetector : MonoBehaviour
     void Awake()
     {
         type = dirtType;
-
-        dirtRequired = Upgrades.instance.fertileDirtUpgrade(dirtRequired);
+        if (Upgrades.instance != null)
+        {
+            dirtRequired = Upgrades.instance.fertileDirtUpgrade(dirtRequired);
+        }
 
     }
 

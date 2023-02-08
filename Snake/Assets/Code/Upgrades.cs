@@ -5,6 +5,11 @@ using UnityEngine;
 public class Upgrades : MonoBehaviour
 {
     public static Upgrades instance;
+    void Start()
+    {
+        Awake();
+    }
+
     void Awake()
     {
         instance = this;

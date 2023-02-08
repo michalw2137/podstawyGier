@@ -13,11 +13,15 @@ public class Exit : MonoBehaviour
     public float transitionTime = 1f;
     public static Exit instance;
 
-    void Awake() {
+    public GameObject LevelCompleteUI;
+
+    void Awake() 
+    {
         instance = this;
     }
 
-    void Start() {
+    void Start() 
+    {
         int wormLength = 0;
 
         wormLength = WormManager.instance.StartLength;
@@ -27,8 +31,10 @@ public class Exit : MonoBehaviour
 
     }
 
-    void Update() {
-        if(Input.GetKeyDown(KeyCode.KeypadMinus)) {
+    void Update() 
+    {
+        if (Input.GetKeyDown(KeyCode.KeypadMinus)) 
+        {
             Head.instance.length = RequiredLength;
             StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
         }
@@ -39,28 +45,28 @@ public class Exit : MonoBehaviour
     {
         if (other.tag == "head" && isOpen())
         {
-            int nextSceneLoad = SceneManager.GetActiveScene().buildIndex + 1;
-            if (nextSceneLoad > PlayerPrefs.GetInt("levelAt"))
-            {
-                PlayerPrefs.SetInt("levelAt", nextSceneLoad);
-            }
-            CreditCounter.instance.confirmCredits();
-            StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
+            LevelCompleteMenu.instance.UpdateScore();
+            LevelCompleteMenu.instance.Pause();
+            LevelCompleteUI.SetActive(true);
         }
     }
 
-    public bool isOpen() {
-        if (Head.instance == null) {
+    public bool isOpen() 
+    {
+        if (Head.instance == null) 
+        {
             return false;
         }
 
-        if (open) {            
+        if (open) 
+        {            
             return true;
         }
         return Head.instance.length >= RequiredLength;
     }
 
-    public void Open() {
+    public void Open() 
+    {
         open = true;
     }
 
