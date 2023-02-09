@@ -10,7 +10,6 @@ public class LevelCompleteMenu : MonoBehaviour
 
     public GameObject FirstSelectedButton;
 
-    public TMP_Text creditsText;
     public Animator transition;
     public float transitionTime = 1f;
 
@@ -71,10 +70,5 @@ public class LevelCompleteMenu : MonoBehaviour
         SceneManager.LoadScene(Index);
         Head.instance.isMoving = true;
         LevelProgress.instance.updateText();
-    }
-
-    public void UpdateScore()
-    {
-        creditsText.text = PlayerPrefs.GetInt("credits", 0).ToString();
     }
 }
