@@ -141,7 +141,7 @@ public class Head : MonoBehaviour
         }
 
         
-        MoveSpeed = Upgrades.instance.applyBoost();
+        
         // Move forward
         transform.position += transform.right * MoveSpeed * Time.deltaTime;
 
@@ -150,6 +150,7 @@ public class Head : MonoBehaviour
             transform.Rotate(Vector3.back * MathF.Sin(time * timeMultiplyer) * SteerSpeed);
         } else if (!isJumping )
         {
+            MoveSpeed = Upgrades.instance.applyBoost();
             SteerSpeed = Upgrades.instance.upgradeTurning();
 
             float steerDirection = Input.GetAxis("Horizontal"); // Returns value -1, 0, or 1
