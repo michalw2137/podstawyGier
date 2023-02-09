@@ -608,6 +608,7 @@ MonoBehaviour:
   RequiredLength: 999
   transition: {fileID: 1537102090}
   transitionTime: 1
+  LevelCompleteUI: {fileID: 0}
 --- !u!1001 &590245423
 PrefabInstance:
   m_ObjectHideFlags: 0

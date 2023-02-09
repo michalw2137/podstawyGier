@@ -37,7 +37,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Cancel") && !Head.instance.isDestroyed)
+        if (Input.GetButtonDown("Cancel") && !Head.instance.isDestroyed && !LevelCompleteMenu.instance.IsActive)
         {
             if (IsGamePaused)
             {

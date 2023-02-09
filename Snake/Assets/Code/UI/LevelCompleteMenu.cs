@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,7 +11,9 @@ public class LevelCompleteMenu : MonoBehaviour
 
     public GameObject FirstSelectedButton;
 
-    public TMP_Text creditsText;
+    [NonSerialized]
+    public bool IsActive = false;
+
     public Animator transition;
     public float transitionTime = 1f;
 
@@ -18,15 +21,9 @@ public class LevelCompleteMenu : MonoBehaviour
     {
         instance = this;
     }
-
-    void Update()
-    {
-
-    }
-
     public void NextLevel()
     {
-        Time.timeScale = 1.0f;
+        Resume();
         int nextSceneLoad = SceneManager.GetActiveScene().buildIndex + 1;
         if (nextSceneLoad > PlayerPrefs.GetInt("levelAt"))
         {
@@ -38,7 +35,7 @@ public class LevelCompleteMenu : MonoBehaviour
 
     public void MainMenu()
     {
-        Time.timeScale = 1.0f;
+        Resume();
         if (Head.instance != null)
         {
             StartCoroutine(Head.instance.Death(true));
@@ -48,7 +45,7 @@ public class LevelCompleteMenu : MonoBehaviour
 
     public void Upgrades()
     {
-        Time.timeScale = 1.0f;
+        Resume();
         if (Head.instance != null)
         {
             StartCoroutine(Head.instance.Death(true));
@@ -59,7 +56,14 @@ public class LevelCompleteMenu : MonoBehaviour
 
     public void Pause()
     {
+        IsActive = true;
         Time.timeScale = 0.0f;
+    }
+
+    public void Resume()
+    {
+        IsActive = false;
+        Time.timeScale = 1.0f;
     }
 
     IEnumerator LoadScene(int Index)
@@ -71,10 +75,5 @@ public class LevelCompleteMenu : MonoBehaviour
         SceneManager.LoadScene(Index);
         Head.instance.isMoving = true;
         LevelProgress.instance.updateText();
-    }
-
-    public void UpdateScore()
-    {
-        creditsText.text = PlayerPrefs.GetInt("credits", 0).ToString();
     }
 }

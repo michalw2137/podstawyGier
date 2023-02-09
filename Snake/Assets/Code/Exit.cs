@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class Exit : MonoBehaviour
@@ -45,6 +45,7 @@ public class Exit : MonoBehaviour
     {
         if (other.tag == "head" && isOpen())
         {
+            EventSystem.current.SetSelectedGameObject(LevelCompleteMenu.instance.FirstSelectedButton); // GamePad support
             LevelCompleteMenu.instance.Pause();
             LevelCompleteUI.SetActive(true);
         }
