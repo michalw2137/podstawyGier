@@ -45,7 +45,6 @@ public class Exit : MonoBehaviour
     {
         if (other.tag == "head" && isOpen())
         {
-            LevelCompleteMenu.instance.UpdateScore();
             LevelCompleteMenu.instance.Pause();
             LevelCompleteUI.SetActive(true);
         }
