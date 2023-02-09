@@ -27,6 +27,15 @@ public class FoodManager : MonoBehaviour
         return transform.GetChild(id).GetComponent<Food>();
     }
 
+    public bool levelCompleted() {
+        for(int i=0; i<transform.childCount; i++) {
+            if(!getFood(i).hasGrown()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     // public void addParticle(DirtParticle particle) 
     // {
     //     foreach(Transform food in spawnedFood)

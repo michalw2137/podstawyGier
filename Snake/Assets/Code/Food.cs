@@ -52,7 +52,7 @@ public class Food : MonoBehaviour
                 fullyGrow();
 
                 Head.instance.Grow();
-                // Head.instance.Grow();
+                Head.instance.Grow();
                 // Head.instance.Grow();
 
                 

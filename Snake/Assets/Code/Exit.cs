@@ -53,6 +53,7 @@ public class Exit : MonoBehaviour
 
     public bool isOpen() 
     {
+        return FoodManager.instance.levelCompleted();
         if (Head.instance == null) 
         {
             return false;
