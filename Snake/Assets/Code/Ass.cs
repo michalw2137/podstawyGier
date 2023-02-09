@@ -129,8 +129,11 @@ public class Ass : MonoBehaviour
 
     public void updateCap(int size)
     {
+        if(!Head.instance.isCutscene)
+        {
+            dirtCapMultiplier = Upgrades.instance.upgradeDirtCap();
+        }
         
-        dirtCapMultiplier = Upgrades.instance.upgradeDirtCap();
         
         dirtCap = dirtCapMultiplier * size;
         //Debug.Log($"current cup = {dirtCap}");
