@@ -44,7 +44,7 @@ public class Upgrades : MonoBehaviour
             return 300.0f;
         }
         else{
-            return 180.0f;
+            return 240.0f;
         }
     }
 

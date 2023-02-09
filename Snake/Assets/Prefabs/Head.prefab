@@ -152,7 +152,7 @@ MonoBehaviour:
   tailSprite: {fileID: 21300000, guid: a9a028a553e2a834498385b42fca314c, type: 3}
   bodySprite: {fileID: 21300000, guid: 23df885ad02858048971c969afda3744, type: 3}
   isCutscene: 0
-  startLength: 5
+  startLength: 14
   isMoving: 0
   isDestroyed: 0
 --- !u!114 &5551955135991277895
