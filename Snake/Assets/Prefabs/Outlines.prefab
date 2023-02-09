@@ -115,9 +115,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outline: {fileID: 2406261054901002496, guid: 537d4b46316a1b847b7f81a9dc9a5a91, type: 3}
   gap: 150
-  startX: -400
-  startY: -70
-  size: 250
+  startX: 90
+  startY: -50
+  size: 200
   normalOutline: {fileID: 21300000, guid: ea013b6c0049b97488810388a7fa48ab, type: 3}
   normalDone: {fileID: 21300000, guid: feb3d02b9ae6c454a8c996e66e88940a, type: 3}
   dryOutline: {fileID: 21300000, guid: 1714d1f143ee7ad4885d1f4f7cfc14d8, type: 3}

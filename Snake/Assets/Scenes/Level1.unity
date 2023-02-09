@@ -2271,6 +2271,16 @@ PrefabInstance:
       propertyPath: transition
       value: 
       objectReference: {fileID: 1770008297}
+    - target: {fileID: 2137313730954787720, guid: 5b61e8f83bdbc9f419aeec1aad0c1be2,
+        type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2137313730954787721, guid: 5b61e8f83bdbc9f419aeec1aad0c1be2,
+        type: 3}
+      propertyPath: m_Maskable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2137313731191909253, guid: 5b61e8f83bdbc9f419aeec1aad0c1be2,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2384,6 +2394,11 @@ PrefabInstance:
     - target: {fileID: 2137313731191909374, guid: 5b61e8f83bdbc9f419aeec1aad0c1be2,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8338703390995446603, guid: 5b61e8f83bdbc9f419aeec1aad0c1be2,
+        type: 3}
+      propertyPath: m_CullTransparentMesh
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
