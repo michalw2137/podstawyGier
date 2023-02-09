@@ -460,7 +460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FirstSelectedButton: {fileID: 1041306067247174267}
-  creditsText: {fileID: 0}
+  PauseCanvas: {fileID: 2137313730954787718}
   transition: {fileID: 0}
   transitionTime: 1
 --- !u!1 &2137313732332775725

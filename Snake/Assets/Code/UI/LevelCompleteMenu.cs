@@ -10,6 +10,7 @@ public class LevelCompleteMenu : MonoBehaviour
     public static LevelCompleteMenu instance;
 
     public GameObject FirstSelectedButton;
+    public GameObject PauseCanvas;
 
     [NonSerialized]
     public bool IsActive = false;
@@ -64,6 +65,7 @@ public class LevelCompleteMenu : MonoBehaviour
     {
         IsActive = false;
         Time.timeScale = 1.0f;
+        PauseCanvas.SetActive(false);
     }
 
     IEnumerator LoadScene(int Index)
