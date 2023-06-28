@@ -46,13 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f38f73a5114c31459d5d02dbfcc1bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wormColor: {r: 0.6509434, g: 0.46017697, b: 0.3224012, a: 1}
+  wormColor: {r: 0.4716981, g: 0.4055046, b: 0.35822356, a: 1}
   defaultSprite: {fileID: 21300000, guid: 0e219233b1a6ec442850776f1fb67d7e, type: 3}
-  defaultColor: {r: 0.44313726, g: 0.3019608, b: 0.2, a: 1}
+  defaultColor: {r: 0.47058824, g: 0.40392157, b: 0.35686275, a: 1}
   eatenColor: {r: 0, g: 0, b: 0, a: 0}
-  deletedColor: {r: 0.44313726, g: 0.3019608, b: 0.2, a: 0.11764706}
+  deletedColor: {r: 0.47058824, g: 0.40392157, b: 0.35686275, a: 0.3137255}
   respawnedSprite: {fileID: 21300000, guid: 0e219233b1a6ec442850776f1fb67d7e, type: 3}
-  respawnedColor: {r: 0.3207547, g: 0.2074266, b: 0.1255785, a: 1}
+  respawnedColor: {r: 0.3584906, g: 0.3079357, b: 0.27224994, a: 1}
   type: 2
 --- !u!114 &8671199253449003781
 MonoBehaviour:
@@ -66,13 +66,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e2e480ac8a81fc4d840cfb01946ec23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wormColor: {r: 0.7169812, g: 0.35828927, b: 0.20630117, a: 1}
+  wormColor: {r: 0.36078432, g: 0.19215687, b: 0.10980392, a: 1}
   defaultSprite: {fileID: 21300000, guid: 0e219233b1a6ec442850776f1fb67d7e, type: 3}
-  defaultColor: {r: 0.47058824, g: 0.2389529, b: 0.1411765, a: 1}
+  defaultColor: {r: 0.36078432, g: 0.19081767, b: 0.10980392, a: 1}
   eatenColor: {r: 0, g: 0, b: 0, a: 0}
-  deletedColor: {r: 0.47058824, g: 0.23921569, b: 0.14117648, a: 0.11764706}
+  deletedColor: {r: 0.36078432, g: 0.19215687, b: 0.10980392, a: 0.3137255}
   respawnedSprite: {fileID: 21300000, guid: 0e219233b1a6ec442850776f1fb67d7e, type: 3}
-  respawnedColor: {r: 0.33962262, g: 0.16311382, b: 0.09131362, a: 1}
+  respawnedColor: {r: 0.24528301, g: 0.12323809, b: 0.063634746, a: 1}
   type: 0
 --- !u!114 &8671199253449003782
 MonoBehaviour:
@@ -86,11 +86,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c36f56a34800bd4bb40ecb337c85efa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wormColor: {r: 0.5283019, g: 0.18785116, b: 0.10715558, a: 1}
+  wormColor: {r: 0.6886792, g: 0.615484, b: 0.23064259, a: 1}
   defaultSprite: {fileID: 21300000, guid: 0e219233b1a6ec442850776f1fb67d7e, type: 3}
-  defaultColor: {r: 0.2735849, g: 0.08036822, b: 0.042586334, a: 1}
+  defaultColor: {r: 0.6901961, g: 0.6156863, b: 0.23137255, a: 1}
   eatenColor: {r: 0, g: 0, b: 0, a: 0}
-  deletedColor: {r: 0.27450982, g: 0.078431375, b: 0.043137256, a: 0.11764706}
+  deletedColor: {r: 0.6901961, g: 0.6156863, b: 0.23137255, a: 0.3137255}
   respawnedSprite: {fileID: 21300000, guid: 0e219233b1a6ec442850776f1fb67d7e, type: 3}
-  respawnedColor: {r: 0.13207549, g: 0.0325646, b: 0.015574938, a: 1}
+  respawnedColor: {r: 0.5943396, g: 0.47695374, b: 0.17661978, a: 1}
   type: 1
