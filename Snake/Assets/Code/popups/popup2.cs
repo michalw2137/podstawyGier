@@ -14,8 +14,8 @@ public class popup2 : Popup
     void Update()
     {
         if(popup1.instance.done && firstCheck) {
-            StartCoroutine(stopHeadAfterSeconds(2f));
-            popup1.instance.hide();
+            StartCoroutine(stopHeadAfterSeconds(3f));
+            popup1.instance.hideDelayed();
         }
 
         if(secondCheck && Input.GetAxis("Fire2") != 0) {
@@ -26,7 +26,7 @@ public class popup2 : Popup
 
         if(!done && !firstCheck && !secondCheck) {
             if(Ass.instance.isFull()) {
-                hide();
+                hideDelayed();
                 done = true;
             }
         }

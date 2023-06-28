@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class popupTypes : Popup
+public class popupDeath : Popup
 {
     public static Popup instance;
     void Awake() {

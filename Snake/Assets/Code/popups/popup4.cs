@@ -14,8 +14,8 @@ public class popup4 : Popup
     void Update()
     {
         if(popup3.instance.done && firstCheck) {
-            StartCoroutine(stopHeadAfterSeconds(1f));
-            popup3.instance.hide();
+            StartCoroutine(stopHeadAfterSeconds(3f));
+            popup3.instance.hideDelayed();
 
         }
 
@@ -26,7 +26,7 @@ public class popup4 : Popup
         }
 
         if(!firstCheck && !secondCheck && FoodManager.instance.getFood().isRipe()) {
-            hide();
+            hideDelayed();
             done = true;
         }
         

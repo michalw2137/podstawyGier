@@ -14,8 +14,8 @@ public class popup6 : Popup
     void Update()
     {
         if(popup5.instance.done && firstCheck) {
-            StartCoroutine(stopHeadAfterSeconds(1f));
-            popup5.instance.hide();
+            StartCoroutine(stopHeadAfterSeconds(3f));
+            popup5.instance.hideDelayed();
 
         }
 

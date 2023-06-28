@@ -14,8 +14,8 @@ public class popup3 : Popup
     void Update()
     {
         if(popup2.instance.done && firstCheck) {
-            StartCoroutine(stopHeadAfterSeconds(1f));
-            popup2.instance.hide();
+            StartCoroutine(stopHeadAfterSeconds(3f));
+            popup2.instance.hideDelayed();
 
         }
 
@@ -26,7 +26,7 @@ public class popup3 : Popup
         }
 
         if(!firstCheck && !secondCheck && FoodManager.instance.getFood().getNearbyDirt() > 0) {
-            hide();
+            hideDelayed();
 
             done = true;
         }

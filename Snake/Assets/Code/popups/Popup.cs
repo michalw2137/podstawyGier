@@ -9,6 +9,9 @@ public class Popup : MonoBehaviour
     public bool firstCheck = true;
     public bool secondCheck = false;
 
+[SerializeField] public float fadeOutDelay = 0f;
+[SerializeField] public float fadeOutDuration = 2f;
+
     protected IEnumerator stopHeadAfterSeconds(float seconds) {
         yield return new WaitForSeconds(seconds);
         show();
@@ -24,6 +27,34 @@ public class Popup : MonoBehaviour
 
     public void hide() {
         GetComponent<Image>().color = new Color32(255,255,255,0);
+    }
+
+    public void hideDelayed() {
+        StartCoroutine(DelayedFadeOut(fadeOutDelay));
+    }
+
+    private IEnumerator DelayedFadeOut(float delay) {
+        yield return new WaitForSeconds(delay);
+        StartCoroutine(FadeOut(fadeOutDuration));
+    }
+
+    private IEnumerator FadeOut(float duration)
+    {
+        Image image = GetComponent<Image>();
+        Color originalColor = image.color;
+        Color targetColor = new Color(originalColor.r, originalColor.g, originalColor.b, 0);
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / duration);
+            image.color = Color.Lerp(originalColor, targetColor, t);
+            yield return null;
+        }
+
+        image.color = targetColor;
     }
 
     public void show() {

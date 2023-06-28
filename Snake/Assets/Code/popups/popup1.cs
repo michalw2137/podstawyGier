@@ -14,7 +14,7 @@ public class popup1 : Popup
     
     void Start()
     {
-        StartCoroutine(stopHeadAfterSeconds(0.05f));
+        StartCoroutine(stopHeadAfterSeconds(0.5f));
         show();
     }
 
@@ -22,7 +22,7 @@ public class popup1 : Popup
     void Update()
     {
         if(Input.GetAxis("Horizontal") != 0 && !done) {
-            hide();
+            hideDelayed();
             done = true;
             Head.instance.isMoving = true;
         }
